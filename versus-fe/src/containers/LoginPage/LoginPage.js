@@ -39,19 +39,21 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-      <h1> Login </h1>
-      <div className="login details">
-        <form>
-          Username <br/>
-          <input type="text" onChange={this.handleUsernameChange} value={this.state.username}/>
-          <br/>
-          password <br/>
-          <input type="text" onChange={this.handlePasswordChange} value={this.state.password}/>
-          <br/>
-          <input type="submit" onClick={this.sendDetails} value="Sign In"/>
-        </form>
-      </div>
+      <div className="loginContainer">
+        <h1> Login </h1>
+        <div className="loginDetails">
+          <form onSubmit={this.sendDetails}>
+            Username <br/>
+            <input type="text" onChange={this.handleUsernameChange} value={this.state.username}/>
+            <br/>
+            password <br/>
+            <input type="text" onChange={this.handlePasswordChange} value={this.state.password}/>
+            <br/>
+            <input type="submit" value="Sign In"/>
+          </form>
+        </div>
+        <br/>
+        <a className="signUp" href=""> Sign up </a>
       </div>
     );
   }
