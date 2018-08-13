@@ -1,0 +1,26 @@
+.MatchingCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.MatchingCards__firstContent {
+  width: 70vw;
+  height: 40vh;
+  background-color: peachpuff;
+}
+
+
+.MatchingCards__stageTwo { 
+  width: 15vw !important;
+  height: 8vh !important;
+  transition: all .6s;
+  transform: translateY(-10vh);
+}
+
+.MatchingCards__contentShow {
+  width: 80vw;
+  height: 50vh;
+  background-color: black;
+}
