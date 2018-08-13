@@ -8,3 +8,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+:root {
+  --white: rgb(217, 217, 235);
+  --darkWhite: rgb(158, 158, 168);
+}

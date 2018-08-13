@@ -1,21 +1,70 @@
 .Drawer {
-  width: 65vw;
-  height: 100vh;
-  background-color: blanchedalmond;
+  width: 100%;
+  min-height: 100%;
+  background: linear-gradient(to left, rgba(4,38,71,1) 0%, rgba(0,20,41,1) 100%);
   display: flex;
   flex-direction: column;
-  padding-top: 1vh;
-  transition: all 2s;
-  z-index: 5;
+  align-items: center;
+  overflow-y: scroll;
 }
 
-
-.Drawer__open {
-  transition: all 2s;
-  transform: translateX(65vw)
+.Drawer__logo {
+  width: 60%;
+  height: 10vh;
+  margin-top: 5vh;
+  color: var(--white)
 }
 
-.Drawer__link {
+.Drawer__button {
+  width: 50%;
+  height: 15vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.Drawer__button i {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.Drawer__button span {
+  color: var(--darkWhite);
   margin-top: 10px;
 }
 
+.Drawer__LeagueList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  transition: all .4s;
+
+}
+
+.Drawer__LeagueList span {
+  color: var(--white);
+  padding: 2vh 0;
+  border-top: 1px solid rgb(158, 158, 168, .3);
+  background-color: rgba(0,20,41,1) ;
+  transition: all .4s;
+}
+
+.Drawer__LeagueList span:last-child {
+  border-bottom: 1px solid rgb(158, 158, 168, .3);
+  margin-bottom: 3vh;
+}
+
+.Drawer__LeagueList__closed {
+  transition: all .3s;
+  height: 0;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.text {
+  font-size: 0;
+  transition: font-size .3s cubic-bezier(.18,1.18,.54,1.02);
+}
