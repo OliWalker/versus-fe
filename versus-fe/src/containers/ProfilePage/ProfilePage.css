@@ -7,14 +7,15 @@
   align-items: center;
 }
 
-.ProfilePage .picture {
+.ProfilePage__picture {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: blue;
 }
 
-.ProfilePage .stats{
+.ProfilePage__stats{
   width: 80vw;
-  
+  height: 40vw;
+  background-color: blanchedalmond;
 }

@@ -1,0 +1,9 @@
+.SportCard {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: lightGrey;
+  margin-top: 20px;
+}
