@@ -27,8 +27,9 @@ class LoginPage extends Component {
   }
 
   handleFormChange = (event) =>{
-    if(event.target.name === "username") this.setState({username:event.target.value})
-    if(event.target.name === "password") this.setState({password:event.target.value})
+    this.setState({
+      [event.target.name]:event.target.value
+    })
   }
 
   render() {
@@ -38,10 +39,10 @@ class LoginPage extends Component {
         <div className="loginDetails">
           <form onSubmit={this.sendDetails}>
             Username <br/>
-            <input type="text" className="username" onChange={this.handleFormChange} name="username" />
+            <input type="text" value={this.state.username} onChange={this.handleFormChange} name="username" />
             <br/>
             password <br/>
-            <input type="text" className="password" onChange={this.handleFormChange} name="password" />
+            <input type="text" value={this.state.password} onChange={this.handleFormChange} name="password" />
             <br/>
             <input type="submit" value="Sign In"/>
           </form>

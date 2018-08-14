@@ -15,7 +15,7 @@ class SignUp extends Component {
     sendSignUp = (event) => {
       event.preventDefault()
 
-      let signUpDetails = {
+      const signUpDetails = {
         username:this.state.username,
         first_name:this.state.first_name,
         email:this.state.email,
@@ -34,10 +34,9 @@ class SignUp extends Component {
     }
 
     handleFormChange = (event) => {
-      if(event.target.name === "username") this.setState({username: event.target.value})
-      if(event.target.name === "firstname") this.setState({first_name: event.target.value})
-      if(event.target.name === "email") this.setState({email: event.target.value})
-      if(event.target.name === "image_Path") this.setState({image_Path: event.target.value})
+      this.setState({
+        [event.target.name]:event.target.value
+      })
     }
 
 
