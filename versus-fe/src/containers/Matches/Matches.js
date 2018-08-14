@@ -8,25 +8,24 @@ import { getUserInfo } from '../../redux/actions'
 import Loading from '../../components/LoadingPage/LoadingPage';
 
 class Matches extends Component {
+
   constructor(props){
     super(props)
     this.props.getUserInfo()
+    console.log("loading")
   }
 
-  const matches = this.props.matches
-  if(!matches[0]) return <Loading />
-
   renderNextMatch = () => {
-    if(!this.props.matches) {
-      return null
-    }
-    let x = this.props.matches
-    return x.map( theMatch => {
+    const matches = this.props.matches
+    return matches.map( theMatch => {
       return <Match matchInfo={theMatch}/>
     })
   }
 
   render() {
+    const matches = this.props.matches
+    if(!matches[0]) return <Loading />
+
     return (
       <div>
         <h1> Matches </h1>

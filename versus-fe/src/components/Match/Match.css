@@ -1,0 +1,42 @@
+.aMatchContainer{
+  display:flex;
+  margin: 20px;
+  border-style: solid;
+  border-color: navy;
+  justify-content: space-between;
+  background: var(--blueGrad);
+}
+
+.UsersMatched {
+  display:flex;
+  flex-direction:column;
+  width:100px;
+  height:79px;
+  justify-content: center;
+  align-items: center;
+}
+
+.UsersMatched > span:first-child{
+  margin-top:5px;
+}
+.UsersMatched > p {
+ margin-top: 7px;
+ margin-bottom: 7px;
+
+}
+.imageContainer{
+  width:75px;
+  height:79px
+}
+.sportImage{
+  width:75px;
+  height:79px
+}
+
+.status{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-right:10px;
+  width:125px;
+}

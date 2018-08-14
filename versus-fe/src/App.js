@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
 
+import LoginPage from './containers/LoginPage/LoginPage';
+import SignUp from './containers/SignUp/SignUp';
+import Matches from './containers/Matches/Matches';
 import ProfilePage from './containers/ProfilePage/ProfilePage';
 import Header from './components/Header/Header';
 import SportsList from './containers/SportsList/SportsList';
@@ -23,7 +26,7 @@ class App extends Component {
       <Route path='/LoginPage' component={LoginPage} />
       <Route path='/SignUp' component={SignUp} />
       <Route path='/Matches' component={Matches} />
-      
+
       </div>
     );
   }

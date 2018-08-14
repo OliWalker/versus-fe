@@ -12,12 +12,10 @@ class ProfilePage extends Component {
     super(props)
     this.props.getUserInfo()
   }
-  
+
   render() {
 
-    const user = this.props.user;
-    const stats = this.props.stats;
-    const matches = this.props.matches;
+    const {user, stats, matches} = this.props;
 
     if (!stats[0]) return <Loading />
 
@@ -32,7 +30,7 @@ class ProfilePage extends Component {
         <span className="ProfilePage__name"> {user.first_name} {user.last_name} </span>
         <span className="ProfilePage__score"><i>{user.total_score}</i></span>
 
-        <div className="ProfilePage__all__scores"> 
+        <div className="ProfilePage__all__scores">
           {stats.map(sport => {
             return <ProfileSportScore props={{title: sport.name, score: sport.data.score}} />
           })}
