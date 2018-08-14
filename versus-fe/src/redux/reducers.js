@@ -4,6 +4,7 @@ const initalState = {
   matches: {},
   loading: false,
   error: '',
+  leagueNow: {},
 }
 
 const reducer = (state=initalState, action) => {
@@ -30,6 +31,30 @@ const reducer = (state=initalState, action) => {
         ...state,
         error: action.error,
         loading: false
+      }
+
+
+
+
+    case 'GET_ONE_LEAGUE_REQUEST':
+      return {
+        ...state,
+        loading: true
+      }
+
+    case 'GET_ONE_LEAGUE_SUCCESS':
+      return {
+        ...state,
+        leagueNow: action.data,
+        loading: false
+      }
+
+    case 'GET_ONE_LEAGUE_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+
       }
 
     default:

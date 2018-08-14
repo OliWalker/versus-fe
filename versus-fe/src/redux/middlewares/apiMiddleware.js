@@ -33,6 +33,7 @@ export default store => next => action => {
   })
   .then(response => response.json())
   .then(response => {
+    console.log("API-MIDLLEWARE", response)
     return response
   })
   .then(data => {

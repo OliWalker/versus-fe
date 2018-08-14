@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 20;
 }
 
 .Drawer__logo {
@@ -17,10 +18,7 @@
 .Drawer__button__list {
   overflow: scroll;
   overflow-x: auto;
-  /* display: flex; */
-  /* flex-direction: column; */
   align-items: center;
-  /* width: 100%; */
 }
 
 .Drawer__button__list::-webkit-scrollbar { 
@@ -46,6 +44,7 @@
   color: var(--darkWhite);
   margin-top: 10px;
 }
+
 
 .Drawer__LeagueList {
   width: 100%;
@@ -76,4 +75,18 @@
   padding: 0 !important;
   border: none !important;
   font-size: 0;
+}
+
+.Drawer__button__notie {
+  position: relative;
+}
+
+.Drawer__button__notification {
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  position: absolute;
+  padding: 4px 5px;
+  left: 57%;
+  top: -5%;
 }

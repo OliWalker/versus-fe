@@ -27,8 +27,8 @@ class Drawer extends Component {
   render () {
 
     const stats = this.props.stats
-    // if (this.props.matches[0]) const notifications = this.props.matches.filter(match => match.status === 'pending').length
-
+    let notifications;
+    if (this.props.matches[0]) notifications = this.props.matches.filter(match => match.status == 'PENDING').length
     return (
       <div className="Drawer">
 
@@ -47,7 +47,7 @@ class Drawer extends Component {
 
           <div className="Drawer__LeagueList ">
 
-            {stats[0] ? 
+            { stats[0] ? 
             stats.map(league => {
               return ( <Link to={`/league/${league.league_id}`}
                 className="Drawer__LeagueList__sport Drawer__LeagueList__closed">
@@ -55,11 +55,12 @@ class Drawer extends Component {
                 </Link>
               )
             }) : null }
-
           </div>
 
           <Link to='/matches'>
-            <div className="Drawer__button">
+            <div className="Drawer__button Drawer__button__notie">
+              { notifications > 0 ? <div className='Drawer__button__notification'> {notifications} </div> :
+                null }
               <i className="far fa-calendar-check"></i>
               <span> Matches</span>
             </div>

@@ -8,6 +8,15 @@ export const getUserInfo = (apiInfo) => ({
   }
 })
 
+export const getOneLeague = (apiInfo) => ({
+  type: 'GET_ONE_LEAGUE',
+  api: {  
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+})
 
 
 
