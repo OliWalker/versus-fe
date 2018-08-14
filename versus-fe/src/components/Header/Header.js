@@ -16,12 +16,14 @@ const openDrawer = (e) => {
 
 }
 
+
+
 export default function Header (props) {
  
     return (
       <div className="Header">
 
-        <div className='Header__drawer' >
+        <div className='Header__drawer'> 
           <Drawer />
         </div>
 
