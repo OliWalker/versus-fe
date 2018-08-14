@@ -20,6 +20,8 @@ const reducer = (state=initalState, action) => {
       return {
         ...state,
         user: action.data.user,
+        stats: action.data.stats,
+        matches: action.data.matches,
         loading: false
       }
 

@@ -3,6 +3,7 @@ import './ProfilePage.css';
 
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../redux/actions'
+import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
 
 class ProfilePage extends Component {
 
@@ -16,10 +17,16 @@ class ProfilePage extends Component {
     super(props)
     this.props.getUserInfo()
   }
-
-
+  
   render() {
-    return (
+
+    const user = this.props.user;
+    const stats = this.props.stats;
+    const matches = this.props.matches;
+
+    if (!stats[0]) return <h1> loading </h1>
+
+     else { return (
 
       <div className="ProfilePage">
 
@@ -27,36 +34,14 @@ class ProfilePage extends Component {
           <img alt="random Dude" src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-black-and-white-1.jpg" />
         </div>
 
-        <span className="ProfilePage__name"> Chad Jenkins </span>
-
-        <span className="ProfilePage__score"><i>1820</i></span>
+        <span className="ProfilePage__name"> {user.first_name} {user.last_name} </span>
+        <span className="ProfilePage__score"><i>{user.total_score}</i></span>
 
         <div className="ProfilePage__all__scores"> 
-
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1000</i> </span>
-            <span className="ProfilePage__sport__name__single"> Tennis </span>
-          </div>
-
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>600</i> </span>
-            <span className="ProfilePage__sport__name__single"> Eating </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1900</i> </span>
-            <span className="ProfilePage__sport__name__single"> Ping-Pong </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>2000</i> </span>
-            <span className="ProfilePage__sport__name__single"> Juggling </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1200</i> </span>
-            <span className="ProfilePage__sport__name__single"> Flying </span>
-          </div>
-
+          {stats.map(sport => {
+            return <ProfileSportScore props={{title: sport.name, score: sport.data.score}} />
+          })}
         </div>
-
 
         <div className="ProfilePage__stats">
           <img src="./graph.png" />
@@ -65,18 +50,14 @@ class ProfilePage extends Component {
       </div>
     )
   }
+  }
 }
 
 const mapStateToProps = (state) => ({
-
+  user: state.user,
+  stats: state.stats,
+  matches: state.matches
 })
-
-// api: {
-//   endpoint: apiInfo.endpoint,
-//   method: apiInfo.method,
-//   body: apiInfo.body,
-//   headers: apiInfo.headers
-// }
 
 const mapDispatchToProps = (dispatch) => ({
   getUserInfo: () => dispatch(getUserInfo({endpoint:'/users/1'})),

@@ -19,42 +19,47 @@ const toggleLeagues = () => {
 export default function Drawer (props) {
   return (
     <div className="Drawer">
-      <div className="Drawer__logo">
-        <h1> Versus </h1>
-      </div> 
+
+      <Link to='/profile'>
+        <div className="Drawer__logo">
+          <h1> Versus </h1>
+        </div> 
+      </Link>
 
       <div className="Drawer__button__list">
 
-        <div className="Drawer__button" onClick={toggleLeagues}>
-          <i className="fas fa-trophy"></i>
-          <span> Leagues </span>
-        </div>
+          <div className="Drawer__button" onClick={toggleLeagues}>
+            <i className="fas fa-trophy"></i>
+            <span> Leagues </span>
+          </div>
 
         <div className="Drawer__LeagueList Drawer__LeagueList__closed">
           <span className="Drawer__LeagueList__sport Drawer__LeagueList__closed text"> Tennis </span>
           <span className="Drawer__LeagueList__sport Drawer__LeagueList__closed text"> Eating </span>
           <span className="Drawer__LeagueList__sport Drawer__LeagueList__closed text"> Ping-Pong </span>
           <span className="Drawer__LeagueList__sport Drawer__LeagueList__closed text"> Juggling </span>
-          {/* <span> Flying </span> */}
         </div>
 
-        <div className="Drawer__button">
-          <i className="far fa-calendar-check"></i>
-          <span> Matches</span>
-        </div>
+        <Link to='/matches'>
+          <div className="Drawer__button">
+            <i className="far fa-calendar-check"></i>
+            <span> Matches</span>
+          </div>
+        </Link>
 
-        
-        <div className="Drawer__button">
-          <i className="fas fa-futbol"></i>
-          <span>Sports</span>
-        </div>
+        <Link to='/sportsList'>
+          <div className="Drawer__button">
+            <i className="fas fa-futbol"></i>
+            <span>Sports</span>
+          </div>
+        </Link>
       
-
-        <div className="Drawer__button">
-          <i className="fas fa-power-off"></i>
-          <span> Log-out </span>
-        </div>
-
+        <Link to='/'>
+          <div className="Drawer__button">
+            <i className="fas fa-power-off"></i>
+            <span> Log-out </span>
+          </div>
+        </Link>
       </div>
 
     </div>

@@ -1,0 +1,14 @@
+.ProfilePage__sport__score {
+  margin: .4rem;
+}
+
+.ProfilePage__sport__score__single {
+  color: var(--white);
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.ProfilePage__sport__name__single {
+  color: var(--darkWhite);
+  font-size: .7rem;
+}
