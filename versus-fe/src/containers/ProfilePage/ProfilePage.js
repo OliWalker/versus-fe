@@ -3,13 +3,6 @@ import './ProfilePage.css';
 
 export default class ProfilePage extends Component {
 
-  componentDidMount() {
-    fetch('http://private-1cf21-versus3.apiary-mock.com/user/1')
-    .then(res => res.json())
-    .then(res => console.log(res))
-  }
-
-
   render() {
     return (
 
