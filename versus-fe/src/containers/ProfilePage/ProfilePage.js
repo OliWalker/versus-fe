@@ -4,14 +4,9 @@ import './ProfilePage.css';
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../redux/actions'
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
+import Loading from '../../components/LoadingPage/LoadingPage';
 
 class ProfilePage extends Component {
-
-  // componentDidMount() {
-  //   fetch('http://private-1cf21-versus3.apiary-mock.com/user/1')
-  //   .then(res => res.json())
-  //   .then(res => console.log(res))
-  // }
 
   constructor(props) {
     super(props)
@@ -24,14 +19,14 @@ class ProfilePage extends Component {
     const stats = this.props.stats;
     const matches = this.props.matches;
 
-    if (!stats[0]) return <h1> loading </h1>
+    if (!stats[0]) return <Loading />
 
      else { return (
 
       <div className="ProfilePage">
 
         <div className="ProfilePage__picture">
-          <img alt="random Dude" src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-black-and-white-1.jpg" />
+          <img alt="random Dude" src={user.image_path} />
         </div>
 
         <span className="ProfilePage__name"> {user.first_name} {user.last_name} </span>
@@ -44,7 +39,7 @@ class ProfilePage extends Component {
         </div>
 
         <div className="ProfilePage__stats">
-          <img src="./graph.png" />
+          <img src="./graph.png" alt="stat graph" />
         </div>
 
       </div>
