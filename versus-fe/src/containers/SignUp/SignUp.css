@@ -1,3 +1,24 @@
 .divider {
   margin: 20px
 }
+
+.signUpContainer{
+  align-items: center;
+}
+.signUpFormContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signUpForm {
+  width: 300px;
+}
+
+.divider {
+  display: flex;
+  justify-content: space-between;
+}
+.inputField {
+  width: 150px;
+}

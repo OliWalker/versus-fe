@@ -16,66 +16,61 @@ class SignUp extends Component {
       event.preventDefault()
 
       let signUpDetails = {
-        first_name:this.state.first_name,
         username:this.state.username,
+        first_name:this.state.first_name,
         email:this.state.email,
         image_Path:this.state.image_Path
       }
 
-      fetch(`http://private-1cf21-versus3.apiary-mock.com/user/`, {
+      fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         },
         body: JSON.stringify(signUpDetails)
-      })
+      }).then(res => res.json())
+      .then(data => console.log(data))
+
     }
 
-
-    handleUsernameChange =  (event) => {
-      this.setState({username: event.target.value})
+    handleFormChange = (event) => {
+      if(event.target.name === "username") this.setState({username: event.target.value})
+      if(event.target.name === "firstname") this.setState({first_name: event.target.value})
+      if(event.target.name === "email") this.setState({email: event.target.value})
+      if(event.target.name === "image_Path") this.setState({image_Path: event.target.value})
     }
 
-    handleFirst_nameChange =  (event) => {
-      this.setState({first_name: event.target.value})
-    }
-
-    handleEmailChange =  (event) => {
-      this.setState({email: event.target.value})
-    }
-
-    handleImage_PathChange =  (event) => {
-      this.setState({image_Path: event.target.value})
-    }
 
   render() {
     return (
-      <div>
+      <div className="signUpContainer">
         <h1> Sign Up </h1>
-        <form onSubmit={this.sendSignUp}>
+        <div className="signUpFormContainer">
+          <form className="signUpForm" onSubmit={this.sendSignUp}>
 
-          <div className="divider">
-            <span> Username </span>
-            <input type="text" onChange={this.handleUsernameChange}value={this.state.username}/>
-          </div>
+            <div className="divider">
+              <span> Username </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="username"/>
+            </div>
 
-          <div className="divider">
-            <span> First Name </span>
-            <input type="text" onChange={this.handleFirst_nameChange}value={this.state.first_name}/>
-          </div>
+            <div className="divider">
+              <span> First Name </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="firstName"/>
+            </div>
 
-          <div className="divider">
-            <span> Email </span>
-            <input type="text" onChange={this.handleEmailChange}value={this.state.email}/>
-          </div>
+            <div className="divider">
+              <span> Email </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="Email"/>
+            </div>
 
-          <div className="divider">
-            <span> Profile Image </span>
-            <input type="text" onChange={this.handleImage_PathChange}value={this.state.image_path}/>
-          </div>
+            <div className="divider">
+              <span> Profile Image </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="image_Path"/>
+            </div>
 
-          <input type="submit" value="Sign Up"/>
-        </form>
+            <input type="submit" value="Sign Up"/>
+          </form>
+        </div>
       </div>
     );
   }

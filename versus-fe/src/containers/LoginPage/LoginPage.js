@@ -14,27 +14,20 @@ class LoginPage extends Component {
   sendDetails = (event) => {
     event.preventDefault()
 
-  let loginDetails = {
+  const loginDetails = {
       username:this.state.username,
-      password:this.state.password
     }
 
-    fetch('http://localhost:3000/loginDetails', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(loginDetails)
-    })
+    fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
+      method: "GET"
+    }).then(res => res.json())
+    .then(data => console.log(data))
 
   }
 
-  handleUsernameChange =  (event) => {
-    this.setState({username: event.target.value})
-  }
-
-  handlePasswordChange =  (event) => {
-    this.setState({password: event.target.value})
+  handleFormChange = (event) =>{
+    if(event.target.name === "username") this.setState({username:event.target.value})
+    if(event.target.name === "password") this.setState({password:event.target.value})
   }
 
   render() {
@@ -44,10 +37,10 @@ class LoginPage extends Component {
         <div className="loginDetails">
           <form onSubmit={this.sendDetails}>
             Username <br/>
-            <input type="text" onChange={this.handleUsernameChange} value={this.state.username}/>
+            <input type="text" className="username" onChange={this.handleFormChange} name="username" />
             <br/>
             password <br/>
-            <input type="text" onChange={this.handlePasswordChange} value={this.state.password}/>
+            <input type="text" className="password" onChange={this.handleFormChange} name="password" />
             <br/>
             <input type="submit" value="Sign In"/>
           </form>
