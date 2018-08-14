@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginPage from './containers/LoginPage/LoginPage'
 import SignUp from './containers/SignUp/SignUp'
+import { Route } from 'react-router-dom'
+
+import ProfilePage from './containers/ProfilePage/ProfilePage';
+import Header from './components/Header/Header';
+import SportsList from './containers/SportsList/SportsList';
+import League from './containers/League/League';
+import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
+
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-      <SignUp/>
+
+        <Route path='/' component={Header} />
+        <Route path='/profile' component={ProfilePage} />
+        <Route path='/sportsList' component={SportsList} />
+        <Route path='/league' component={League} />
+        <Route path='/opponents' component={MatchingCardsList} />
+
       </div>
     );
   }

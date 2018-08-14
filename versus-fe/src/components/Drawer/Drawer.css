@@ -1,0 +1,21 @@
+.Drawer {
+  width: 65vw;
+  height: 100vh;
+  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1vh;
+  transition: all 2s;
+  z-index: 5;
+}
+
+
+.Drawer__open {
+  transition: all 2s;
+  transform: translateX(65vw)
+}
+
+.Drawer__link {
+  margin-top: 10px;
+}
+
