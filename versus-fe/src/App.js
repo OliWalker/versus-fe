@@ -15,12 +15,15 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Route path='/' component={Header} />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='/sportsList' component={SportsList} />
-        <Route path='/league' component={League} />
-        <Route path='/opponents' component={MatchingCardsList} />
-
+      <Route path='/' component={Header} />
+      <Route path='/profile' component={ProfilePage} />
+      <Route path='/sportsList' component={SportsList} />
+      <Route path='/league' component={League} />
+      <Route path='/opponents' component={MatchingCardsList} />
+      <Route path='/LoginPage' component={LoginPage} />
+      <Route path='/SignUp' component={SignUp} />
+      <Route path='/Matches' component={Matches} />
+      
       </div>
     );
   }
