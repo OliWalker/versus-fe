@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to left, rgba(0,82,140,1) 0%, rgba(0,44,93,1) 86%, rgba(0,38,82,1) 100%);
+  background: var(--blueGrad);
 }
 
 .ProfilePage__picture {
