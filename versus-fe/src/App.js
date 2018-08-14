@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import LoginPage from './containers/LoginPage/LoginPage'
+import SignUp from './containers/SignUp/SignUp'
 import { Route } from 'react-router-dom'
 
 import ProfilePage from './containers/ProfilePage/ProfilePage';
@@ -8,7 +10,9 @@ import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
 
+
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -18,7 +22,6 @@ class App extends Component {
         <Route path='/sportsList' component={SportsList} />
         <Route path='/league' component={League} />
         <Route path='/opponents' component={MatchingCardsList} />
-
 
       </div>
     );
