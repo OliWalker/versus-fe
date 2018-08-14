@@ -7,22 +7,22 @@ class SignUp extends Component {
     super(props)
     this.state = {
       username:'',
-      firstname:'',
-      lastname:'',
-      password:''
+      first_name:'',
+      email:'',
+      image_Path:''
     }
   }
     sendSignUp = (event) => {
       event.preventDefault()
 
       let signUpDetails = {
-        username:this.state.username ,
-        firstname:this.state.firstname,
-        lastname:this.state.lastname,
-        password:this.state.password
+        first_name:this.state.first_name,
+        username:this.state.username,
+        email:this.state.email,
+        image_Path:this.state.image_Path
       }
 
-      fetch('http://localhost:3000/loginDetails', {
+      fetch(`http://private-1cf21-versus3.apiary-mock.com/user/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -36,16 +36,16 @@ class SignUp extends Component {
       this.setState({username: event.target.value})
     }
 
-    handleFirstnameChange =  (event) => {
-      this.setState({firstname: event.target.value})
+    handleFirst_nameChange =  (event) => {
+      this.setState({first_name: event.target.value})
     }
 
-    handleLastnameChange =  (event) => {
-      this.setState({lastname: event.target.value})
+    handleEmailChange =  (event) => {
+      this.setState({email: event.target.value})
     }
 
-    handlePasswordChange =  (event) => {
-      this.setState({password: event.target.value})
+    handleImage_PathChange =  (event) => {
+      this.setState({image_Path: event.target.value})
     }
 
   render() {
@@ -56,22 +56,22 @@ class SignUp extends Component {
 
           <div className="divider">
             <span> Username </span>
-            <input type="text" value={this.state.username}/>
+            <input type="text" onChange={this.handleUsernameChange}value={this.state.username}/>
           </div>
 
           <div className="divider">
-            <span> firstname </span>
-            <input type="text" value={this.state.firstname}/>
+            <span> First Name </span>
+            <input type="text" onChange={this.handleFirst_nameChange}value={this.state.first_name}/>
           </div>
 
           <div className="divider">
-            <span> lastname </span>
-            <input type="text" value={this.state.lastname}/>
+            <span> Email </span>
+            <input type="text" onChange={this.handleEmailChange}value={this.state.email}/>
           </div>
 
           <div className="divider">
-            <span> password </span>
-            <input type="text" value={this.state.password}/>
+            <span> Profile Image </span>
+            <input type="text" onChange={this.handleImage_PathChange}value={this.state.image_path}/>
           </div>
 
           <input type="submit" value="Sign Up"/>
