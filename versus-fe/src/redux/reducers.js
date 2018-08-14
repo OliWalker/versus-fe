@@ -1,7 +1,7 @@
 const initalState = {
   user: {},
-  stats: {},
-  matches: {},
+  stats: [],
+  matches: [],
   loading: false,
   error: '',
   leagueNow: {},

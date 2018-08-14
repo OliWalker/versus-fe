@@ -48,8 +48,8 @@ class Drawer extends Component {
           <div className="Drawer__LeagueList ">
 
             { stats[0] ? 
-            stats.map(league => {
-              return ( <Link to={`/league/${league.league_id}`}
+            stats.map((league, i) => {
+              return ( <Link key={i} to={`/league/${league.league_id}`}
                 className="Drawer__LeagueList__sport Drawer__LeagueList__closed">
                 {league.name}
                 </Link>

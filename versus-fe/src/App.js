@@ -11,8 +11,10 @@ import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList'
 
 
 class App extends Component {
+
   render() {
-    return (
+
+  return (
       <div className="App">
 
         <Route path='/' component={Header} />
@@ -26,4 +28,5 @@ class App extends Component {
   }
 }
 
-export default App;
+
+export default (App)
