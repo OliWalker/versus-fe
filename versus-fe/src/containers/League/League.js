@@ -13,10 +13,10 @@ export default class League extends Component {
 
         <div className="League__leaderboard" >
           <div className="League__leaderboard__trophy"> <i className="fas fa-trophy"></i> </div>
-          {/* <LeagueCard />
           <LeagueCard />
           <LeagueCard />
-          <LeagueCard /> */}
+          <LeagueCard />
+          <LeagueCard />
         </div>
 
         

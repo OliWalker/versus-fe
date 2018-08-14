@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 
-export default class ProfilePage extends Component {
+import { connect } from 'react-redux'
+import { getUserInfo } from '../../redux/actions'
 
-  componentDidMount() {
-    fetch('http://private-1cf21-versus3.apiary-mock.com/user/1')
-    .then(res => res.json())
-    .then(res => console.log(res))
+class ProfilePage extends Component {
+
+  // componentDidMount() {
+  //   fetch('http://private-1cf21-versus3.apiary-mock.com/user/1')
+  //   .then(res => res.json())
+  //   .then(res => console.log(res))
+  // }
+
+  constructor(props) {
+    super(props)
+    this.props.getUserInfo()
   }
 
 
@@ -29,6 +37,7 @@ export default class ProfilePage extends Component {
             <span className="ProfilePage__sport__score__single"> <i>1000</i> </span>
             <span className="ProfilePage__sport__name__single"> Tennis </span>
           </div>
+
           <div className="ProfilePage__sport__score">
             <span className="ProfilePage__sport__score__single"> <i>600</i> </span>
             <span className="ProfilePage__sport__name__single"> Eating </span>
@@ -57,3 +66,21 @@ export default class ProfilePage extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+
+})
+
+// api: {
+//   endpoint: apiInfo.endpoint,
+//   method: apiInfo.method,
+//   body: apiInfo.body,
+//   headers: apiInfo.headers
+// }
+
+const mapDispatchToProps = (dispatch) => ({
+  getUserInfo: () => dispatch(getUserInfo({endpoint:'/users/1'})),
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

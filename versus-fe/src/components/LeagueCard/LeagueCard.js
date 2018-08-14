@@ -5,9 +5,12 @@ export default function LeagueCard (props) {
   
     return (
       <div className="LeagueCard">
-        <i className="fas fa-trophy LeagueCard__trophy" />
-        <h2 className="LeagueCard__name"> props.player </h2>
-        <span className="LeagueCard__score"> props.score </span>
+        <div className="LeagueCard__score">
+          <p>i</p>
+          <div className="LeagueCard__picture"><img src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-black-and-white-1.jpg" /></div>
+        </div>
+        <h2 className="LeagueCard__name"> John </h2>
+        <span className="LeagueCard__score"> 1356 </span>
       </div>
     )
   }
