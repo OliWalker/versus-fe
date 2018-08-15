@@ -28,7 +28,7 @@ class Drawer extends Component {
 
     const stats = this.props.stats
     let notifications;
-    if (this.props.matches[0]) notifications = this.props.matches.filter(match => match.status == 'PENDING').length
+    if (this.props.matches[0]) notifications = this.props.matches.filter(match => match.status === 'PENDING').length
     return (
       <div className="Drawer">
 

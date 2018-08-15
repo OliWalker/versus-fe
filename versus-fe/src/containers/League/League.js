@@ -11,6 +11,7 @@ class League extends Component {
     super(props)
     const league_id = props.location.pathname.split('/').pop()
     this.props.getOneLeague(league_id)
+    console.log(league_id)
 
   }
 

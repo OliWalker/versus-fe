@@ -9,3 +9,41 @@
   border-radius: 10px;
   box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
 }
+
+.SportCard__open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+}
+
+.SportCard__buttons {
+  height: 15vh;
+  background: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.SportCard__button {
+  width: 30vw;
+  background-color: white;
+  font-size: 1rem;
+  color: rgba(0,38,82,1);
+  padding: 15px;
+  border: 2px solid rgba(0,38,82,.8);
+  border-radius: 18px;
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+}
+
+.SportCard__buttons__closed {
+  /* height: 0; */
+}
+
+.SportCard__button:hover {
+  background-color:rgba(0,38,82,1);
+  color: white;
+
+}

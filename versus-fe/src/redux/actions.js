@@ -18,6 +18,16 @@ export const getOneLeague = (apiInfo) => ({
   }
 })
 
+export const getAllLeagues = (apiInfo) => ({
+  type: 'GET_All_LEAGUES',
+  api: {  
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+})
+
 
 
 

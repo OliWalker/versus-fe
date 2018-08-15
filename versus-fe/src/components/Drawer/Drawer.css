@@ -83,10 +83,11 @@
 
 .Drawer__button__notification {
   color: var(--white);
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
+  background-color: red;
   border-radius: 50%;
   position: absolute;
-  padding: 4px 5px;
+  padding: 4px 8px;
   left: 57%;
   top: -5%;
 }

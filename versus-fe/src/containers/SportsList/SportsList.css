@@ -38,9 +38,21 @@
 
 .SportsList__list {
   width: 100vw;
-  padding-top: 30vh;
+  height: 70vh;
+  margin-top: 30vh;
   background-color: ghostwhite;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.SportsList__mySports {
+
+}
+
+.SportList__allSports {
+  margin-top:20px;
+  border-top: 2px solid black;
 }

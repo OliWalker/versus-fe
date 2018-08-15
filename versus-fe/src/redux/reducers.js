@@ -5,6 +5,7 @@ const initalState = {
   loading: false,
   error: '',
   leagueNow: {},
+  allLeagues: [],
 }
 
 const reducer = (state=initalState, action) => {
@@ -54,8 +55,32 @@ const reducer = (state=initalState, action) => {
         ...state,
         error: action.error,
         loading: false
-
       }
+
+
+
+    case 'GET_All_LEAGUES_REQUEST':
+      return {
+        ...state,
+        loading: true
+      }
+
+    case 'GET_All_LEAGUES_SUCCESS':
+      return {
+        ...state,
+        allLeagues: action.data,
+        loading: false
+      }
+
+    case 'GET_All_LEAGUES_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      }
+
+
+
 
     default:
       return state
