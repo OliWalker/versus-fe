@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 
 import ProfilePage from './containers/ProfilePage/ProfilePage';
 import Header from './components/Header/Header';
@@ -9,26 +9,19 @@ import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
 import MatchOne from './containers/MatchOne/MatchOne';
 
-
-
 class App extends Component {
-
   render() {
-
-  return (
+    return (
       <div className="App">
-
-        <Route path='/' component={Header} />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='/sportsList' component={SportsList} />
-        <Route path='/league' component={League} />
-        <Route path='/match' component={MatchOne} />
-        <Route path='/opponents' component={MatchingCardsList} />
-
+        <Route path="/" component={Header} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/sportsList" component={SportsList} />
+        <Route path="/league" component={League} />
+        <Route path="/match" component={MatchOne} />
+        <Route path="/opponents" component={MatchingCardsList} />
       </div>
     );
   }
 }
 
-
-export default (App)
+export default App;

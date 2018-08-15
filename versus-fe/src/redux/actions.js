@@ -1,4 +1,4 @@
-export const getUserInfo = (apiInfo) => ({
+export const getUserInfo = apiInfo => ({
   type: 'GET_USER_INFO',
   api: {
     endpoint: apiInfo.endpoint,
@@ -6,39 +6,39 @@ export const getUserInfo = (apiInfo) => ({
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
+});
 
-export const getOneLeague = (apiInfo) => ({
+export const getOneLeague = apiInfo => ({
   type: 'GET_ONE_LEAGUE',
-  api: {  
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
+});
 
-export const getAllLeagues = (apiInfo) => ({
+export const getAllLeagues = apiInfo => ({
   type: 'GET_All_LEAGUES',
-  api: {  
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
+});
 
-export const getOpponent = (apiInfo) => ({
+export const getOpponent = apiInfo => ({
   type: 'GET_OPPONENT',
-  api: {  
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
+});
 
-export const createMatch = (apiInfo) => ({
+export const createMatch = apiInfo => ({
   type: 'CREATE_MATCH',
   api: {
     endpoint: apiInfo.endpoint,
@@ -46,13 +46,8 @@ export const createMatch = (apiInfo) => ({
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
-
-
+});
 
 export const removeOpponent = () => ({
   type: 'REMOVE_OPPONENT'
-})
-
-
-
+});

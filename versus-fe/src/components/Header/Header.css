@@ -33,10 +33,9 @@
 
 .Header__drawer__open {
   transition: all 1.1s;
-  transform:translateX(0vw)
+  transform: translateX(0vw)
 }
 
 .Header_drawer__link {
   margin-top: 10px;
 }
-

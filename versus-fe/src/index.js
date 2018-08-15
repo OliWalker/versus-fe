@@ -9,23 +9,21 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './redux/reducers';
 
-import apiMiddleware from './redux/middlewares/apiMiddleware'
+import apiMiddleware from './redux/middlewares/apiMiddleware';
 
-let Store = createStore(reducer, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__(), 
-  applyMiddleware( apiMiddleware ))
-
-
+let Store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(apiMiddleware)
+);
 
 ReactDOM.render(
-  
   <BrowserRouter>
     <Provider store={Store}>
       <App />
     </Provider>
-  </BrowserRouter>
+  </BrowserRouter>,
 
-
-, document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();
