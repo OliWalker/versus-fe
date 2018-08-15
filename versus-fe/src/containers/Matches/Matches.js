@@ -10,15 +10,29 @@ import Loading from '../../components/LoadingPage/LoadingPage';
 class Matches extends Component {
 
   constructor(props){
-    super(props)
-    this.props.getUserInfo()
-    console.log("loading")
+    super(props);
+    this.props.getUserInfo();
+    this.state = {
+      filteredMatches: []
+    }
   }
 
-  renderNextMatch = () => {
+  renderMatches = () => {
+    const filteredMatches = this.state.filteredMatches
+    return filteredMatches.map(theMatch => {
+      return <Match matchInfo={theMatch} />
+      })
+  }
+
+  renderMatchesFilter = (event) => {
     const matches = this.props.matches
-    return matches.map( theMatch => {
-      return <Match matchInfo={theMatch}/>
+    const requestedMatches = matches.filter( theMatch => {
+      if ( theMatch.status === event.target.name ) {
+        return theMatch
+      }
+    })
+    this.setState({
+      filteredMatches: [...requestedMatches]
     })
   }
 
@@ -29,7 +43,15 @@ class Matches extends Component {
     return (
       <div>
         <h1> Matches </h1>
-        {this.renderNextMatch()}
+        <div className="buttonFilter">
+          <button type="button" onClick={this.renderMatchesFilter} name="ACCEPTED"> Accepted </button>
+          <button type="button" onClick={this.renderMatchesFilter}  name="PENDING"> Pending </button>
+          <button type="button" onClick={this.renderMatchesFilter}  name="FINISHED"> Finished </button>
+          <button type="button" onClick={this.renderMatchesFilter}  name="DENIED"> Denied </button>
+        </div>
+        <div ref={this.displayRef} className="displayMatches">
+          {this.renderMatches()}
+        </div>
       </div>
     );
   }

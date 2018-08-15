@@ -7,8 +7,3 @@ export const getUserInfo = (apiInfo) => ({
     headers: apiInfo.headers
   }
 })
-
-
-
-
-
