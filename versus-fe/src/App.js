@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
+import MatchOne from './containers/MatchOne/MatchOne';
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path='/profile' component={ProfilePage} />
         <Route path='/sportsList' component={SportsList} />
         <Route path='/league' component={League} />
+        <Route path='/match' component={MatchOne} />
         <Route path='/opponents' component={MatchingCardsList} />
 
       </div>

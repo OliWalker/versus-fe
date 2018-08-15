@@ -28,6 +28,27 @@ export const getAllLeagues = (apiInfo) => ({
   }
 })
 
+export const getOpponent = (apiInfo) => ({
+  type: 'GET_OPPONENT',
+  api: {  
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+})
+
+export const createMatch = (apiInfo) => ({
+  type: 'CREATE_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+})
+
+
 
 
 

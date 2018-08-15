@@ -6,8 +6,6 @@ const toggleOpen = (e) => {
   
 }
 
-
-
 export default function SportCard (props) {
   console.log(props)
   return (

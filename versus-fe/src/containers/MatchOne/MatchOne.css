@@ -1,0 +1,71 @@
+.MatchOne {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MatchOne__Header {
+  height: 20vh;
+  width: 100vw;
+  background: var(--flatBlue);
+
+}
+
+.MatchOne__Header span {
+  color: var(--darkWhite);
+  font-size: 1.4rem;
+  margin-left: 50vw;
+  font-weight: bold;
+  line-height: 3rem;
+}
+
+
+.MatchOne__Header h1 {
+  color: var(--white);
+  font-size: 3rem;
+  line-height: 0;
+
+}
+
+.MatchOne__players {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.MatchOne__user {
+  position: absolute;
+  top: 8vh;
+  left: 5vw;
+}
+
+.MatchOne__opponent {
+  position: absolute;
+  bottom: 7vh;
+  right: 5vw;
+}
+
+
+
+.MatchOne__buttons {
+  width: 70vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MatchOne__button {
+  width: 30vw;
+  height: 6vh;
+  background-color: white;
+  font-size: 1rem;
+  color: var(--flatBlue);
+  padding: 10px;
+  border: 2px solid rgba(0,38,82,.8);
+  border-radius: 18px;
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+
+}
