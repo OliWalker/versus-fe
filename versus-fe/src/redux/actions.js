@@ -50,5 +50,9 @@ export const createMatch = (apiInfo) => ({
 
 
 
+export const removeOpponent = () => ({
+  type: 'REMOVE_OPPONENT'
+})
+
 
 

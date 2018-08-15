@@ -7,6 +7,7 @@ const initalState = {
   leagueNow: {},
   allLeagues: [],
   opponentNow: {},
+  matchMade: false,
 }
 
 const reducer = (state=initalState, action) => {
@@ -102,6 +103,39 @@ const reducer = (state=initalState, action) => {
         ...state,
         error: action.error,
         loading: false
+      }
+
+
+
+
+    case 'CREATE_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      }
+
+    case 'CREATE_MATCH_SUCCESS':
+      return {
+        ...state,
+        matches: [...state.matches, action.data],
+        matchMade: true,
+        loading: false
+      }
+
+    case 'CREATE_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      }
+
+
+
+
+    case 'REMOVE_OPPONENT':
+      return {
+        ...state,
+        opponentNow: {}
       }
 
 

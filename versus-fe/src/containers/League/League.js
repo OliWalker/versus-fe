@@ -12,12 +12,13 @@ class League extends Component {
     const league_id = props.location.pathname.split('/').pop()
     this.props.getOneLeague(league_id)
     console.log(league_id)
-
   }
+
 
 
   render() {
     const league = this.props.leagueNow;
+    const league_id = this.props.location.pathname.split('/').pop()
 
     if (this.props.loading) return <Loading />
 
@@ -32,7 +33,7 @@ class League extends Component {
           
           <div className="League__leaderboard__trophy"> <i className="fas fa-trophy"></i> </div>
           { league.users ? 
-          league.users.map((user, i) => <LeagueCard key={i} i={i} user={user}/>)
+          league.users.map((user, i) => <LeagueCard key={i} i={i} user={user} league={league_id}/>)
           : null }
           </div>
         
