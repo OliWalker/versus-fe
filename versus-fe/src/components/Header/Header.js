@@ -3,7 +3,7 @@ import './Header.css';
 import Drawer from '../Drawer/Drawer';
 
 const openDrawer = e => {
-  let x = document.querySelector('.Header__drawer');
+  const x = document.querySelector('.Header__drawer');
 
   if (e.target.classList.contains('Header__hamburger__open')) {
     e.target.classList.remove('Header__hamburger__open');

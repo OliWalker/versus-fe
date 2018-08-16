@@ -2,11 +2,13 @@
   "name": "versus-fe",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
-    "prettier": "^1.14.2",
+    "prettier": "^1.14.2"
+  },
+  "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",

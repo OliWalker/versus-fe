@@ -13,9 +13,7 @@ class ProfilePage extends Component {
   }
 
   render() {
-    const user = this.props.user;
-    const stats = this.props.stats;
-    const matches = this.props.matches;
+    const { user, stats } = this.props;
 
     if (!stats[0]) return <Loading />;
     else {
@@ -26,8 +24,7 @@ class ProfilePage extends Component {
           </div>
 
           <span className="ProfilePage__name">
-            {' '}
-            {user.first_name} {user.last_name}{' '}
+            {user.first_name} {user.last_name}
           </span>
           <span className="ProfilePage__score">
             <i>{user.total_score}</i>
@@ -54,8 +51,7 @@ class ProfilePage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  stats: state.stats,
-  matches: state.matches
+  stats: state.stats
 });
 
 const mapDispatchToProps = dispatch => ({

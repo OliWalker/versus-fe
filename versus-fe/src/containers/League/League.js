@@ -30,12 +30,16 @@ class League extends Component {
 
           <div className="League__leaderboard">
             <div className="League__leaderboard__trophy">
-              {' '}
-              <i className="fas fa-trophy" />{' '}
+              <i className="fas fa-trophy" />
             </div>
             {league.users
               ? league.users.map((user, i) => (
-                  <LeagueCard key={i} i={i} user={user} league={league_id} />
+                  <LeagueCard
+                    key={user.user_id}
+                    i={i}
+                    user={user}
+                    league={league_id}
+                  />
                 ))
               : null}
           </div>

@@ -40,7 +40,7 @@ class SportsList extends Component {
           <div className="SportsList__header">
             <input className="SportsList__Search" value="Search" />
             <span>
-              <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i>{' '}
+              <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i> 
             </span>
           </div>
 

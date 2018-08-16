@@ -44,10 +44,10 @@ class Drawer extends Component {
 
           <div className="Drawer__LeagueList ">
             {stats[0]
-              ? stats.map((league, i) => {
+              ? stats.map(league => {
                   return (
                     <Link
-                      key={i}
+                      key={league.league_id}
                       to={`/league/${league.league_id}`}
                       className="Drawer__LeagueList__sport Drawer__LeagueList__closed"
                     >
@@ -62,8 +62,7 @@ class Drawer extends Component {
             <div className="Drawer__button Drawer__button__notie">
               {notifications > 0 ? (
                 <div className="Drawer__button__notification">
-                  {' '}
-                  {notifications}{' '}
+                  {notifications}
                 </div>
               ) : null}
               <i className="far fa-calendar-check" />

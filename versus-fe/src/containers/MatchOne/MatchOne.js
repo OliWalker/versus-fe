@@ -65,12 +65,12 @@ class MatchOne extends Component {
 
           <div className="MatchOne__buttons">
             <button className="MatchOne__button" onClick={this.challenge}>
-              {' '}
-              Challenge{' '}
+               
+              Challenge 
             </button>
             <button className="MatchOne__button" onClick={this.backButton}>
-              {' '}
-              back{' '}
+               
+              back 
             </button>
           </div>
         </div>
