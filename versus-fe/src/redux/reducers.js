@@ -3,7 +3,7 @@ const initalState = {
   stats: [],
   matches: [],
   loading: false,
-  error: '',
+  error: false,
   leagueNow: {},
   allLeagues: [],
   opponentNow: {},

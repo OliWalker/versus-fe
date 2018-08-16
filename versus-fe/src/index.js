@@ -18,11 +18,11 @@ let Store = createStore(
 );
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={Store}>
+  <Provider store={Store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
 
   document.getElementById('root')
 );
