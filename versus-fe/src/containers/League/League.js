@@ -7,13 +7,13 @@ import { getOneLeague } from '../../redux/actions';
 class League extends Component {
   constructor(props) {
     super(props);
-    const league_id = props.location.pathname.split('/').pop();
+    const league_id = this.props.match.params.id;
     this.props.getOneLeague(league_id);
   }
 
   render() {
     const league = this.props.leagueNow;
-    const league_id = this.props.location.pathname.split('/').pop();
+    const league_id = this.props.match.params.id;
 
     return (
       <div className="League">
@@ -24,15 +24,20 @@ class League extends Component {
           </span>
         </div>
 
-        <div className="League__leaderboard">
-          <div className="League__leaderboard__trophy">
-            <i className="fas fa-trophy" />
-          </div>
-          {league.users
-            ? league.users.map((user, i) => (
-                <LeagueCard key={i} i={i} user={user} league={league_id} />
-              ))
-            : null}
+          <div className="League__leaderboard">
+            <div className="League__leaderboard__trophy">
+              <i className="fas fa-trophy" />
+            </div>
+            {league.users
+              ? league.users.map((user, i) => (
+                  <LeagueCard
+                    key={user.user_id}
+                    i={i}
+                    user={user}
+                    league={league_id}
+                  />
+                ))
+              : null}
         </div>
       </div>
     );
