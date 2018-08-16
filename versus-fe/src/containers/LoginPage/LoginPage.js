@@ -14,7 +14,7 @@
     sendDetails = (event) => {
       event.preventDefault()
 
-    const loginDetails = {
+      const loginDetails = {
         username:this.state.username,
       }
 
