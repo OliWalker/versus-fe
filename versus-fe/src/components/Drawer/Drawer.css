@@ -1,21 +1,134 @@
 .Drawer {
-  width: 65vw;
-  height: 100vh;
-  background-color: blanchedalmond;
+  width: 100%;
+  min-height: 100%;
+  background: linear-gradient(to left, rgba(4, 38, 71, 1) 0%, rgba(0, 20, 41, 1) 100%);
   display: flex;
   flex-direction: column;
-  padding-top: 1vh;
-  transition: all 2s;
-  z-index: 5;
+  align-items: center;
+  z-index: 20;
 }
 
-
-.Drawer__open {
-  transition: all 2s;
-  transform: translateX(65vw)
+.Drawer__logo {
+  width: 60%;
+  height: 10vh;
+  margin-top: 5vh;
+  color: var(--white)
 }
 
-.Drawer__link {
+.Drawer__button__list {
+  overflow: scroll;
+  overflow-x: auto;
+  align-items: center;
+}
+
+.Drawer__button__list::-webkit-scrollbar {
+  display: none;
+}
+
+.Drawer__button {
+  width: 100%;
+  height: 15vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.Drawer__button i {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.Drawer__button span {
+  color: var(--darkWhite);
   margin-top: 10px;
 }
 
+.Drawer__LeagueList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  transition: all .4s;
+}
+
+.Drawer__LeagueList a {
+  width: 65vw;
+  color: var(--white);
+  padding: 2vh 0;
+  height: 100%;
+  border-top: 1px solid rgb(158, 158, 168, .3);
+  background-color: rgba(0, 20, 41, 1);
+  transition: all .4s;
+}
+
+.Drawer__LeagueList a:last-child {
+  border-bottom: 1px solid rgb(158, 158, 168, .3);
+  margin-bottom: 3vh;
+}
+
+.Drawer__LeagueList__closed {
+  transition: all .3s;
+  height: 0;
+  padding: 0 !important;
+  border: none !important;
+  font-size: 0;
+}
+
+.Drawer__button__notie {
+  position: relative;
+}
+
+.Drawer__button__notification {
+  color: var(--white);
+  border: 1px solid var(--white);
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  padding: 4px 8px;
+  left: 57%;
+  top: -5%;
+}
+
+.Header {
+  position: absolute;
+  top: 0;
+  width: 0;
+  z-index: 10;
+  display: flex;
+}
+
+.Header__hamburger {
+  color: var(--white);
+  margin-left: -9vw;
+  margin-top: 4vh;
+  font-size: 1.7rem;
+  transition: all 1.1s;
+  transform: translateX(-48vw);
+  z-index: 15;
+}
+
+.Header__hamburger__open {
+  transition: all 1.2s;
+  transform: translateX(0);
+}
+
+.Header__drawer {
+  width: 65vw;
+  height: 100vh;
+  transition: all 1.2s;
+  transform: translateX(-65vw);
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.Header__drawer__open {
+  transition: all 1.1s;
+  transform: translateX(0vw)
+}
+
+.Header_drawer__link {
+  margin-top: 10px;
+}

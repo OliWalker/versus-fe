@@ -11,8 +11,7 @@
   background-color: peachpuff;
 }
 
-
-.MatchingCards__stageTwo { 
+.MatchingCards__stageTwo {
   width: 15vw !important;
   height: 8vh !important;
   transition: all .6s;
