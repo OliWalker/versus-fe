@@ -1,9 +1,7 @@
 const BASE_URL = 'http://private-1cf21-versus3.apiary-mock.com';
 
 export default store => next => action => {
-
-  if(!action.api) return next(action);
-  console.log("api called")
+  if (!action.api) return next(action);
 
   const { endpoint, method } = action.api;
   let { body, headers } = action.api;
@@ -17,39 +15,37 @@ export default store => next => action => {
 
   headers = {
     ...defaultHeaders,
-    ...headers,
-  }
+    ...headers
+  };
 
   next({
     ...action,
     type: `${action.type}_REQUEST`
   });
 
-
   fetch(`${BASE_URL}${endpoint}`, {
     method: method || 'GET',
     body,
-    headers,
+    headers
   })
-  .then(response => response.json())
-  .then(response => {
-    return response
-  })
-  .then(data => {
-    store.dispatch({
-      ...action,
-      type: `${action.type}_SUCCESS`,
-      api: undefined,
-      data,
+    .then(response => response.json())
+    .then(response => {
+      return response;
     })
-  })
-  .catch(error => {
-    console.log(error)
-    store.dispatch({
-      ...action,
-      type: `${action.type}_FAILURE`,
-      api: undefined,
-      error,
+    .then(data => {
+      store.dispatch({
+        ...action,
+        type: `${action.type}_SUCCESS`,
+        api: undefined,
+        data
+      });
     })
-  })
-}
+    .catch(error => {
+      store.dispatch({
+        ...action,
+        type: `${action.type}_FAILURE`,
+        api: undefined,
+        error
+      });
+    });
+};

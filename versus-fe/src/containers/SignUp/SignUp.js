@@ -39,26 +39,33 @@ class SignUp extends Component {
       })
     }
 
-    renderInput = (label, name) => {
-      return(
-        <div className="divider">
-          <span> {label} </span>
-          <input className="inputField" type="text" onChange={this.handleFormChange} name={name}/>
-        </div>
-      )
-    }
 
   render() {
-
     return (
       <div className="signUpContainer">
         <h1> Sign Up </h1>
         <div className="signUpFormContainer">
           <form className="signUpForm" onSubmit={this.sendSignUp}>
 
-            {this.renderInput('Username','username')}
-            {this.renderInput('First Name','first_name')}
-            {this.renderInput('Email','email')}
+            <div className="divider">
+              <span> Username </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="username"/>
+            </div>
+
+            <div className="divider">
+              <span> First Name </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="firstName"/>
+            </div>
+
+            <div className="divider">
+              <span> Email </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="Email"/>
+            </div>
+
+            <div className="divider">
+              <span> Profile Image </span>
+              <input className="inputField" type="text" onChange={this.handleFormChange} name="image_Path"/>
+            </div>
 
             <input type="submit" value="Sign Up"/>
           </form>

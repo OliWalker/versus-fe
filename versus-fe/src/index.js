@@ -8,24 +8,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './redux/reducers';
+import logger from 'redux-logger';
+import apiMiddleware from './redux/middlewares/apiMiddleware';
 
-import apiMiddleware from './redux/middlewares/apiMiddleware'
-
-let Store = createStore(reducer, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__(), 
-  applyMiddleware( apiMiddleware ))
-
-
+let Store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(logger, apiMiddleware)
+);
 
 ReactDOM.render(
-  
-  <BrowserRouter>
-    <Provider store={Store}>
+  <Provider store={Store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>,
 
-
-, document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();

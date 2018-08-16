@@ -1,60 +1,54 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 
-import { connect } from 'react-redux'
-import { getUserInfo } from '../../redux/actions'
+import { connect } from 'react-redux';
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
-import Loading from '../../components/LoadingPage/LoadingPage';
 
 class ProfilePage extends Component {
-
-  constructor(props) {
-    super(props)
-    this.props.getUserInfo()
-  }
-
   render() {
 
-    const {user, stats, matches} = this.props;
+    const { user, stats } = this.props;
 
-    if (!stats[0]) return <Loading />
+      return (
+        <div className="ProfilePage">
+          <div className="ProfilePage__picture">
+            <img alt="random Dude" src={user.image_path} />
+          </div>
 
-     else { return (
+          <span className="ProfilePage__name">
+            {user.first_name} {user.last_name}
+          </span>
+          <span className="ProfilePage__score">
+            <i>{user.total_score}</i>
+          </span>
 
-      <div className="ProfilePage">
-
-        <div className="ProfilePage__picture">
-          <img alt="random Dude" src={user.image_path} />
-        </div>
-
-        <span className="ProfilePage__name"> {user.first_name} {user.last_name} </span>
-        <span className="ProfilePage__score"><i>{user.total_score}</i></span>
+        <span className="ProfilePage__name">
+          {user.first_name} {user.last_name}
+        </span>
+        <span className="ProfilePage__score">
+          <i>{user.total_score}</i>
+        </span>
 
         <div className="ProfilePage__all__scores">
           {stats.map(sport => {
-            return <ProfileSportScore props={{title: sport.name, score: sport.data.score}} />
+            return (
+              <ProfileSportScore title={sport.name} score={sport.data.score} />
+            );
           })}
         </div>
 
         <div className="ProfilePage__stats">
           <img src="./graph.png" alt="stat graph" />
         </div>
-
       </div>
-    )
-  }
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
+
+const mapStateToProps = state => ({
   user: state.user,
-  stats: state.stats,
-  matches: state.matches
-})
+  stats: state.stats
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  getUserInfo: () => dispatch(getUserInfo({endpoint:'/users/1'})),
-})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
+export default connect(mapStateToProps)(ProfilePage);

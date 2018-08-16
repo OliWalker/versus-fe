@@ -33,7 +33,6 @@
   font-weight: bold;
 }
 
-
 .ProfilePage__all__scores {
   width: 70vw;
   margin-top: 6vh;
@@ -43,8 +42,7 @@
   flex-wrap: wrap;
 }
 
-
-.ProfilePage__stats{
+.ProfilePage__stats {
   width: 100vw;
   height: 30vh;
   background-color: blue;

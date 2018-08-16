@@ -12,7 +12,12 @@ a {
 }
 
 :root {
-  --white: rgb(217, 217, 235);
-  --darkWhite: rgb(158, 158, 168);
-  --blueGrad: linear-gradient(to left, rgba(0,82,140,1) 0%, rgba(0,44,93,1) 86%, rgba(0,38,82,1) 100%);
+  --white: rgb(255, 255, 255);
+  --darkWhite: rgb(219, 219, 219);
+  --blueGrad: linear-gradient(to left, rgb(1, 67, 114) 0%, rgb(0, 34, 73) 86%, var(--flatBlue) 100%);
+  --flatBlue: rgba(0, 38, 82, 1);
+}
+
+* {
+  box-sizing: border-box;
 }

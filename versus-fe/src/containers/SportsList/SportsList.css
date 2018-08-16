@@ -1,6 +1,55 @@
 .SportsList {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.SportsList__header {
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background: var(--flatBlue)
+}
+
+.SportsList__header span {
+  color: var(--white);
+  margin-top: 5vh;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.SportsList__Search {
+  margin-top: 3.2vh;
+  height: 5vh;
+  width: 60vw;
+  margin-left: 35vw;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(33, 33, 190, 0.25);
+  color: rgba(231, 231, 231, 0.4);
+  font-size: 1rem;
+  text-align: center
+}
+
+.SportsList__list {
+  width: 100vw;
+  height: 70vh;
+  margin-top: 30vh;
+  background-color: ghostwhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.SportsList__mySports {}
+
+.SportList__allSports {
+  margin-top: 20px;
+  border-top: 2px solid black;
 }

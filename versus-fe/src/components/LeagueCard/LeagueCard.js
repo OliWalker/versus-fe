@@ -1,17 +1,20 @@
-import React from 'react'
-import './LeagueCard.css'
+import React from 'react';
+import './LeagueCard.css';
+import { Link } from 'react-router-dom';
 
-export default function LeagueCard (props) {
-  
-    return (
+export default function LeagueCard(props) {
+  return (
+    <Link to={`/match/${props.league}/${props.user.user_id}`}>
       <div className="LeagueCard">
         <div className="LeagueCard__score">
-          <p>i</p>
-          <div className="LeagueCard__picture"><img src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-black-and-white-1.jpg" /></div>
+          <p>{props.i + 1}</p>
+          <div className="LeagueCard__picture">
+            <img src={props.user.image_path} alt="want to play?" />
+          </div>
         </div>
-        <h2 className="LeagueCard__name"> John </h2>
-        <span className="LeagueCard__score"> 1356 </span>
+        <h2 className="LeagueCard__name"> {props.user.username} </h2>
+        <span className="LeagueCard__score"> {props.user.score} </span>
       </div>
-    )
-  }
-
+    </Link>
+  );
+}
