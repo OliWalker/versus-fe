@@ -5,6 +5,7 @@ export default function MatchOneOpponent(props) {
   const handleFlip = e => {
     e.target.classList.add('hover');
   };
+
   return (
     <div className="MatchOneOpponent">
       {props.opponent ? (
