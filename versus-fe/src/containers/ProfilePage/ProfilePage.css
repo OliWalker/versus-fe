@@ -33,7 +33,6 @@
   font-weight: bold;
 }
 
-
 .ProfilePage__all__scores {
   width: 70vw;
   margin-top: 6vh;
@@ -43,22 +42,7 @@
   flex-wrap: wrap;
 }
 
-.ProfilePage__sport__score {
-  margin: .4rem;
-}
-
-.ProfilePage__sport__score__single {
-  color: var(--white);
-  font-size: 1.7rem;
-  font-weight: bold;
-}
-
-.ProfilePage__sport__name__single {
-  color: var(--darkWhite);
-  font-size: .7rem;
-}
-
-.ProfilePage__stats{
+.ProfilePage__stats {
   width: 100vw;
   height: 30vh;
   background-color: blue;

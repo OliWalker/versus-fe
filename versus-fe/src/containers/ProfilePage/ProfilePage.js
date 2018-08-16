@@ -1,59 +1,64 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 
-export default class ProfilePage extends Component {
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../redux/actions';
+import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
+import Loading from '../../components/LoadingPage/LoadingPage';
 
-  componentDidMount() {
-    fetch('http://private-1cf21-versus3.apiary-mock.com/user/1')
-    .then(res => res.json())
-    .then(res => console.log(res))
+class ProfilePage extends Component {
+  constructor(props) {
+    super(props);
+    this.props.getUserInfo();
   }
-
 
   render() {
-    return (
+    const { user, stats } = this.props;
 
-      <div className="ProfilePage">
+    if (!stats[0]) return <Loading />;
+    else {
+      return (
+        <div className="ProfilePage">
+          <div className="ProfilePage__picture">
+            <img alt="random Dude" src={user.image_path} />
+          </div>
 
-        <div className="ProfilePage__picture">
-          <img alt="random Dude" src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-black-and-white-1.jpg" />
+          <span className="ProfilePage__name">
+            {user.first_name} {user.last_name}
+          </span>
+          <span className="ProfilePage__score">
+            <i>{user.total_score}</i>
+          </span>
+
+          <div className="ProfilePage__all__scores">
+            {stats.map(sport => {
+              return (
+                <ProfileSportScore
+                  props={{ title: sport.name, score: sport.data.score }}
+                />
+              );
+            })}
+          </div>
+
+          <div className="ProfilePage__stats">
+            <img src="./graph.png" alt="stat graph" />
+          </div>
         </div>
-
-        <span className="ProfilePage__name"> Chad Jenkins </span>
-
-        <span className="ProfilePage__score"><i>1820</i></span>
-
-        <div className="ProfilePage__all__scores"> 
-
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1000</i> </span>
-            <span className="ProfilePage__sport__name__single"> Tennis </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>600</i> </span>
-            <span className="ProfilePage__sport__name__single"> Eating </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1900</i> </span>
-            <span className="ProfilePage__sport__name__single"> Ping-Pong </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>2000</i> </span>
-            <span className="ProfilePage__sport__name__single"> Juggling </span>
-          </div>
-          <div className="ProfilePage__sport__score">
-            <span className="ProfilePage__sport__score__single"> <i>1200</i> </span>
-            <span className="ProfilePage__sport__name__single"> Flying </span>
-          </div>
-
-        </div>
-
-
-        <div className="ProfilePage__stats">
-          <img src="./graph.png" />
-        </div>
-
-      </div>
-    )
+      );
+    }
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+  stats: state.stats
+});
+
+const mapDispatchToProps = dispatch => ({
+  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/1' }))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfilePage);

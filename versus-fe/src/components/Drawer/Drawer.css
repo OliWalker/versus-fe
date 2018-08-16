@@ -1,10 +1,11 @@
 .Drawer {
   width: 100%;
   min-height: 100%;
-  background: linear-gradient(to left, rgba(4,38,71,1) 0%, rgba(0,20,41,1) 100%);
+  background: linear-gradient(to left, rgba(4, 38, 71, 1) 0%, rgba(0, 20, 41, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 20;
 }
 
 .Drawer__logo {
@@ -17,10 +18,11 @@
 .Drawer__button__list {
   overflow: scroll;
   overflow-x: auto;
-  /* display: flex; */
-  /* flex-direction: column; */
   align-items: center;
-  /* width: 100%; */
+}
+
+.Drawer__button__list::-webkit-scrollbar {
+  display: none;
 }
 
 .Drawer__button {
@@ -51,16 +53,17 @@
   transition: all .4s;
 }
 
-.Drawer__LeagueList span {
+.Drawer__LeagueList a {
   width: 65vw;
   color: var(--white);
   padding: 2vh 0;
+  height: 100%;
   border-top: 1px solid rgb(158, 158, 168, .3);
-  background-color: rgba(0,20,41,1) ;
+  background-color: rgba(0, 20, 41, 1);
   transition: all .4s;
 }
 
-.Drawer__LeagueList span:last-child {
+.Drawer__LeagueList a:last-child {
   border-bottom: 1px solid rgb(158, 158, 168, .3);
   margin-bottom: 3vh;
 }
@@ -70,9 +73,62 @@
   height: 0;
   padding: 0 !important;
   border: none !important;
+  font-size: 0;
 }
 
-.text {
-  font-size: 0;
-  transition: font-size .3s cubic-bezier(.18,1.18,.54,1.02);
+.Drawer__button__notie {
+  position: relative;
+}
+
+.Drawer__button__notification {
+  color: var(--white);
+  border: 1px solid var(--white);
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  padding: 4px 8px;
+  left: 57%;
+  top: -5%;
+}
+
+.Header {
+  position: absolute;
+  top: 0;
+  width: 0;
+  z-index: 10;
+  display: flex;
+}
+
+.Header__hamburger {
+  color: var(--white);
+  margin-left: -9vw;
+  margin-top: 4vh;
+  font-size: 1.7rem;
+  transition: all 1.1s;
+  transform: translateX(-48vw);
+  z-index: 15;
+}
+
+.Header__hamburger__open {
+  transition: all 1.2s;
+  transform: translateX(0);
+}
+
+.Header__drawer {
+  width: 65vw;
+  height: 100vh;
+  transition: all 1.2s;
+  transform: translateX(-65vw);
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.Header__drawer__open {
+  transition: all 1.1s;
+  transform: translateX(0vw)
+}
+
+.Header_drawer__link {
+  margin-top: 10px;
 }
