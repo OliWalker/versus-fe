@@ -8,14 +8,13 @@ import Loading from '../../components/LoadingPage/LoadingPage';
 class League extends Component {
   constructor(props) {
     super(props);
-    const league_id = props.location.pathname.split('/').pop();
+    const league_id = this.props.match.params.id;
     this.props.getOneLeague(league_id);
-    console.log(league_id);
   }
 
   render() {
     const league = this.props.leagueNow;
-    const league_id = this.props.location.pathname.split('/').pop();
+    const league_id = this.props.match.params.id;
 
     if (this.props.loading) return <Loading />;
     else

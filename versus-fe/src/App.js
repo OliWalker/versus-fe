@@ -16,7 +16,7 @@ class App extends Component {
         <Route path="/" component={Drawer} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/sportsList" component={SportsList} />
-        <Route path="/league" component={League} />
+        <Route path="/league/:id" component={League} />
         <Route path="/match" component={MatchOne} />
         <Route path="/opponents" component={MatchingCardsList} />
       </div>
