@@ -56,9 +56,9 @@ class SignUp extends Component {
         <div className="signUpFormContainer">
           <form className="signUpForm" onSubmit={this.sendSignUp}>
 
-            {this.renderInput("Username","username")}
-            {this.renderInput("First Name","first_name")}
-            {this.renderInput("Email","email")}
+            {this.renderInput('Username','username')}
+            {this.renderInput('First Name','first_name')}
+            {this.renderInput('Email','email')}
 
             <input type="submit" value="Sign Up"/>
           </form>

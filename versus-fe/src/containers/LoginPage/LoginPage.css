@@ -1,5 +1,19 @@
-.loginContainer{
-  margin: 50px
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.background {
+  height:100vh;
+}
+
+.loginContainer {
+  display: flex;
+  padding-top: 20px;
+  height: 100vh;
+  flex-direction: column;
+  color: navy
 }
 
 .loginDetails{
@@ -7,6 +21,33 @@
   height: 100px
 }
 
+.loginDetails > form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.loginDetails > form > span {
+  font-size: 20px;
+  margin-left: 10px;
+  color:grey;
+}
+
+.loginDetails > form > input[type="text"] {
+  margin:10px;
+  border-radius: 5px;
+}
+
+.loginDetails > form > input[type="submit"] {
+  width:100px
+
+}
 .signUp{
   margin-top: 50px;
+}
+
+*{
+  margin:0;
+  padding:0;
 }
