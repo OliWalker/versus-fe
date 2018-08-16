@@ -3,6 +3,8 @@ import './App.css';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import LoginPage from './containers/LoginPage/LoginPage'
+import SignUp from './containers/SignUp/SignUp'
 import ProfilePage from './containers/ProfilePage/ProfilePage';
 import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
@@ -13,7 +15,9 @@ import Loading from './components/LoadingPage/LoadingPage';
 import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 
+
 class App extends Component {
+
   constructor(props) {
     super(props);
     if (!this.props.user.user_id) this.props.getUserInfo();
