@@ -10,7 +10,6 @@ class SportsList extends Component {
     super(props);
     if (this.props.stats.length === 0) this.props.getUserInfo();
     this.props.getAllLeagues();
-    this.allsports = React.createRef();
 
     this.state = {
       mySports: true
@@ -18,11 +17,9 @@ class SportsList extends Component {
   }
 
   handleScroll = e => {
-    // console.log(e.target.scrollTop)
-    let myViewPort = e.target.scrollTop;
-    let allSportsDiv = document.querySelector('.SportList__allSports')
+    const myViewPort = e.target.scrollTop;
+    const allSportsDiv = document.querySelector('.SportList__allSports')
       .scrollHeight;
-    // if (x) console.log(x.scrollHeight)
     myViewPort > allSportsDiv
       ? this.setState({ mySports: false })
       : this.setState({ mySports: true });
@@ -40,7 +37,7 @@ class SportsList extends Component {
           <div className="SportsList__header">
             <input className="SportsList__Search" value="Search" />
             <span>
-              <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i> 
+              <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i>
             </span>
           </div>
 
