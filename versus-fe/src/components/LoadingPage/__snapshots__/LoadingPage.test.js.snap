@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Page LoadingPage should render as expected 1`] = `
+<div
+  className="LoadingPage"
+>
+  <div
+    className="lds-ripple"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;
+
+exports[`LoadingPage should render as expected 1`] = `
+<div
+  className="LoadingPage"
+>
+  <div
+    className="lds-ripple"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;
