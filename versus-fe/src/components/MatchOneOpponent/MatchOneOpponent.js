@@ -2,8 +2,6 @@ import React from 'react';
 import './MatchOneOpponent.css';
 
 export default function MatchOneOpponent(props) {
-  console.log('PROPS', props);
-
   const handleFlip = e => {
     e.target.classList.add('hover');
   };

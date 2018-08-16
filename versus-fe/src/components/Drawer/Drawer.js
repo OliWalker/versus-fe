@@ -62,8 +62,7 @@ class Drawer extends Component {
             <div className="Drawer__button Drawer__button__notie">
               {notifications > 0 ? (
                 <div className="Drawer__button__notification">
-                  {' '}
-                  {notifications}{' '}
+                  {notifications}
                 </div>
               ) : null}
               <i className="far fa-calendar-check" />

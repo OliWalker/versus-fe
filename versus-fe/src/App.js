@@ -10,10 +10,18 @@ import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
 import MatchOne from './containers/MatchOne/MatchOne';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import Loading from './components/LoadingPage/LoadingPage';
+import { getUserInfo } from './redux/actions';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    if (!this.props.user.user_id) this.props.getUserInfo();
+  }
   render() {
     if (this.props.error) return <ErrorPage />;
+    else if (this.props.loading && this.props.user.user_id === undefined)
+      return <Loading />;
     else
       return (
         <div className="App">
@@ -29,9 +37,18 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.error
+  error: state.error,
+  loading: state.loading,
+  user: state.user
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = dispatch => ({
+  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/1' }))
+});
 
-// export default App;
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

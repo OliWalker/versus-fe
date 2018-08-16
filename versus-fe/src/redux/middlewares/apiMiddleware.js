@@ -2,7 +2,6 @@ const BASE_URL = 'http://private-1cf21-versus3.apiary-mock.com';
 
 export default store => next => action => {
   if (!action.api) return next(action);
-  console.log('api called');
 
   const { endpoint, method } = action.api;
   let { body, headers } = action.api;
@@ -31,7 +30,6 @@ export default store => next => action => {
   })
     .then(response => response.json())
     .then(response => {
-      console.log('API-MIDLLEWARE', response);
       return response;
     })
     .then(data => {
@@ -43,7 +41,6 @@ export default store => next => action => {
       });
     })
     .catch(error => {
-      console.log(error);
       store.dispatch({
         ...action,
         type: `${action.type}_FAILURE`,
