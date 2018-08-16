@@ -9,8 +9,6 @@ class ProfilePage extends Component {
 
     const { user, stats } = this.props;
 
-    if (!stats[0]) return <Loading />;
-    else {
       return (
         <div className="ProfilePage">
           <div className="ProfilePage__picture">
@@ -46,6 +44,7 @@ class ProfilePage extends Component {
     );
   }
 }
+
 
 const mapStateToProps = state => ({
   user: state.user,
