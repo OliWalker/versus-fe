@@ -4,7 +4,7 @@ import './ProfilePage.css';
 import { connect } from 'react-redux';
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
 
-class ProfilePage extends Component {
+export class ProfilePage extends Component {
   render() {
     const user = this.props.user;
     const stats = this.props.stats;
