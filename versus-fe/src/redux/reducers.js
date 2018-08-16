@@ -3,7 +3,7 @@ const initalState = {
   stats: [],
   matches: [],
   loading: false,
-  error: '',
+  error: false,
   leagueNow: {},
   allLeagues: [],
   opponentNow: {},
@@ -19,7 +19,6 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
-      console.log(action.data);
       return {
         ...state,
         user: action.data.user,

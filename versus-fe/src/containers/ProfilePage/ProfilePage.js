@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import './ProfilePage.css';
 
 import { connect } from 'react-redux';
-import { getUserInfo } from '../../redux/actions';
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
-import Loading from '../../components/LoadingPage/LoadingPage';
 
 class ProfilePage extends Component {
-  constructor(props) {
-    super(props);
-    this.props.getUserInfo();
-  }
-
   render() {
+
     const { user, stats } = this.props;
 
     if (!stats[0]) return <Loading />;
@@ -30,22 +24,26 @@ class ProfilePage extends Component {
             <i>{user.total_score}</i>
           </span>
 
-          <div className="ProfilePage__all__scores">
-            {stats.map(sport => {
-              return (
-                <ProfileSportScore
-                  props={{ title: sport.name, score: sport.data.score }}
-                />
-              );
-            })}
-          </div>
+        <span className="ProfilePage__name">
+          {user.first_name} {user.last_name}
+        </span>
+        <span className="ProfilePage__score">
+          <i>{user.total_score}</i>
+        </span>
 
-          <div className="ProfilePage__stats">
-            <img src="./graph.png" alt="stat graph" />
-          </div>
+        <div className="ProfilePage__all__scores">
+          {stats.map(sport => {
+            return (
+              <ProfileSportScore title={sport.name} score={sport.data.score} />
+            );
+          })}
         </div>
-      );
-    }
+
+        <div className="ProfilePage__stats">
+          <img src="./graph.png" alt="stat graph" />
+        </div>
+      </div>
+    );
   }
 }
 
@@ -54,11 +52,4 @@ const mapStateToProps = state => ({
   stats: state.stats
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/1' }))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProfilePage);
+export default connect(mapStateToProps)(ProfilePage);

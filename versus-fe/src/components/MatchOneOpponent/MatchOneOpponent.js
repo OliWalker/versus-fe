@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MatchOneOpponent.css';
 
+
 export default class MatchOneOpponent extends Component {
   constructor(props) {
     super(props);

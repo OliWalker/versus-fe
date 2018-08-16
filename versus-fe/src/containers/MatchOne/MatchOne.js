@@ -42,8 +42,6 @@ class MatchOne extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     if (this.props.loading) return <Loading />;
     else
       return (
@@ -65,7 +63,7 @@ class MatchOne extends Component {
 
           <div className="MatchOne__buttons">
             <button className="MatchOne__button" onClick={this.challenge}>
-               
+ 
               Challenge 
             </button>
             <button className="MatchOne__button" onClick={this.backButton}>

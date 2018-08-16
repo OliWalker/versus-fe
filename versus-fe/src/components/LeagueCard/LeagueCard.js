@@ -3,7 +3,6 @@ import './LeagueCard.css';
 import { Link } from 'react-router-dom';
 
 export default function LeagueCard(props) {
-  console.log(props);
   return (
     <Link to={`/match/${props.league}/${props.user.user_id}`}>
       <div className="LeagueCard">

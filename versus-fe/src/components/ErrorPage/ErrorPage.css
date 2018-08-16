@@ -1,0 +1,29 @@
+.ErrorPage {
+  width: 100vw;
+  height: 100vh;
+  background: var(--blueGrad);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 15vw;
+  text-align: center;
+}
+
+.ErrorPage i {
+  font-size: 8rem;
+  animation: lilrotate 2.5s infinite;
+}
+
+@keyframes lilrotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}

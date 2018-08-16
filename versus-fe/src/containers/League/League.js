@@ -3,7 +3,6 @@ import './League.css';
 import LeagueCard from '../../components/LeagueCard/LeagueCard';
 import { connect } from 'react-redux';
 import { getOneLeague } from '../../redux/actions';
-import Loading from '../../components/LoadingPage/LoadingPage';
 
 class League extends Component {
   constructor(props) {
@@ -16,16 +15,14 @@ class League extends Component {
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
 
-    if (this.props.loading) return <Loading />;
-    else
-      return (
-        <div className="League">
-          <div className="League__info">
-            <h1> {league.sport_name} </h1>
-            <span>
-              <i>1000</i>
-            </span>
-          </div>
+    return (
+      <div className="League">
+        <div className="League__info">
+          <h1> {league.sport_name} </h1>
+          <span>
+            <i>1000</i>
+          </span>
+        </div>
 
           <div className="League__leaderboard">
             <div className="League__leaderboard__trophy">
@@ -41,15 +38,14 @@ class League extends Component {
                   />
                 ))
               : null}
-          </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  leagueNow: state.leagueNow,
-  loading: state.loading
+  leagueNow: state.leagueNow
 });
 
 const mapDispatchToProps = dispatch => ({

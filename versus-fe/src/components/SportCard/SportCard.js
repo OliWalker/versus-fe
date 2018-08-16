@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const toggleOpen = e => {};
 
 export default function SportCard(props) {
-  console.log(props);
   return (
     <div onClick={toggleOpen}>
       <div className="SportCard SportCard__open">
