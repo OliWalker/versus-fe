@@ -25,9 +25,7 @@ class ProfilePage extends Component {
         <div className="ProfilePage__all__scores">
           {stats.map(sport => {
             return (
-              <ProfileSportScore
-                props={{ title: sport.name, score: sport.data.score }}
-              />
+              <ProfileSportScore title={sport.name} score={sport.data.score} />
             );
           })}
         </div>
