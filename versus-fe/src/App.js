@@ -3,8 +3,9 @@ import './App.css';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import LoginPage from './containers/LoginPage/LoginPage'
-import SignUp from './containers/SignUp/SignUp'
+import LoginPage from './containers/LoginPage/LoginPage';
+import SignUp from './containers/SignUp/SignUp';
+import Matches from './containers/Matches/Matches';
 import ProfilePage from './containers/ProfilePage/ProfilePage';
 import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
@@ -15,15 +16,12 @@ import Loading from './components/LoadingPage/LoadingPage';
 import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 
-
 class App extends Component {
-
   constructor(props) {
     super(props);
     if (!this.props.user.user_id) this.props.getUserInfo();
   }
   render() {
-    
     if (this.props.error) return <ErrorPage />;
     else if (this.props.loading && this.props.user.user_id === undefined)
       return <Loading />;
@@ -31,9 +29,12 @@ class App extends Component {
       return (
         <div className="App">
           <Route path="/" component={Drawer} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signUp" component={SignUp} />
+          <Route path="/myMatches" component={Matches} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/sportsList" component={SportsList} />
-          <Route path="/league" component={League} />
+          <Route path="/league/:id" component={League} />
           <Route path="/match" component={MatchOne} />
           <Route path="/opponents" component={MatchingCardsList} />
         </div>
