@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 import { TweenMax } from 'gsap';
 
 const toggleOpen = e => {
-  console.log(e.target.classList.contains('SportCard__open'));
   let target;
   e.target.classList.contains('SportCard__open')
     ? (target = e.target.nextSibling)
     : (target = e.target.parentNode.nextSibling);
-  TweenMax.to(target, 0.2, {
-    height: 100
-  });
+  if (target.style.height !== '100px') {
+    TweenMax.to(target, 0.2, {
+      height: 100
+    });
+  } else {
+    TweenMax.to(target, 0.2, {
+      height: 0
+    });
+  }
 };
 
 export default function SportCard(props) {
