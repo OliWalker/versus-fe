@@ -11,4 +11,5 @@
 .ProfilePage__sport__name__single {
   color: var(--darkWhite);
   font-size: .7rem;
+  margin-left: 10px;
 }
