@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Match.css';
 class Match extends Component {
   render() {
-    console.log(this.props.matchInfo.sport_name);
-    console.log(this.props.matchInfo.user2.username);
+    const { user1, user2 } = this.props.matchInfo;
+    console.log(user1);
+    console.log(user2);
     return (
       <div>
         <div className="MatchContainer">
@@ -17,11 +18,8 @@ class Match extends Component {
           </div>
 
           <div className="MatchContainer__UsersMatched">
-            <h3> {this.props.matchInfo.sport_name}</h3>
             <div className="MatchContainer__Content">
-              <span className="Match__container__result"> 1 / 3 </span>
-              <i> + 30 points! </i>
-              {/* <span className="Match__container__score"> 1 / 3 </span> */}
+              <h2> {this.props.matchInfo.sport_name}</h2>
             </div>
           </div>
         </div>
@@ -31,3 +29,55 @@ class Match extends Component {
 }
 
 export default Match;
+
+const finished = (user1, user2) => {
+  return (
+    <div>
+      <span className="Match__container__result">
+        <b>{user1.score}</b> / {user2.score}
+      </span>
+      <i> + 30 points! </i>
+    </div>
+  );
+};
+
+const choices = () => {
+  return (
+    <div>
+      <button className="accept"> accept </button>
+      <button className="decline"> decline </button>
+    </div>
+  );
+};
+
+const waiting = () => {
+  return (
+    <div className="waiting">
+      <h2>
+        <i>waiting...</i>
+      </h2>
+    </div>
+  );
+};
+
+const denied = () => {
+  return (
+    <div className="denied">
+      <h2>
+        <i>denied</i>
+      </h2>
+    </div>
+  );
+};
+
+const accepted = () => {
+  return (
+    <div className="accepted">
+      <div className="date">
+        <span>7th Spt</span>
+        <span>18:00 hr</span>
+      </div>
+      <h5> location </h5>
+    </div>
+  );
+};
