@@ -21,9 +21,13 @@ class Matches extends Component {
 
   renderMatchesFilter = event => {
     const matches = this.props.matches;
-    const requestedMatches = matches.filter(
-      theMatch => theMatch.status === event.target.name
-    );
+    let requestedMatches;
+    event.target.name
+      ? (requestedMatches = matches.filter(
+          theMatch => theMatch.status === event.target.name
+        ))
+      : (requestedMatches = matches);
+
     this.setState({
       filteredMatches: requestedMatches,
       activeButton: event.target.name
@@ -32,17 +36,19 @@ class Matches extends Component {
 
   render() {
     const buttons = document.querySelectorAll('button');
+
     buttons.forEach(button => {
       button.name === this.state.activeButton
         ? button.classList.add('MyMatches__button__active')
         : button.classList.remove('MyMatches__button__active');
     });
+
     const buttonsNames = ['ACCEPTED', 'PENDING', 'FINISHED', 'DENIED'];
 
     return (
       <div className="MyMatches">
         <div className="MyMatches__header">
-          <h1> My Matches </h1>
+          <h1 onClick={this.renderMatchesFilter}> My Matches </h1>
 
           <div className="MyMatches__buttonFilter">
             {buttonsNames.map(el => (
