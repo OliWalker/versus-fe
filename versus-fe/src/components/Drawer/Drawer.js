@@ -20,7 +20,7 @@ class Drawer extends Component {
     this.setState({ leaguesClass });
   };
 
-  openDrawer = e => {
+  openDrawer = () => {
     const hamburgerClass =
       this.state.hamburgerClass === '' ? 'Header__hamburger__open' : '';
     const drawerClass =
@@ -30,11 +30,10 @@ class Drawer extends Component {
 
   render() {
     const stats = this.props.stats;
-    let notifications;
-    if (this.props.matches[0])
-      notifications = this.props.matches.filter(
-        match => match.status === 'PENDING'
-      ).length;
+
+    const notifications = this.props.matches.filter(
+      match => match.status === 'PENDING'
+    ).length;
 
     return (
       <div className="Header">

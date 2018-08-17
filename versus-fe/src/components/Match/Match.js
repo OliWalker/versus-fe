@@ -27,8 +27,6 @@ class Match extends Component {
         innerComponent = null;
     }
 
-    console.log(innerComponent);
-
     return (
       <div>
         <div className="MatchContainer">
