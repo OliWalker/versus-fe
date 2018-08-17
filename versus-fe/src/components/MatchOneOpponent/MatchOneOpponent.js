@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './MatchOneOpponent.css';
 
-
 export default class MatchOneOpponent extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +61,7 @@ export default class MatchOneOpponent extends Component {
                 )}
               </div>
               <div className="MatchOneOpponent__graph">
-                <img src="./graph.png" alt="stat graph" />
+                {/* <img src="/public/graph.png" alt="stat graph" /> */}
               </div>
             </div>
           </div>

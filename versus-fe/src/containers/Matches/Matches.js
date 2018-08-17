@@ -1,70 +1,70 @@
 import React, { Component } from 'react';
-import './Matches.css'
-import Match from '../../components/Match/Match'
-
-import { connect } from 'react-redux'
-import { getUserInfo } from '../../redux/actions'
-
-import Loading from '../../components/LoadingPage/LoadingPage';
+import './Matches.css';
+import Match from '../../components/Match/Match';
+import { connect } from 'react-redux';
 
 class Matches extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.props.getUserInfo();
     this.state = {
-      filteredMatches: []
-    }
+      filteredMatches: this.props.matches,
+      activeButton: null
+    };
   }
 
   renderMatches = () => {
-    const filteredMatches = this.state.filteredMatches
+    const filteredMatches = this.state.filteredMatches;
     return filteredMatches.map(theMatch => {
-      return <Match matchInfo={theMatch} />
-      })
-  }
+      return <Match matchInfo={theMatch} />;
+    });
+  };
 
-  renderMatchesFilter = (event) => {
-    const matches = this.props.matches
-    const requestedMatches = matches.filter( theMatch => {
-      if ( theMatch.status === event.target.name ) {
-        return theMatch
-      }
-    })
+  renderMatchesFilter = event => {
+    const matches = this.props.matches;
+    const requestedMatches = matches.filter(
+      theMatch => theMatch.status === event.target.name
+    );
     this.setState({
-      filteredMatches: [...requestedMatches]
-    })
-  }
+      filteredMatches: requestedMatches,
+      activeButton: event.target.name
+    });
+  };
 
   render() {
-    const matches = this.props.matches
-    if(!matches[0]) return <Loading />
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.name === this.state.activeButton
+        ? button.classList.add('MyMatches__button__active')
+        : button.classList.remove('MyMatches__button__active');
+    });
+    const buttonsNames = ['ACCEPTED', 'PENDING', 'FINISHED', 'DENIED'];
 
     return (
-      <div>
-        <h1> Matches </h1>
-        <div className="buttonFilter">
-          <button type="button" onClick={this.renderMatchesFilter} name="ACCEPTED"> Accepted </button>
-          <button type="button" onClick={this.renderMatchesFilter}  name="PENDING"> Pending </button>
-          <button type="button" onClick={this.renderMatchesFilter}  name="FINISHED"> Finished </button>
-          <button type="button" onClick={this.renderMatchesFilter}  name="DENIED"> Denied </button>
+      <div className="MyMatches">
+        <div className="MyMatches__header">
+          <h1> My Matches </h1>
+
+          <div className="MyMatches__buttonFilter">
+            {buttonsNames.map(el => (
+              <button
+                type="button"
+                onClick={this.renderMatchesFilter}
+                name={el}
+              >
+                {el}
+              </button>
+            ))}
+          </div>
         </div>
-        <div ref={this.displayRef} className="displayMatches">
-          {this.renderMatches()}
-        </div>
+
+        <div className="MyMatches__displayMatches">{this.renderMatches()}</div>
       </div>
     );
   }
-
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   matches: state.matches
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  getUserInfo: () => dispatch(getUserInfo({endpoint:'/users/1'})),
-})
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(Matches)
+export default connect(mapStateToProps)(Matches);

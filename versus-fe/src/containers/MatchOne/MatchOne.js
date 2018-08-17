@@ -7,7 +7,7 @@ import {
   getUserInfo,
   createMatch
 } from '../../redux/actions';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent';
 import Loading from '../../components/LoadingPage/LoadingPage';
 
@@ -63,12 +63,10 @@ class MatchOne extends Component {
 
           <div className="MatchOne__buttons">
             <button className="MatchOne__button" onClick={this.challenge}>
- 
-              Challenge 
+              Challenge
             </button>
             <button className="MatchOne__button" onClick={this.backButton}>
-               
-              back 
+              back
             </button>
           </div>
         </div>

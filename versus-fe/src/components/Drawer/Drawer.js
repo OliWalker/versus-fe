@@ -70,8 +70,7 @@ class Drawer extends Component {
                   : null}
               </div>
 
-
-              <Link to="/matches">
+              <Link to="/myMatches">
                 <div className="Drawer__button Drawer__button__notie">
                   {notifications > 0 ? (
                     <div className="Drawer__button__notification">
