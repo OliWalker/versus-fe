@@ -54,11 +54,6 @@
   transition: height 1s ease-in;
 }
 
-.Drawer__LeagueList__open {
-  height: 100%;
-  transition: height 1s ease-in;
-}
-
 .Drawer__LeagueList__sport {
   width: 65vw;
   color: var(--white);

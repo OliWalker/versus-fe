@@ -1,8 +1,18 @@
 import React from 'react';
 import './SportCard.css';
 import { Link } from 'react-router-dom';
+import { TweenMax } from 'gsap';
 
-const toggleOpen = e => {};
+const toggleOpen = e => {
+  console.log(e.target.classList.contains('SportCard__open'));
+  let target;
+  e.target.classList.contains('SportCard__open')
+    ? (target = e.target.nextSibling)
+    : (target = e.target.parentNode.nextSibling);
+  TweenMax.to(target, 0.2, {
+    height: 100
+  });
+};
 
 export default function SportCard(props) {
   return (
@@ -11,7 +21,7 @@ export default function SportCard(props) {
         <h2> {props.sport.name} </h2>
       </div>
 
-      <div className="SportCard__buttons SportCard__buttons__closed">
+      <div className="SportCard__buttons">
         <Link to={`/league/${props.sport.league_id}`}>
           <button className="SportCard__button"> See League </button>
         </Link>
