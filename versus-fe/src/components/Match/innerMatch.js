@@ -3,8 +3,8 @@ import React from 'react';
 export default {
   finished: (user1, user2) => {
     return (
-      <div>
-        <span className="Match__container__result">
+      <div className="MatchContainer__Content__result">
+        <span>
           <b>{user1.score}</b> / {user2.score}
         </span>
         <i> + 30 points! </i>
@@ -15,15 +15,15 @@ export default {
   choices: () => {
     return (
       <div>
-        <button className="accept"> accept </button>
-        <button className="decline"> decline </button>
+        <button className="MatchContainer__Content__accept"> accept </button>
+        <button className="MatchContainer__Content__decline"> decline </button>
       </div>
     );
   },
 
   waiting: () => {
     return (
-      <div className="waiting">
+      <div className="MatchContainer__Content__waiting">
         <h2>
           <i>waiting...</i>
         </h2>
@@ -33,7 +33,7 @@ export default {
 
   denied: () => {
     return (
-      <div className="denied">
+      <div className="MatchContainer__Content__denied">
         <h2>
           <i>denied</i>
         </h2>
@@ -43,8 +43,8 @@ export default {
 
   accepted: () => {
     return (
-      <div className="accepted">
-        <div className="date">
+      <div className="MatchContainer__Content__accepted">
+        <div className="MatchContainer__Content__date">
           <span>7th Spt</span>
           <span>18:00 hr</span>
         </div>

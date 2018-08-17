@@ -45,8 +45,15 @@
   justify-content: space-evenly
 }
 
-.Match__container__result {
-  font-size: 2.2rem;
+.MatchContainer__Content__result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.MatchContainer__Content__result span {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 .MatchContainer__Content button {
@@ -59,41 +66,38 @@
   font-weight: bold;
 }
 
-.MatchContainer__Content h2 {
-  margin-top: 10px;
-}
-
-.MatchContainer__Content .accept {
+.MatchContainer__Content__accept {
   color: green;
 }
 
-.MatchContainer__Content .decline {
+.MatchContainer__Content__decline {
   color: red;
 }
 
-.waiting {
+.MatchContainer__Content__waiting {
   color: lightgray;
   border: 1px solid lightgray;
   padding: 1rem;
   border-radius: 10px;
 }
 
-.denied {
+.MatchContainer__Content__denied {
   color: red;
   border: 1px solid red;
   padding: 1rem;
   border-radius: 10px;
 }
 
-.accepted {
+.MatchContainer__Content__accepted {
   width: 100%;
-  height: 100%;
+  height: 60%;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.date {
+.MatchContainer__Content__date {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
