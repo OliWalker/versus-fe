@@ -15,7 +15,7 @@ class Matches extends Component {
   renderMatches = () => {
     const filteredMatches = this.state.filteredMatches;
     return filteredMatches.map(theMatch => {
-      return <Match matchInfo={theMatch} />;
+      return <Match matchInfo={theMatch} user={this.props.user} />;
     });
   };
 
@@ -64,6 +64,7 @@ class Matches extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   matches: state.matches
 });
 
