@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { getOneLeague } from '../../redux/actions';
 
 class League extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     if (!this.props.leagueNow.users)
       this.props.getOneLeague(this.props.match.params.id);
   }

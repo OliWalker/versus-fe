@@ -50,7 +50,7 @@ class Drawer extends Component {
           onClick={this.toggleDrawer}
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
-          <Link to="/profile">
+          <Link to="/profile" onClick={this.toggleDrawer}>
             <h1 className="Drawer__logo">Versus</h1>
           </Link>
 
@@ -63,6 +63,8 @@ class Drawer extends Component {
             <div className={'Drawer__LeagueList'}>
               {stats.map(league => {
                 const cliker = () => {
+                  this.toggleDrawer();
+                  this.toggleLeagues();
                   return this.switchLeague(league.league_id);
                 };
                 return (
@@ -78,7 +80,7 @@ class Drawer extends Component {
               })}
             </div>
 
-            <Link to="/myMatches">
+            <Link to="/myMatches" onClick={this.toggleDrawer}>
               <div className="Drawer__button Drawer__button__notie">
                 {notifications > 0 ? (
                   <div className="Drawer__button__notification">
@@ -90,14 +92,14 @@ class Drawer extends Component {
               </div>
             </Link>
 
-            <Link to="/sportsList">
+            <Link to="/sportsList" onClick={this.toggleDrawer}>
               <div className="Drawer__button">
                 <i className="fas fa-futbol" />
                 <span>Sports</span>
               </div>
             </Link>
 
-            <Link to="/">
+            <Link to="/" onClick={this.toggleDrawer}>
               <div className="Drawer__button">
                 <i className="fas fa-power-off" />
                 <span> Log-out </span>

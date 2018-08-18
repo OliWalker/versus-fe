@@ -53,6 +53,7 @@ class Matches extends Component {
           <div className="MyMatches__buttonFilter">
             {buttonsNames.map(el => (
               <button
+                key={el}
                 type="button"
                 onClick={this.renderMatchesFilter}
                 name={el}

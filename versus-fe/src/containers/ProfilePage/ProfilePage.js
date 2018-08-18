@@ -15,22 +15,14 @@ import {
 } from 'recharts';
 
 class ProfilePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: this.props.user.elo_history
-    };
-  }
+  state = {
+    data: this.props.user.elo_history
+  };
 
   toggleGraph = sport => {
-    if (sport)
-      this.setState({
-        data: sport
-      });
-    else
-      this.setState({
-        data: this.props.user.elo_history
-      });
+    this.setState({
+      data: sport
+    });
   };
 
   render() {
@@ -44,7 +36,10 @@ class ProfilePage extends Component {
         <span className="ProfilePage__name">
           {user.first_name} {user.last_name}
         </span>
-        <span className="ProfilePage__score" onClick={this.toggleGraph}>
+        <span
+          className="ProfilePage__score"
+          onClick={() => this.toggleGraph(this.props.user.elo_history)}
+        >
           <i>{user.total_score}</i>
         </span>
 
@@ -54,7 +49,7 @@ class ProfilePage extends Component {
               <ProfileSportScore
                 key={sport.league_id}
                 sport={sport}
-                click={this.toggleGraph}
+                onClick={() => this.toggleGraph(sport.elo_history)}
               />
             );
           })}
