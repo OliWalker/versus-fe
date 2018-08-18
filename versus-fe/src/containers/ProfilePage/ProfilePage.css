@@ -45,8 +45,10 @@
 .ProfilePage__stats {
   width: 100vw;
   height: 30vh;
-  background-color: blue;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .ProfilePage__stats img {

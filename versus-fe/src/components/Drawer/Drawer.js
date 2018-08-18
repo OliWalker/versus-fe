@@ -24,7 +24,7 @@ class Drawer extends Component {
     }
   };
 
-  openDrawer = () => {
+  toggleDrawer = () => {
     const hamburgerStatus =
       this.state.hamburgerStatus === '' ? 'Drawer__hamburger__open' : '';
     const drawerStatus =
@@ -45,7 +45,7 @@ class Drawer extends Component {
           className={`fas fa-bars Drawer__hamburger ${
             this.state.hamburgerStatus
           }`}
-          onClick={this.openDrawer}
+          onClick={this.toggleDrawer}
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
           <Link to="/profile">

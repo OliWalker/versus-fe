@@ -12,6 +12,7 @@ class League extends Component {
   }
 
   render() {
+    console.log('redndering', this.props.match.params);
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
 
@@ -24,20 +25,20 @@ class League extends Component {
           </span>
         </div>
 
-          <div className="League__leaderboard">
-            <div className="League__leaderboard__trophy">
-              <i className="fas fa-trophy" />
-            </div>
-            {league.users
-              ? league.users.map((user, i) => (
-                  <LeagueCard
-                    key={user.user_id}
-                    i={i}
-                    user={user}
-                    league={league_id}
-                  />
-                ))
-              : null}
+        <div className="League__leaderboard">
+          <div className="League__leaderboard__trophy">
+            <i className="fas fa-trophy" />
+          </div>
+          {league.users
+            ? league.users.map((user, i) => (
+                <LeagueCard
+                  key={user.user_id}
+                  i={i}
+                  user={user}
+                  league={league_id}
+                />
+              ))
+            : null}
         </div>
       </div>
     );

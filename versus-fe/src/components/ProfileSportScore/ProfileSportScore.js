@@ -2,12 +2,18 @@ import React from 'react';
 import './ProfileSportScore.css';
 
 export default function ProfileSportScore(props) {
+  console.log(props);
+  const cliker = () => {
+    return props.click(props.sport.elo_history);
+  };
   return (
-    <div className="ProfilePage__sport__score">
+    <div className="ProfilePage__sport__score" onClick={cliker}>
       <span className="ProfilePage__sport__score__single">
-        <i>{props.score}</i>
+        <i>{props.sport.data.score}</i>
       </span>
-      <span className="ProfilePage__sport__name__single">{props.title}</span>
+      <span className="ProfilePage__sport__name__single">
+        {props.sport.name}
+      </span>
     </div>
   );
 }
