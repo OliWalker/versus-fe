@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
-import { TweenMax } from 'gsap';
 
 class Drawer extends Component {
   constructor(props) {
@@ -17,14 +16,10 @@ class Drawer extends Component {
   toggleLeagues = () => {
     const target = document.querySelector('.Drawer__LeagueList');
     if (this.state.leaguesStatus === '') {
-      TweenMax.to(target, 0.2, {
-        height: 300
-      });
+      target.style.height = '300px';
       this.setState({ leaguesStatus: 'open' });
     } else {
-      TweenMax.to(target, 0.2, {
-        height: 0
-      });
+      target.style.height = '0';
       this.setState({ leaguesStatus: '' });
     }
   };

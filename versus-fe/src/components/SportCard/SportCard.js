@@ -1,22 +1,16 @@
 import React from 'react';
 import './SportCard.css';
 import { Link } from 'react-router-dom';
-import { TweenMax } from 'gsap';
 
 const toggleOpen = e => {
   let target;
   e.target.classList.contains('SportCard__open')
     ? (target = e.target.nextSibling)
     : (target = e.target.parentNode.nextSibling);
-  if (target.style.height !== '100px') {
-    TweenMax.to(target, 0.2, {
-      height: 100
-    });
-  } else {
-    TweenMax.to(target, 0.2, {
-      height: 0
-    });
-  }
+
+  target.style.height === '100px'
+    ? (target.style.height = '0px')
+    : (target.style.height = '100px');
 };
 
 export default function SportCard(props) {

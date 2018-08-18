@@ -12,8 +12,8 @@ import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent
 class MatchOne extends Component {
   constructor(props) {
     super(props);
-    this.props.getOpponent(1, 2);
-    if (this.props.user.user_id === undefined) this.props.getUserInfo();
+    const { league, opponent } = this.props.match.params;
+    this.props.getOpponent(league, opponent);
   }
 
   challenge = () => {

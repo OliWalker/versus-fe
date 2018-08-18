@@ -9,7 +9,7 @@
   position: absolute;
   left: -65vw;
   overflow-y: auto;
-  transition: all 0.8s;
+  transition: all 0.4s;
 }
 
 .Drawer::-webkit-scrollbar {
@@ -51,7 +51,7 @@
   align-content: center;
   font-size: 1rem;
   overflow: hidden;
-  transition: height 1s ease-in;
+  transition: height 200ms ease-out;
 }
 
 .Drawer__LeagueList__sport {
@@ -87,17 +87,17 @@
   left: 4vw;
   color: var(--white);
   font-size: 1.7rem;
-  transition: all 0.8s;
+  transition: all 0.2s;
   transform: translateX(0vw);
   z-index: 25;
 }
 
 .Drawer__hamburger__open {
-  transition: all 0.8s;
+  transition: all 0.4s;
   transform: translateX(50vw);
 }
 
 .Drawer__drawer__open {
-  transition: all 0.8s;
+  transition: all 0.4s;
   transform: translateX(65vw);
 }
