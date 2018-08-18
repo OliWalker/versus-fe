@@ -14,6 +14,7 @@ const toggleOpen = e => {
 };
 
 export default function SportCard(props) {
+  console.log(props);
   return (
     <div>
       <div className="SportCard SportCard__open" onClick={toggleOpen}>
@@ -21,9 +22,15 @@ export default function SportCard(props) {
       </div>
 
       <div className="SportCard__buttons">
-        <Link to={`/league/${props.sport.league_id}`}>
-          <button className="SportCard__button"> See League </button>
-        </Link>
+        {props.mine ? (
+          <Link to={`/league/${props.sport.league_id}`}>
+            <button className="SportCard__button"> See League </button>
+          </Link>
+        ) : (
+          <Link to={`/league/${props.sport.league_id}`}>
+            <button className="SportCard__button"> Join League </button>
+          </Link>
+        )}
 
         <button className="SportCard__button"> Find Match </button>
       </div>

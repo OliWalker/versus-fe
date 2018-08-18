@@ -39,17 +39,17 @@ class MatchOne extends Component {
   };
 
   render() {
-    console.log(this.props);
+    if (!this.props.opponentNow.user_id) return <h1> loading </h1>;
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">
-          <span> sport.name </span>
+          <span> {this.props.leagueNow.sport_name} </span>
           <h1> Versus </h1>
         </div>
 
         <div className="MatchOne__players">
           <div className="MatchOne__user">
-            <MatchOneOpponent user={this.props.user} />
+            <MatchOneOpponent user={this.props.user} stats={this.props.stats} />
           </div>
 
           <div className="MatchOne__opponent">
@@ -72,6 +72,8 @@ class MatchOne extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  stats: state.stats,
+  leagueNow: state.leagueNow,
   opponentNow: state.opponentNow,
   loading: state.loading
 });

@@ -15,7 +15,6 @@ class SportsList extends Component {
   }
 
   handleScroll = e => {
-
     const myViewPort = e.target.scrollTop;
     const allSportsDiv = document.querySelector('.SportList__allSports')
       .scrollHeight;
@@ -45,12 +44,11 @@ class SportsList extends Component {
           </span>
         </div>
 
-
         <div className="SportsList__list" onScroll={this.handleScroll}>
           <div className="SportList_mySports">
             {this.props.stats[0]
               ? this.props.stats.map((sport, i) => (
-                  <SportCard key={i} sport={sport} />
+                  <SportCard key={i} sport={sport} mine={true} />
                 ))
               : null}
           </div>

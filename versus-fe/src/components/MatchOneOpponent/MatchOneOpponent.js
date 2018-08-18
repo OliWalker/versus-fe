@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import './MatchOneOpponent.css';
+import { AreaChart, Area, XAxis } from 'recharts';
 
 export default class MatchOneOpponent extends Component {
   constructor(props) {
     super(props);
+    let stats;
+    if (this.props.opponent)
+      stats = this.props.opponent.match_history.map((stat, i) => {
+        return { date: i + 1, score: stat.elo };
+      });
+
+    // if (this.props.stats) {
+    //   console.log('USER', this.props.stats[0].elo_history);
+    //   stats = this.props.stats[0].elo_history;
+    // }
     this.state = {
-      hover: ''
+      hover: '',
+      stats
     };
   }
 
@@ -15,6 +27,7 @@ export default class MatchOneOpponent extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="MatchOneOpponent">
         {this.props.opponent ? (
@@ -26,7 +39,7 @@ export default class MatchOneOpponent extends Component {
 
         <div
           className={`MatchOneOpponent flip-container ${this.state.hover}`}
-          ontouchstart={this.handleFlip}
+          onTouchStart={this.handleFlip}
         >
           <div className="MatchOneOpponent__picture flipper">
             {this.props.opponent ? (
@@ -61,7 +74,16 @@ export default class MatchOneOpponent extends Component {
                 )}
               </div>
               <div className="MatchOneOpponent__graph">
-                {/* <img src="/public/graph.png" alt="stat graph" /> */}
+                <AreaChart width={220} height={200} data={this.state.stats}>
+                  <XAxis dataKey="date" padding={{ bottom: -150 }} />
+                  {/*<YAxis dataKey="score" padding={{ bottom: -150 }} /> */}
+                  <Area
+                    type="monotone"
+                    dataKey="score"
+                    stoke="#8884d8"
+                    strokeWidth={3}
+                  />
+                </AreaChart>
               </div>
             </div>
           </div>
