@@ -10,7 +10,7 @@ class SportsList extends Component {
     this.props.getAllLeagues();
 
     this.state = {
-      mySports: true
+      mySportsHeader: true
     };
   }
 
@@ -19,8 +19,8 @@ class SportsList extends Component {
     const allSportsDiv = document.querySelector('.SportList__allSports')
       .scrollHeight;
     myViewPort > allSportsDiv
-      ? this.setState({ mySports: false })
-      : this.setState({ mySports: true });
+      ? this.setState({ mySportsHeader: false })
+      : this.setState({ mySportsHeader: true });
   };
 
   handleSearch = () => {};
@@ -30,7 +30,6 @@ class SportsList extends Component {
     const allSports = this.props.allLeagues.filter(
       el => !mySports.includes(el.name)
     );
-
     return (
       <div className="SportsList">
         <div className="SportsList__header">
@@ -40,7 +39,7 @@ class SportsList extends Component {
             onChange={this.handleSearch}
           />
           <span>
-            <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i>
+            <i>{this.state.mySportsHeader ? 'my Sports' : 'all Sports'}</i>
           </span>
         </div>
 

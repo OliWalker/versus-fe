@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
+import { getOneLeague } from '../../redux/actions';
 
 class Drawer extends Component {
   constructor(props) {
@@ -32,9 +33,10 @@ class Drawer extends Component {
     this.setState({ hamburgerStatus, drawerStatus });
   };
 
+  switchLeague = leagueId => this.props.getOneLeague(leagueId);
+
   render() {
     const stats = this.props.stats;
-
     const notifications = this.props.matches.filter(
       match => match.status === 'PENDING'
     ).length;
@@ -60,11 +62,15 @@ class Drawer extends Component {
 
             <div className={'Drawer__LeagueList'}>
               {stats.map(league => {
+                const cliker = () => {
+                  return this.switchLeague(league.league_id);
+                };
                 return (
                   <Link
                     key={league.league_id}
                     to={`/league/${league.league_id}`}
                     className={'Drawer__LeagueList__sport'}
+                    onClick={cliker}
                   >
                     {league.name}
                   </Link>
@@ -109,4 +115,11 @@ const mapStateToProps = state => ({
   matches: state.matches
 });
 
-export default connect(mapStateToProps)(Drawer);
+const mapDispatchToProps = dispatch => ({
+  getOneLeague: league_id =>
+    dispatch(getOneLeague({ endpoint: `/leagues/${league_id}` }))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Drawer);

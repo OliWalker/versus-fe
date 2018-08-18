@@ -1,4 +1,9 @@
-.MyMatches {}
+.MyMatches {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
 
 .MyMatches__header {
   width: 100vw;
@@ -9,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  position: fixed;
 }
 
 .MyMatches__buttonFilter {
@@ -47,9 +53,12 @@
 
 .MyMatches__displayMatches {
   width: 100vw;
-  min-height: 80vh;
+  height: 80vh;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ghostwhite;
+  overflow: hidden;
+  overflow-y: scroll;
 }

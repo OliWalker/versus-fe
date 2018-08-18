@@ -14,7 +14,6 @@ const toggleOpen = e => {
 };
 
 export default function SportCard(props) {
-  console.log(props);
   return (
     <div>
       <div className="SportCard SportCard__open" onClick={toggleOpen}>

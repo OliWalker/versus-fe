@@ -23,9 +23,9 @@ class App extends Component {
   }
   render() {
     if (this.props.error) return <ErrorPage />;
-    else if (this.props.loading && this.props.user.user_id === undefined)
+    else if (this.props.loading && this.props.user.user_id === undefined) {
       return <Loading />;
-    else
+    } else
       return (
         <div className="App">
           <Route path="/" component={Drawer} />

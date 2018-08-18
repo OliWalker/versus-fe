@@ -7,12 +7,11 @@ import { getOneLeague } from '../../redux/actions';
 class League extends Component {
   constructor(props) {
     super(props);
-    const league_id = this.props.match.params.id;
-    this.props.getOneLeague(league_id);
+    if (!this.props.leagueNow.users)
+      this.props.getOneLeague(this.props.match.params.id);
   }
 
   render() {
-    console.log('redndering', this.props.match.params);
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
 
