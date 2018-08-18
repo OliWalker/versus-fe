@@ -51,3 +51,7 @@ export const createMatch = apiInfo => ({
 export const removeOpponent = () => ({
   type: 'REMOVE_OPPONENT'
 });
+
+export const sendMatchDetails = () => ({
+  type: 'SEND_MATCH_DETAILS'
+})

@@ -11,6 +11,8 @@ import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
 import MatchOne from './containers/MatchOne/MatchOne';
+import MatchDetails from './containers/MatchDetails/MatchDetails'
+
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Loading from './components/LoadingPage/LoadingPage';
 import { getUserInfo } from './redux/actions';
@@ -31,12 +33,14 @@ class App extends Component {
           <Route path="/" component={Drawer} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signUp" component={SignUp} />
-          <Route path="/myMatches" component={Matches} />
+          <Route path="/matches" component={Matches} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/sportsList" component={SportsList} />
           <Route path="/league/:id" component={League} />
           <Route path="/match" component={MatchOne} />
           <Route path="/opponents" component={MatchingCardsList} />
+          <Route path="/MatchDetails/:id" component={MatchDetails} />
+
         </div>
       );
   }
