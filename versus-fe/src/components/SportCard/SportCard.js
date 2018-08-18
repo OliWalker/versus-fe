@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const toggleOpen = e => {
   let target;
-  e.target.classList.contains('SportCard__open')
-    ? (target = e.target.nextSibling)
-    : (target = e.target.parentNode.nextSibling);
+  !e.target.classList.contains('SportCard__open')
+    ? (target = e.target.parentNode.nextSibling)
+    : (target = e.target.nextSibling);
 
   target.style.height === '100px'
     ? (target.style.height = '0px')
@@ -15,8 +15,8 @@ const toggleOpen = e => {
 
 export default function SportCard(props) {
   return (
-    <div onClick={toggleOpen}>
-      <div className="SportCard SportCard__open">
+    <div>
+      <div className="SportCard SportCard__open" onClick={toggleOpen}>
         <h2> {props.sport.name} </h2>
       </div>
 

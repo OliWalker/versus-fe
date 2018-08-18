@@ -23,10 +23,14 @@ class ProfilePage extends Component {
   }
 
   toggleGraph = sport => {
-    console.log('clicked');
-    this.setState({
-      data: sport
-    });
+    if (sport)
+      this.setState({
+        data: sport
+      });
+    else
+      this.setState({
+        data: this.props.user.elo_history
+      });
   };
 
   render() {
@@ -40,7 +44,7 @@ class ProfilePage extends Component {
         <span className="ProfilePage__name">
           {user.first_name} {user.last_name}
         </span>
-        <span className="ProfilePage__score">
+        <span className="ProfilePage__score" onClick={this.toggleGraph}>
           <i>{user.total_score}</i>
         </span>
 

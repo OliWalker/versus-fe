@@ -2,7 +2,6 @@ import React from 'react';
 import './ProfileSportScore.css';
 
 export default function ProfileSportScore(props) {
-  console.log(props);
   const cliker = () => {
     return props.click(props.sport.elo_history);
   };
