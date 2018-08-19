@@ -68,15 +68,18 @@ const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => ({
   acceptMatch: match_id =>
     dispatch(
-      acceptMatch({ endpont: `matches/${match_id}/accept`, method: 'PUT' })
+      acceptMatch({ endpoint: `/matches/${match_id}/accept`, method: 'PUT' })
     ),
   declineMatch: match_id =>
     dispatch(
-      declineMatch({ endpoint: `matches/${match_id}/reject`, method: 'PUT' })
+      declineMatch({ endpoint: `/matches/${match_id}/reject`, method: 'PUT' })
     ),
   deleteMatch: match_id =>
     dispatch(
-      deleteMatch({ endpoint: `matches/${match_id}/delete}`, method: 'DELETE' })
+      deleteMatch({
+        endpoint: `/matches/${match_id}/delete}`,
+        method: 'DELETE'
+      })
     )
 });
 

@@ -12,7 +12,7 @@ class Matches extends Component {
   renderMatches = () =>
     this.state.filteredMatches.map(theMatch => (
       <Match
-        key={theMatch.matches_id}
+        key={theMatch.match_id}
         matchInfo={theMatch}
         user={this.props.user}
       />

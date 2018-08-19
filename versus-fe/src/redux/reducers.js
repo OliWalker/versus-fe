@@ -6,8 +6,7 @@ const initalState = {
   error: false,
   leagueNow: {},
   allLeagues: [],
-  opponentNow: {},
-  matchMade: false
+  opponentNow: {}
 };
 
 const reducer = (state = initalState, action) => {
@@ -104,7 +103,6 @@ const reducer = (state = initalState, action) => {
       return {
         ...state,
         matches: [...state.matches, action.data],
-        matchMade: true,
         loading: false
       };
 
@@ -119,6 +117,29 @@ const reducer = (state = initalState, action) => {
       return {
         ...state,
         opponentNow: {}
+      };
+
+    case 'ACCEPT_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'ACCEPT_MATCH_SUCCESS':
+      const newMatches = state.matches.map(
+        el => (el.match_id === action.data.match_id ? (el = action.data) : el)
+      );
+      return {
+        ...state,
+        matches: newMatches,
+        loading: false
+      };
+
+    case 'ACCEPT_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
       };
 
     default:
