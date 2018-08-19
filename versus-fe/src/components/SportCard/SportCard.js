@@ -4,18 +4,36 @@ import { Link } from 'react-router-dom';
 
 export default class SportCard extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    isJoinOpen: true
   };
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
 
   render() {
     const height = this.state.isOpen ? { height: 100 } : { height: 0 };
+    const joinHeight = this.state.isJoinOpen ? { height: 100 } : { height: 0 };
     return (
       <div>
-        <div className="SportCard SportCard__open" onClick={this.toggle}>
+        <div className="SportCard" onClick={this.toggle}>
           <h2> {this.props.sport.name} </h2>
         </div>
+
+        {/* <div
+          className="SportCard SportCard__JoinLeague"
+          onClick={this.toggle}
+          style={joinHeight}
+        >
+          <div>Skill Level</div>
+          <div className="SportCard__JoinLeague__buttons">
+            <button className="SportCard__button"> Begginer </button>
+            <button className="SportCard__button"> Intermediate </button>
+            <button className="SportCard__button"> Advanced </button>
+          </div>
+          <div>
+            <button className="SportCard__button"> Join! </button>
+          </div>
+        </div> */}
 
         <div className="SportCard__buttons" style={height}>
           {this.props.mine ? (

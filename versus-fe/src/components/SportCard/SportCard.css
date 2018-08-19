@@ -38,3 +38,19 @@
   background-color: var(--flatBlue);
   color: white;
 }
+
+.SportCard__JoinLeague {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.SportCard__JoinLeague__buttons {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.SportCard__JoinLeague .SportCard__button {
+  padding: .5rem .2rem;
+}
