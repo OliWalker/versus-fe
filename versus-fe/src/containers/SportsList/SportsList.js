@@ -21,12 +21,12 @@ class SportsList extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.allLeagues.length === 0 && this.props.allLeagues.length > 0) {
-      const mySports = this.props.stats.map(sport => sport.name);
+      const mySports = this.props.stats.map(sport => sport.sport_name);
       const myLeagues = this.props.allLeagues.filter(el =>
-        mySports.includes(el.name)
+        mySports.includes(el.sport_name)
       );
       const otherLeagues = this.props.allLeagues.filter(
-        el => !mySports.includes(el.name)
+        el => !mySports.includes(el.sport_name)
       );
       this.setState({
         allLeagues: this.props.allLeagues,
@@ -49,11 +49,15 @@ class SportsList extends Component {
 
   handleSearch = e => {
     this.setState({ search: e.target.value });
-    const mySports = this.props.stats.map(sport => sport.name);
+    const mySports = this.props.stats.map(sport => sport.sport_name);
     const regex = RegExp(e.target.value);
-    const allLeagues = this.props.allLeagues.filter(el => regex.test(el.name));
-    const myLeagues = allLeagues.filter(el => mySports.includes(el.name));
-    const otherLeagues = allLeagues.filter(el => !mySports.includes(el.name));
+    const allLeagues = this.props.allLeagues.filter(el =>
+      regex.test(el.sport_name)
+    );
+    const myLeagues = allLeagues.filter(el => mySports.includes(el.sport_name));
+    const otherLeagues = allLeagues.filter(
+      el => !mySports.includes(el.sport_name)
+    );
     this.setState({
       allLeagues,
       myLeagues,
@@ -108,7 +112,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllLeagues: () => dispatch(getAllLeagues({ endpoint: '/sports' }))
+  getAllLeagues: () =>
+    dispatch(getAllLeagues({ endpoint: '/barcelona/leagues' }))
 });
 
 export default connect(

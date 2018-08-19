@@ -74,7 +74,7 @@ class Drawer extends Component {
                     className={'Drawer__LeagueList__sport'}
                     onClick={cliker}
                   >
-                    {league.name}
+                    {league.sport_name}
                   </Link>
                 );
               })}

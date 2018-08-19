@@ -73,6 +73,26 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+    case 'JOIN_LEAGUE_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'JOIN_LEAGUE_SUCCESS':
+      return {
+        ...state,
+        stats: [...state.stats, action.data],
+        loading: false
+      };
+
+    case 'JOIN_LEAGUE_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      };
+
     case 'GET_OPPONENT_REQUEST':
       return {
         ...state,

@@ -49,8 +49,11 @@
 }
 
 .SportCard__JoinLeague {
+  height: 0;
+  overflow: hidden;
   display: flex;
   justify-content: space-evenly;
+  transition: height 200ms ease-out;
 }
 
 .SportCard__JoinLeague__buttons {
@@ -60,10 +63,7 @@
   justify-content: space-evenly;
 }
 
-.SportCard__JoinLeague .SportCard__button {
-  padding: .5rem .2rem;
-}
-
 .SkillLevel {
   max-width: 30%;
+  color: var(--flatBlue)
 }

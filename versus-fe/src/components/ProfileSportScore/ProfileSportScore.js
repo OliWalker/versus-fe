@@ -7,7 +7,9 @@ export default function ProfileSportScore({ sport, ...props }) {
       <span className="ProfilePage__sport__score__single">
         <i>{sport.data.score}</i>
       </span>
-      <span className="ProfilePage__sport__name__single">{sport.name}</span>
+      <span className="ProfilePage__sport__name__single">
+        {sport.sport_name}
+      </span>
     </div>
   );
 }
