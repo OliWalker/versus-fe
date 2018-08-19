@@ -1,22 +1,32 @@
 import React from 'react';
 
 export default {
-  finished: (user1, user2) => {
+  finished: props => {
     return (
       <div className="MatchContainer__Content__result">
         <span>
-          <b>{user1.score}</b> / {user2.score}
+          <b>{props.user1.score}</b> / {props.user2.score}
         </span>
         <i> + 30 points! </i>
       </div>
     );
   },
 
-  choices: () => {
+  choices: props => {
     return (
       <div>
-        <button className="MatchContainer__Content__accept"> accept </button>
-        <button className="MatchContainer__Content__decline"> decline </button>
+        <button
+          className="MatchContainer__Content__accept"
+          onClick={props.innerFunction.accept}
+        >
+          accept
+        </button>
+        <button
+          className="MatchContainer__Content__decline"
+          onClick={props.innerFunction.reject}
+        >
+          decline
+        </button>
       </div>
     );
   },
@@ -31,9 +41,13 @@ export default {
     );
   },
 
-  denied: () => {
+  denied: props => {
+    console.log(props);
     return (
-      <div className="MatchContainer__Content__denied">
+      <div
+        className="MatchContainer__Content__denied"
+        onClick={props.innerFunction}
+      >
         <h2>
           <i>denied</i>
         </h2>

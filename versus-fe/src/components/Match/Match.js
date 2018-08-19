@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import './Match.css';
 import innerMatch from './innerMatch';
+import { connect } from 'react-redux';
+import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 
 class Match extends Component {
+  accept = () => this.props.acceptMatch(this.props.match_id);
+
+  reject = () => this.props.rejectMatch(this.props.match_id);
+
+  delete = () => this.props.deleteMatch(this.props.match_id);
+
   render() {
     const { user1, user2 } = this.props.matchInfo;
-    let innerComponent;
+    let innerComponent, innerFunction;
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':
@@ -15,12 +23,16 @@ class Match extends Component {
         innerComponent = innerMatch.accepted;
         break;
       case 'PENDING':
-        this.props.user.user_id === user1.user_id
-          ? (innerComponent = innerMatch.waiting)
-          : (innerComponent = innerMatch.choices);
+        if (this.props.user.user_id === user1.user_id)
+          innerComponent = innerMatch.waiting;
+        else {
+          innerComponent = innerMatch.choices;
+          innerFunction = { accept: this.accept, reject: this.reject };
+        }
         break;
       case 'DENIED':
         innerComponent = innerMatch.denied;
+        innerFunction = this.delete;
         break;
 
       default:
@@ -42,7 +54,7 @@ class Match extends Component {
           <div className="MatchContainer__UsersMatched">
             <div className="MatchContainer__Content">
               <h2> {this.props.matchInfo.sport_name}</h2>
-              {innerComponent(user1, user2)}
+              {innerComponent({ user1, user2, innerFunction })}
             </div>
           </div>
         </div>
@@ -51,4 +63,24 @@ class Match extends Component {
   }
 }
 
-export default Match;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  acceptMatch: match_id =>
+    dispatch(
+      acceptMatch({ endpont: `matches/${match_id}/accept`, method: 'PUT' })
+    ),
+  declineMatch: match_id =>
+    dispatch(
+      declineMatch({ endpoint: `matches/${match_id}/reject`, method: 'PUT' })
+    ),
+  deleteMatch: match_id =>
+    dispatch(
+      deleteMatch({ endpoint: `matches/${match_id}/delete}`, method: 'DELETE' })
+    )
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Match);

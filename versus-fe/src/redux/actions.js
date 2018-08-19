@@ -51,3 +51,33 @@ export const createMatch = apiInfo => ({
 export const removeOpponent = () => ({
   type: 'REMOVE_OPPONENT'
 });
+
+export const acceptMatch = apiInfo => ({
+  type: 'ACCEPT_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const declineMatch = apiInfo => ({
+  type: 'DECLINE_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const deleteMatch = apiInfo => ({
+  type: 'DELETE_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});

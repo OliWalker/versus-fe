@@ -4,20 +4,19 @@ import Match from '../../components/Match/Match';
 import { connect } from 'react-redux';
 
 class Matches extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filteredMatches: this.props.matches,
-      activeButton: null
-    };
-  }
-
-  renderMatches = () => {
-    const filteredMatches = this.state.filteredMatches;
-    return filteredMatches.map(theMatch => {
-      return <Match matchInfo={theMatch} user={this.props.user} />;
-    });
+  state = {
+    filteredMatches: this.props.matches,
+    activeButton: null
   };
+
+  renderMatches = () =>
+    this.state.filteredMatches.map(theMatch => (
+      <Match
+        key={theMatch.matches_id}
+        matchInfo={theMatch}
+        user={this.props.user}
+      />
+    ));
 
   renderMatchesFilter = event => {
     const matches = this.props.matches;

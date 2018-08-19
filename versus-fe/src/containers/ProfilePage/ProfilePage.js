@@ -4,15 +4,7 @@ import './ProfilePage.css';
 import { connect } from 'react-redux';
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  AreaChart,
-  Area
-} from 'recharts';
+import { XAxis, Tooltip, AreaChart, Area } from 'recharts';
 
 class ProfilePage extends Component {
   state = {
@@ -58,7 +50,6 @@ class ProfilePage extends Component {
         <div className="ProfilePage__stats">
           <AreaChart width={400} height={200} data={this.state.data}>
             <XAxis dataKey="date" padding={{ bottom: -150 }} />
-            {/* <YAxis dataKey="score" padding={{ bottom: -150 }} /> */}
             <Tooltip />
             <Area
               type="monotone"
