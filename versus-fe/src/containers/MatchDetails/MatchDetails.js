@@ -2,76 +2,71 @@ import React, { Component } from 'react';
 import './MatchDetails.css'
 
 import MatchDetailsInfo from '../../components/MatchDetailsInfo/MatchDetailsInfo'
+import OpponentDetails from '../../components/OpponentDetails/OpponentDetails'
 import Loading from '../../components/LoadingPage/LoadingPage'
+
+
 import { connect } from 'react-redux'
-import { sendMatchDetails } from '../../redux/actions'
-
-
+import { sendMatchDetails , getOpponent } from '../../redux/actions'
 
 class MatchDetails extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.filteredMatch()
     this.state = {
       aMatch: {},
-      opponent: {}
+      opponent: this.props.opponentNow
     }
-
+    this.filteredMatchAndGetOpponent()
   }
 
-  filteredMatch = () => {
+  filteredMatchAndGetOpponent = () => {
     const IdParam = this.props.match.params.id
-    const IdString = IdParam.split('').splice(1,1)
-    const IdOfMatch = parseInt(IdString, 10)
-    const MatchedWithID = this.state.aMatch.filter( theMatch => {
-      if (theMatch.matches_id === IdOfMatch) {
-        return theMatch
-      }
-    })
-    this.setState({
-      aMatch: MatchedWithID
-    })
-
+    const IdOfMatch = parseInt(IdParam, 10)
+    const matchedWithId = this.props.matches.filter( theMatch => theMatch.matches_id === IdOfMatch )
+    this.setState( {aMatch: {...matchedWithId} } )
+    this.props.getOpponent()
   }
 
-  opponentInfo = () => {
-    const opponentId = this.state.aMatch.user2.user_id
-
+  renderOpponentStats = () => {
+    if (this.state.opponent){
+      console.log(this.props.opponentNow,'WAKA ENSENMBLE')
+    }
   }
 
   render() {
-    return (
-      <div className="MatchDetailsContainer">
+      return (
+        <div className="MatchDetailsContainer">
 
-        <div>
-          <h1> Match Details </h1>
+          <div>
+            <h1> Match Details </h1>
+          </div>
+
+          <div className="viewController">
+            <button type="button" name="details"> Details </button>
+            <button type="button" name="details"> Messages </button>
+          </div>
+
+          {this.renderOpponentStats()}
+          <MatchDetailsInfo/>
+
+
         </div>
-
-        <div className="viewController">
-          <button type="button" name="details"> Details </button>
-          <button type="button" name="details"> Messages </button>
-        </div>
-
-        <MatchDetailsInfo/>
-
-      </div>
-    );
+      )
+    }
   }
 
-}
-
-
-
-const mapStateToProps = (state ) => ({
-  mainUser: state.user
-  aMatch: state.matches
+const mapStateToProps = (state) => ({
+  user: state.user,
+  matches: state.matches,
+  opponentNow: state.opponentNow,
+  loading: state.loading
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  sendMatchDetails: () => dispatch(sendMatchDetails())
+  sendMatchDetails: () => dispatch(sendMatchDetails()),
+  getOpponent: () => dispatch(getOpponent({ endpoint: '/opponent/leagueid/userid' }))
 })
 
 
-
-export default MatchDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(MatchDetails);
