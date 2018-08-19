@@ -15,9 +15,15 @@ class MatchDetails extends Component {
     super(props)
     this.state = {
       aMatch: {},
-      opponent: this.props.opponentNow
+      opponentNow: 'false'
     }
     this.filteredMatchAndGetOpponent()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.opponentNow !== prevProps.opponentNow) {
+      this.setState({opponentNow: this.props.opponentNow})
+    }
   }
 
   filteredMatchAndGetOpponent = () => {
@@ -29,10 +35,10 @@ class MatchDetails extends Component {
   }
 
   renderOpponentStats = () => {
-    if (this.state.opponent){
-      console.log(this.props.opponentNow,'WAKA ENSENMBLE')
+    if(this.state.opponentNow !== 'false') {
+      return <OpponentDetails theOpponent={this.props.opponentNow}/>  
+      }
     }
-  }
 
   render() {
       return (

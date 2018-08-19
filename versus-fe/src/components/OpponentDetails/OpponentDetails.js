@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PastMatchCard from '../PastMatchCard/PastMatchCard'
-
+import './OpponentDetails.css'
 class OpponentDetails extends Component {
 
   renderMatch_history = () => {
     const previousMatches = this.props.theOpponent.match_history
-    console.log(previousMatches,'previousMatches')
     return previousMatches.map( previousMatch => {
       return <PastMatchCard pastMatch={previousMatch}/>
     })
@@ -16,14 +15,14 @@ class OpponentDetails extends Component {
       <div>
         <div className='opponentContainer'>
 
-          <div className="opponentTitle">
+          <div className="opponentProfile">
 
-            <div className='opponentPhoto'>
-              <img src={this.props.theOpponent.image_path} alt="the beautiful"/>
+            <div className='opponentPhotoDiv'>
+              <img className="opponentPhoto" src={this.props.theOpponent.image_path} alt="the beautiful"/>
             </div>
 
-            <div className='opponentName'>
-              <text className='OpponentName'> {this.props.theOpponent.username} </text>
+            <div className='opponentNameDiv'>
+              <text className='opponentName'> {this.props.theOpponent.username} </text>
             </div>
 
           </div>
@@ -36,7 +35,6 @@ class OpponentDetails extends Component {
       </div>
     );
   }
-
 }
 
 export default OpponentDetails;
