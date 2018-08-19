@@ -36,7 +36,7 @@ class MatchDetails extends Component {
 
   renderOpponentStats = () => {
     if(this.state.opponentNow !== 'false') {
-      return <OpponentDetails theOpponent={this.props.opponentNow}/>  
+      return <OpponentDetails theOpponent={this.state.opponentNow}/>
       }
     }
 
@@ -54,12 +54,12 @@ class MatchDetails extends Component {
           </div>
 
           {this.renderOpponentStats()}
-          <MatchDetailsInfo/>
-
+          <MatchDetailsInfo sendAction={this.props.sendMatchDetails} />
 
         </div>
       )
     }
+
   }
 
 const mapStateToProps = (state) => ({
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  sendMatchDetails: () => dispatch(sendMatchDetails()),
+  sendMatchDetails: (apiInfo) => dispatch(sendMatchDetails(apiInfo)),
   getOpponent: () => dispatch(getOpponent({ endpoint: '/opponent/leagueid/userid' }))
 })
 

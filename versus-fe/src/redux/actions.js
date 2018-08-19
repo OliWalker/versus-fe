@@ -52,6 +52,12 @@ export const removeOpponent = () => ({
   type: 'REMOVE_OPPONENT'
 });
 
-export const sendMatchDetails = () => ({
-  type: 'SEND_MATCH_DETAILS'
+export const sendMatchDetails = (apiInfo) => ({
+  type: 'SEND_MATCH_DETAILS',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
 })

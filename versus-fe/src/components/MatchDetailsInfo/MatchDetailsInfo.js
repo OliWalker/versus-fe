@@ -6,8 +6,8 @@ class MatchDetailsInfo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      location:'',
-      time:''
+      match_datetime:'',
+      location:''
     }
   }
 
@@ -26,18 +26,38 @@ class MatchDetailsInfo extends Component {
     )
   }
 
+  sendFormInfo = () => {
+    const matchDetails = {
+      match_datetime:this.state.match_datatime,
+      location:this.state.location
+    }
+
+    this.props.sendAction({
+      endpoint:'/matches/id/set',
+      method: 'POST',
+      body: matchDetails
+    })
+
+  }
+
   render() {
     return (
       <div>
         <div className="infoContainer">
+
           <div>
 
             <form className="infoForm">
               {this.renderInput("location","text","location")}
-              {this.renderInput("time","date","time")}
+              {this.renderInput("time","datetime-local","match_datetime")}
             </form>
 
+            <div className="enter" onClick={this.sendFormInfo}>
+              <text> Enter </text>
+            </div>
+
           </div>
+
         </div>
       </div>
     );
