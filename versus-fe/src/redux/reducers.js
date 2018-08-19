@@ -126,16 +126,39 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'ACCEPT_MATCH_SUCCESS':
-      const newMatches = state.matches.map(
+      const newMatchesAccepted = state.matches.map(
         el => (el.match_id === action.data.match_id ? (el = action.data) : el)
       );
       return {
         ...state,
-        matches: newMatches,
+        matches: newMatchesAccepted,
         loading: false
       };
 
     case 'ACCEPT_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      };
+
+    case 'DECLINE_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'DECLINE_MATCH_SUCCESS':
+      const newMatchesDeclined = state.matches.map(
+        el => (el.match_id === action.data.match_id ? (el = action.data) : el)
+      );
+      return {
+        ...state,
+        matches: newMatchesDeclined,
+        loading: false
+      };
+
+    case 'DECLINE_MATCH_FAILURE':
       return {
         ...state,
         error: action.error,

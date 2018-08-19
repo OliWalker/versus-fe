@@ -7,7 +7,7 @@ import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 class Match extends Component {
   accept = () => this.props.acceptMatch(this.props.match_id);
 
-  reject = () => this.props.rejectMatch(this.props.match_id);
+  decline = () => this.props.declineMatch(this.props.match_id);
 
   delete = () => this.props.deleteMatch(this.props.match_id);
 
@@ -27,7 +27,7 @@ class Match extends Component {
           innerComponent = innerMatch.waiting;
         else {
           innerComponent = innerMatch.choices;
-          innerFunction = { accept: this.accept, reject: this.reject };
+          innerFunction = { accept: this.accept, decline: this.decline };
         }
         break;
       case 'DENIED':
@@ -48,7 +48,11 @@ class Match extends Component {
               src="http://www1.pictures.zimbio.com/gi/Roger+Federer+Olympics+Day+5+Tennis+UT0s03tVnhVl.jpg"
               alt="logo for the chosen sport"
             />
-            <h3>{user2.username}</h3>
+            <h3>
+              {user1.user_id === this.props.user.user_id
+                ? user2.username
+                : user1.username}
+            </h3>
           </div>
 
           <div className="MatchContainer__UsersMatched">
@@ -63,7 +67,9 @@ class Match extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  user: state.user
+});
 
 const mapDispatchToProps = dispatch => ({
   acceptMatch: match_id =>

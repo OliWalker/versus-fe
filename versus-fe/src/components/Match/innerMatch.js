@@ -23,7 +23,7 @@ export default {
         </button>
         <button
           className="MatchContainer__Content__decline"
-          onClick={props.innerFunction.reject}
+          onClick={props.innerFunction.decline}
         >
           decline
         </button>
@@ -44,13 +44,13 @@ export default {
   denied: props => {
     console.log(props);
     return (
-      <div
-        className="MatchContainer__Content__denied"
-        onClick={props.innerFunction}
-      >
-        <h2>
-          <i>denied</i>
-        </h2>
+      <div className="MatchContainer__Content__denied">
+        <div className="MatchContainer__Content__denied__banner">
+          <h2>
+            <i>canceled</i>
+          </h2>
+        </div>
+        <i className="fas fa-trash-alt" onClick={props.innerFunction} />
       </div>
     );
   },

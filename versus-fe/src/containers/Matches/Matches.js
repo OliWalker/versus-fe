@@ -33,6 +33,11 @@ class Matches extends Component {
     });
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.matches !== this.props.matches)
+      this.setState({ filteredMatches: this.props.matches });
+  }
+
   render() {
     const buttons = document.querySelectorAll('button');
 
@@ -47,7 +52,7 @@ class Matches extends Component {
     return (
       <div className="MyMatches">
         <div className="MyMatches__header">
-          <h1 onClick={this.renderMatchesFilter}> My Matches </h1>
+          <h1 onClick={this.renderMatchesFilter}>My Matches</h1>
 
           <div className="MyMatches__buttonFilter">
             {buttonsNames.map(el => (

@@ -77,15 +77,27 @@
 .MatchContainer__Content__waiting {
   color: lightgray;
   border: 1px solid lightgray;
-  padding: 1rem;
+  padding: .7rem;
   border-radius: 10px;
 }
 
 .MatchContainer__Content__denied {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.MatchContainer__Content__denied .fas {
+  font-size: 1.7rem;
+}
+
+.MatchContainer__Content__denied__banner {
   color: red;
   border: 1px solid red;
-  padding: 1rem;
+  padding: .5rem;
   border-radius: 10px;
+  font-size: .8rem;
 }
 
 .MatchContainer__Content__accepted {
