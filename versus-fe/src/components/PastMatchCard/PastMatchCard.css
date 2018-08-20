@@ -1,0 +1,15 @@
+.cardPastMatch {
+  display:flex;
+  justify-content: space-between;
+  border: 1px solid lightGrey;
+  border-radius: 2px;
+  width: 75vw;
+}
+
+.cardPastMatch > div {
+  margin: 2vw;
+}
+
+.result {
+  margin: 2vw;
+}

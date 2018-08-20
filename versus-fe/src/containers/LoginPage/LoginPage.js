@@ -10,12 +10,11 @@ class LoginPage extends Component {
     };
   }
 
-  sendDetails = event => {
-    event.preventDefault();
 
-    // const loginDetails = {
-    //     username:this.state.username,
-    //   }
+  sendDetails = (event) => {
+    const loginDetails = {
+      username:this.state.username,
+    }
 
     fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
       method: 'GET'
@@ -32,34 +31,39 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="loginContainer">
-        <h1> Login </h1>
-        <div className="loginDetails">
-          <form onSubmit={this.sendDetails}>
-            Username <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleFormChange}
-              name="username"
-            />
-            <br />
-            password <br />
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={this.handleFormChange}
-              name="password"
-            />
-            <br />
-            <input type="submit" value="Sign In" />
-          </form>
+
+      <div className="background">
+
+        <div className="loginContainer">
+
+          <h1> Welcome to Versus </h1>
+
+          <div className="loginDetails">
+
+            <form>
+              <span>  Username  </span>
+              <input type="text" value={this.state.username} onChange={this.handleFormChange} name="username" />
+
+              <span>  Password </span>
+              <input type="password" value={this.state.password} onChange={this.handleFormChange} name="password" />
+            </form>
+
+          </div>
+
+          <div className="organize">
+
+            <div className="submit" onClick={this.sendDetails}>
+              <text> Sign In </text>
+            </div>
+
+            <div className="SignUp" >
+              <a href="/SignUp"> Sign Up for an account </a>
+            </div>
+
+          </div>
+
         </div>
-        <br />
-        <a className="signUp" href="">
-          {' '}
-          Sign up{' '}
-        </a>
+
       </div>
     );
   }

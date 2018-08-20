@@ -1,24 +1,63 @@
+.title {
+  margin-top: 8vh;
+  color: Navy;
+}
+
 .divider {
   margin: 20px
 }
 
-.signUpContainer{
+.signUpContainer {
+  height:100vh;
+  display:flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
-.signUpFormContainer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.signUpFormContainer {
+  width:100vw
 }
 
 .signUpForm {
+  display
+  align-items: flex-start;
   width: 300px;
 }
 
 .divider {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
+  width: 90vw;
 }
-.inputField {
-  width: 150px;
+
+.divider > span {
+  font-size: 15px;
+  margin-left: 20px;
+  color:grey;
+}
+
+.divider > input {
+  margin: 15px;
+  border-radius: 5px;
+  width: 80vw;
+  height: 5vh;
+  border: 0px;
+  border-bottom: 1px solid lightgrey;
+  border-color: black
+}
+
+
+.SignUpButton {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--blueGrad);
+  height: 5vh;
+  width: 80vw;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 10vh;
 }

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPage should render as expected 1`] = `
+<div
+  className="ErrorPage"
+>
+  <h1>
+     Ooops something went wrong 
+  </h1>
+  <i
+    className="fas fa-exclamation-triangle"
+  />
+  <h3>
+     try hitting 'Refresh'
+  </h3>
+  <h4>
+     or just cry 
+  </h4>
+</div>
+`;

@@ -1,0 +1,37 @@
+.opponentContainer{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.opponentProfile {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 75vw;
+  margin:8px;
+  padding: 5vw;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background: white;
+}
+
+.opponentPhoto {
+  display:block;
+  margin:2vw;
+  width:15vw;
+  height:9vh;
+  border-radius: 50%;
+}
+
+.opponentName {
+  font-size: 6vh;
+}
+
+.opponentPastGames{
+  background: white;
+  height: 30vh;
+  overflow: auto;
+  border: 2px solid black;
+}
