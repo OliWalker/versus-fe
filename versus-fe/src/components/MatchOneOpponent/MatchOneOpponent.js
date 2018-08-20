@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './MatchOneOpponent.css';
-import { AreaChart, Area, XAxis } from 'recharts';
-import Loading from '../LoadingPage/LoadingPage';
 
 export default class MatchOneOpponent extends Component {
   constructor(props) {
@@ -69,24 +67,4 @@ export default class MatchOneOpponent extends Component {
       </div>
     );
   }
-}
-
-//  <div
-//     className={`MatchOneOpponent flip-container ${this.state.hover}`}
-//     onTouchStart={this.handleFlip}
-//   >
-//     <div className="MatchOneOpponent__picture flipper">
-
-{
-  /* <div className="MatchOneOpponent__graph">
-                <AreaChart width={220} height={200} data={this.state.stats}>
-                  <XAxis dataKey="date" padding={{ bottom: -150 }} />
-                  <Area
-                    type="monotone"
-                    dataKey="score"
-                    stoke="#8884d8"
-                    strokeWidth={3}
-                  />
-                </AreaChart>
-              </div> */
 }

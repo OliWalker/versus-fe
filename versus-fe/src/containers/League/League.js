@@ -33,6 +33,7 @@ class League extends Component {
                   key={user.user_id}
                   i={i}
                   user={user}
+                  mainUser={this.props.user}
                   league={league_id}
                 />
               ))
@@ -44,7 +45,8 @@ class League extends Component {
 }
 
 const mapStateToProps = state => ({
-  leagueNow: state.leagueNow
+  leagueNow: state.leagueNow,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
