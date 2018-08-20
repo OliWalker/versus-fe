@@ -6,23 +6,13 @@ import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportSc
 
 export class ProfilePage extends Component {
   render() {
-
     const { user, stats } = this.props;
 
-    if (!stats[0]) return <Loading />;
-    else {
-      return (
-        <div className="ProfilePage">
-          <div className="ProfilePage__picture">
-            <img alt="random Dude" src={user.image_path} />
-          </div>
-
-          <span className="ProfilePage__name">
-            {user.first_name} {user.last_name}
-          </span>
-          <span className="ProfilePage__score">
-            <i>{user.total_score}</i>
-          </span>
+    return (
+      <div className="ProfilePage">
+        <div className="ProfilePage__picture">
+          <img alt="random Dude" src={user.image_path} />
+        </div>
 
         <span className="ProfilePage__name">
           {user.first_name} {user.last_name}
@@ -34,7 +24,11 @@ export class ProfilePage extends Component {
         <div className="ProfilePage__all__scores">
           {stats.map(sport => {
             return (
-              <ProfileSportScore title={sport.name} score={sport.data.score} />
+              <ProfileSportScore
+                key={sport.league_id}
+                title={sport.name}
+                score={sport.data.score}
+              />
             );
           })}
         </div>
