@@ -32,8 +32,11 @@ export default class MatchOneOpponent extends Component {
 
   render() {
     return (
-      <div>
-        <div className="MatchOneOpponent">
+      <div
+        className={`flip-container ${this.state.hover}`}
+        onTouchStart={this.handleFlip}
+      >
+        <div className="MatchOneOpponent flipper">
           {this.props.opponent ? (
             <div className="MatchOneOpponent__info">
               <h2> {this.props.opponent.username} </h2>
@@ -72,6 +75,12 @@ export default class MatchOneOpponent extends Component {
     );
   }
 }
+
+//  <div
+//     className={`MatchOneOpponent flip-container ${this.state.hover}`}
+//     onTouchStart={this.handleFlip}
+//   >
+//     <div className="MatchOneOpponent__picture flipper">
 
 {
   /* <div className="MatchOneOpponent__graph">
