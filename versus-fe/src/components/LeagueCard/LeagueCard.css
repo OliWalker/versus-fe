@@ -8,7 +8,8 @@
 }
 
 .LeagueCard__user {
-  background-color: yellow;
+  background-color: var(--flatBlue);
+  color: var(--white);
   width: 90vw;
   padding: 0 10vw;
 }
