@@ -120,6 +120,24 @@ const reducer = (state = initalState, action) => {
         ...state,
         opponentNow: {}
       };
+    case 'SEND_MATCH_DETAILS_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'SEND_MATCH_DETAILS_SUCCESS':
+      const alteredMatches = state.matches.map( el => el.match_id === action.data.match_id? action.data : el )
+      return {
+        ...state,
+        matches: alteredMatches,
+        loading: false
+      };
+
+    case 'SEND_MATCH_DETAILS_FAILURE':
+      return {
+        ...state,
+        loading: false
+      };
 
     default:
       return state;

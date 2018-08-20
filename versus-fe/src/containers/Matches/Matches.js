@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Matches.css'
 import Match from '../../components/Match/Match'
+import {Link} from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../redux/actions'
@@ -20,7 +21,11 @@ class Matches extends Component {
   renderMatches = () => {
     const filteredMatches = this.state.filteredMatches
     return filteredMatches.map(theMatch => {
-      return <Match matchInfo={theMatch} />
+      return (
+        <Link to={`/matchDetails/${theMatch.match_ID}`}>
+          <Match matchInfo={theMatch} />
+        </Link>
+      )
       })
   }
 
