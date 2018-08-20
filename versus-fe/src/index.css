@@ -25,3 +25,8 @@ a {
 button:focus {
   outline: 0;
 }
+
+button:hover {
+  background-color: var(--flatBlue);
+  color: white;
+}
