@@ -4,10 +4,21 @@ import './ProfilePage.css';
 import { connect } from 'react-redux';
 import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportScore';
 
-export class ProfilePage extends Component {
+import { XAxis, Tooltip, AreaChart, Area } from 'recharts';
+
+class ProfilePage extends Component {
+  state = {
+    data: this.props.user.elo_history
+  };
+
+  toggleGraph = sport => {
+    this.setState({
+      data: sport
+    });
+  };
+
   render() {
     const { user, stats } = this.props;
-
     return (
       <div className="ProfilePage">
         <div className="ProfilePage__picture">
@@ -17,7 +28,10 @@ export class ProfilePage extends Component {
         <span className="ProfilePage__name">
           {user.first_name} {user.last_name}
         </span>
-        <span className="ProfilePage__score">
+        <span
+          className="ProfilePage__score"
+          onClick={() => this.toggleGraph(this.props.user.elo_history)}
+        >
           <i>{user.total_score}</i>
         </span>
 
@@ -26,15 +40,24 @@ export class ProfilePage extends Component {
             return (
               <ProfileSportScore
                 key={sport.league_id}
-                title={sport.name}
-                score={sport.data.score}
+                sport={sport}
+                onClick={() => this.toggleGraph(sport.elo_history)}
               />
             );
           })}
         </div>
 
         <div className="ProfilePage__stats">
-          <img src="./graph.png" alt="stat graph" />
+          <AreaChart width={400} height={200} data={this.state.data}>
+            <XAxis dataKey="date" padding={{ bottom: -150 }} />
+            <Tooltip />
+            <Area
+              type="monotone"
+              dataKey="score"
+              stoke="#8884d8"
+              strokeWidth={3}
+            />
+          </AreaChart>
         </div>
       </div>
     );

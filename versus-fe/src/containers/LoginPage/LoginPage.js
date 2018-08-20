@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './LoginPage.css'
+import './LoginPage.css';
 
 class LoginPage extends Component {
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: ''
-    }
+    };
   }
+
 
   sendDetails = (event) => {
     const loginDetails = {
@@ -17,20 +17,21 @@ class LoginPage extends Component {
     }
 
     fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
-      method: "GET"
-    }).then(res => res.json())
-    .then(data => console.log(data))
-
-  }
-
-  handleFormChange = (event) =>{
-    this.setState({
-      [event.target.name]:event.target.value
+      method: 'GET'
     })
-  }
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
+  handleFormChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   render() {
     return (
+
       <div className="background">
 
         <div className="loginContainer">
@@ -66,7 +67,6 @@ class LoginPage extends Component {
       </div>
     );
   }
-
 }
 
 export default LoginPage;

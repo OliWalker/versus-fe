@@ -19,9 +19,7 @@ import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log('user', this.props.user.user_id)
+  componentDidMount() {
     if (!this.props.user.user_id) this.props.getUserInfo();
   }
 
@@ -40,7 +38,7 @@ class App extends Component {
           <Route path="/profile" component={ProfilePage} />
           <Route path="/sportsList" component={SportsList} />
           <Route path="/league/:id" component={League} />
-          <Route path="/match" component={MatchOne} />
+          <Route path="/match/:league/:opponent" component={MatchOne} />
           <Route path="/opponents" component={MatchingCardsList} />
           <Route path="/matchDetails/:id" component={MatchDetails} />
 

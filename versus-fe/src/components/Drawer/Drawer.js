@@ -1,111 +1,109 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Drawer.css';
-
 import { Link } from 'react-router-dom';
+import { getOneLeague } from '../../redux/actions';
 
 class Drawer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerClass: '',
-      hamburgerClass: '',
-      leaguesClass: 'Drawer__LeagueList__closed'
-    };
-  }
+  state = {
+    drawerStatus: '',
+    hamburgerStatus: '',
+    leaguesStatus: ''
+  };
 
   toggleLeagues = () => {
-    const leaguesClass =
-      this.state.leaguesClass === '' ? 'Drawer__LeagueList__closed' : '';
-    this.setState({ leaguesClass });
+    const target = document.querySelector('.Drawer__LeagueList');
+    if (this.state.leaguesStatus === '') {
+      target.style.height = '300px';
+      this.setState({ leaguesStatus: 'open' });
+    } else {
+      target.style.height = '0';
+      this.setState({ leaguesStatus: '' });
+    }
   };
 
-  openDrawer = e => {
-    const hamburgerClass =
-      this.state.hamburgerClass === '' ? 'Header__hamburger__open' : '';
-    const drawerClass =
-      this.state.drawerClass === '' ? 'Header__drawer__open' : '';
-    this.setState({ hamburgerClass, drawerClass });
+  toggleDrawer = () => {
+    const hamburgerStatus =
+      this.state.hamburgerStatus === '' ? 'Drawer__hamburger__open' : '';
+    const drawerStatus =
+      this.state.drawerStatus === '' ? 'Drawer__drawer__open' : '';
+    this.setState({ hamburgerStatus, drawerStatus });
   };
+
+  switchLeague = leagueId => this.props.getOneLeague(leagueId);
 
   render() {
     const stats = this.props.stats;
-    let notifications;
-    if (this.props.matches[0])
-      notifications = this.props.matches.filter(
-        match => match.status === 'PENDING'
-      ).length;
+    const notifications = this.props.matches.filter(
+      match => match.status === 'PENDING'
+    ).length;
 
     return (
-      <div className="Header">
-        <div className={`Header__drawer ${this.state.drawerClass}`}>
-          <div className="Drawer">
-            <Link to="/profile">
-              <div className="Drawer__logo">
-                <h1> Versus </h1>
+      <div>
+        <i
+          className={`fas fa-bars Drawer__hamburger ${
+            this.state.hamburgerStatus
+          }`}
+          onClick={this.toggleDrawer}
+        />
+        <div className={`Drawer ${this.state.drawerStatus}`}>
+          <Link to="/profile" onClick={this.toggleDrawer}>
+            <h1 className="Drawer__logo">Versus</h1>
+          </Link>
+
+          <div className="Drawer__button__list">
+            <div className="Drawer__button" onClick={this.toggleLeagues}>
+              <i className="fas fa-trophy" />
+              <span> Leagues </span>
+            </div>
+
+            <div className={'Drawer__LeagueList'}>
+              {stats.map(league => {
+                const cliker = () => {
+                  this.toggleDrawer();
+                  this.toggleLeagues();
+                  return this.switchLeague(league.league_id);
+                };
+                return (
+                  <Link
+                    key={league.league_id}
+                    to={`/league/${league.league_id}`}
+                    className={'Drawer__LeagueList__sport'}
+                    onClick={cliker}
+                  >
+                    {league.sport_name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <Link to="/myMatches" onClick={this.toggleDrawer}>
+              <div className="Drawer__button Drawer__button__notie">
+                {notifications > 0 ? (
+                  <div className="Drawer__button__notification">
+                    {notifications}
+                  </div>
+                ) : null}
+                <i className="far fa-calendar-check" />
+                <span> Matches</span>
               </div>
             </Link>
 
-            <div className="Drawer__button__list">
-              <div className="Drawer__button" onClick={this.toggleLeagues}>
-                <i className="fas fa-trophy" />
-                <span> Leagues </span>
+            <Link to="/sportsList" onClick={this.toggleDrawer}>
+              <div className="Drawer__button">
+                <i className="fas fa-futbol" />
+                <span>Sports</span>
               </div>
+            </Link>
 
-              <div className="Drawer__LeagueList ">
-                {stats[0]
-                  ? stats.map(league => {
-                      return (
-                        <Link
-                          key={league.league_id}
-                          to={`/league/${league.league_id}`}
-                          className={`Drawer__LeagueList__sport ${
-                            this.state.leaguesClass
-                          }`}
-                        >
-                          {league.name}
-                        </Link>
-                      );
-                    })
-                  : null}
+            <Link to="/" onClick={this.toggleDrawer}>
+              <div className="Drawer__button">
+                <i className="fas fa-power-off" />
+                <span> Log-out </span>
               </div>
-
-
-              <Link to="/matches">
-                <div className="Drawer__button Drawer__button__notie">
-                  {notifications > 0 ? (
-                    <div className="Drawer__button__notification">
-                      {notifications}
-                    </div>
-                  ) : null}
-                  <i className="far fa-calendar-check" />
-                  <span> Matches</span>
-                </div>
-              </Link>
-
-              <Link to="/sportsList">
-                <div className="Drawer__button">
-                  <i className="fas fa-futbol" />
-                  <span>Sports</span>
-                </div>
-              </Link>
-
-              <Link to="/">
-                <div className="Drawer__button">
-                  <i className="fas fa-power-off" />
-                  <span> Log-out </span>
-                </div>
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
-
-        <i
-          className={`fas fa-bars Header__hamburger ${
-            this.state.hamburgerClass
-          }`}
-          onClick={this.openDrawer}
-        />
       </div>
     );
   }
@@ -116,4 +114,11 @@ const mapStateToProps = state => ({
   matches: state.matches
 });
 
-export default connect(mapStateToProps)(Drawer);
+const mapDispatchToProps = dispatch => ({
+  getOneLeague: league_id =>
+    dispatch(getOneLeague({ endpoint: `/leagues/${league_id}` }))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Drawer);

@@ -1,13 +1,15 @@
 import React from 'react';
 import './ProfileSportScore.css';
 
-export default function ProfileSportScore(props) {
+export default function ProfileSportScore({ sport, ...props }) {
   return (
-    <div className="ProfilePage__sport__score">
+    <div className="ProfilePage__sport__score" {...props}>
       <span className="ProfilePage__sport__score__single">
-        <i>{props.score}</i>
+        <i>{sport.data.score}</i>
       </span>
-      <span className="ProfilePage__sport__name__single">{props.title}</span>
+      <span className="ProfilePage__sport__name__single">
+        {sport.sport_name}
+      </span>
     </div>
   );
 }

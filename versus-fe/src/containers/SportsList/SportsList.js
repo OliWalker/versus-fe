@@ -5,60 +5,99 @@ import { connect } from 'react-redux';
 import { getAllLeagues } from '../../redux/actions';
 
 class SportsList extends Component {
-  constructor(props) {
-    super(props);
-    this.props.getAllLeagues();
+  state = {
+    mySportsHeader: true,
+    allLeagues: [],
+    myLeagues: [],
+    otherLeagues: [],
+    search: '',
+    isOpen: false
+  };
 
-    this.state = {
-      mySports: true
-    };
+  componentDidMount() {
+    if (this.props.allLeagues.length === 0 && this.props.stats.length > 0)
+      this.props.getAllLeagues();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.allLeagues.length === 0 && this.props.allLeagues.length > 0) {
+      const mySports = this.props.stats.map(sport => sport.sport_name);
+      const myLeagues = this.props.allLeagues.filter(el =>
+        mySports.includes(el.sport_name)
+      );
+      const otherLeagues = this.props.allLeagues.filter(
+        el => !mySports.includes(el.sport_name)
+      );
+      this.setState({
+        allLeagues: this.props.allLeagues,
+        myLeagues,
+        otherLeagues
+      });
+    }
   }
 
   handleScroll = e => {
-
     const myViewPort = e.target.scrollTop;
     const allSportsDiv = document.querySelector('.SportList__allSports')
       .scrollHeight;
     myViewPort > allSportsDiv
-      ? this.setState({ mySports: false })
-      : this.setState({ mySports: true });
+      ? this.setState({ mySportsHeader: false })
+      : this.setState({ mySportsHeader: true });
   };
 
-  handleSearch = () => {};
+  toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
+
+  handleSearch = e => {
+    this.setState({ search: e.target.value });
+    const mySports = this.props.stats.map(sport => sport.sport_name);
+    const regex = RegExp(e.target.value);
+    const allLeagues = this.props.allLeagues.filter(el =>
+      regex.test(el.sport_name)
+    );
+    const myLeagues = allLeagues.filter(el => mySports.includes(el.sport_name));
+    const otherLeagues = allLeagues.filter(
+      el => !mySports.includes(el.sport_name)
+    );
+    this.setState({
+      allLeagues,
+      myLeagues,
+      otherLeagues
+    });
+  };
 
   render() {
-    const mySports = this.props.stats.map(sport => sport.name);
-    const allSports = this.props.allLeagues.filter(
-      el => !mySports.includes(el.name)
-    );
-
+    const width = this.state.isOpen ? { width: 220 } : { width: 0 };
     return (
       <div className="SportsList">
         <div className="SportsList__header">
           <input
             className="SportsList__Search"
-            value="Search"
+            placeholder="Search"
+            style={width}
+            value={this.state.search}
             onChange={this.handleSearch}
           />
+          <i
+            className="fas fa-search SportsList__SearchIcon"
+            onClick={this.toggle}
+          />
+
           <span>
-            <i>{this.state.mySports ? 'my Sports' : 'all Sports'}</i>
+            <i>{this.state.mySportsHeader ? 'my Sports' : 'all Sports'}</i>
           </span>
         </div>
 
-
         <div className="SportsList__list" onScroll={this.handleScroll}>
           <div className="SportList_mySports">
-            {this.props.stats[0]
-              ? this.props.stats.map((sport, i) => (
-                  <SportCard key={i} sport={sport} />
-                ))
-              : null}
+            {this.state.myLeagues.map((sport, i) => (
+              <SportCard key={i} sport={sport} mine={true} />
+            ))}
           </div>
 
           <div className="SportList__allSports">
-            {allSports[0]
-              ? allSports.map((sport, i) => <SportCard key={i} sport={sport} />)
-              : null}
+            {this.state.otherLeagues.map((sport, i) => (
+              <SportCard key={i} sport={sport} />
+            ))}
           </div>
         </div>
       </div>
@@ -73,7 +112,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllLeagues: () => dispatch(getAllLeagues({ endpoint: '/sports' }))
+  getAllLeagues: () =>
+    dispatch(getAllLeagues({ endpoint: '/barcelona/leagues' }))
 });
 
 export default connect(

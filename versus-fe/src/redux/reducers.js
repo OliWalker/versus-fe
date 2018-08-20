@@ -6,8 +6,7 @@ const initalState = {
   error: false,
   leagueNow: {},
   allLeagues: [],
-  opponentNow: {},
-  matchMade: false
+  opponentNow: {}
 };
 
 const reducer = (state = initalState, action) => {
@@ -74,6 +73,26 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+    case 'JOIN_LEAGUE_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'JOIN_LEAGUE_SUCCESS':
+      return {
+        ...state,
+        stats: [...state.stats, action.data],
+        loading: false
+      };
+
+    case 'JOIN_LEAGUE_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      };
+
     case 'GET_OPPONENT_REQUEST':
       return {
         ...state,
@@ -104,7 +123,6 @@ const reducer = (state = initalState, action) => {
       return {
         ...state,
         matches: [...state.matches, action.data],
-        matchMade: true,
         loading: false
       };
 
@@ -136,6 +154,52 @@ const reducer = (state = initalState, action) => {
     case 'SEND_MATCH_DETAILS_FAILURE':
       return {
         ...state,
+        loading: false
+      };
+
+    case 'ACCEPT_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'ACCEPT_MATCH_SUCCESS':
+      const newMatchesAccepted = state.matches.map(
+        el => (el.match_id === action.data.match_id ? (el = action.data) : el)
+      );
+      return {
+        ...state,
+        matches: newMatchesAccepted,
+        loading: false
+      };
+
+    case 'ACCEPT_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      };
+
+    case 'DECLINE_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'DECLINE_MATCH_SUCCESS':
+      const newMatchesDeclined = state.matches.map(
+        el => (el.match_id === action.data.match_id ? (el = action.data) : el)
+      );
+      return {
+        ...state,
+        matches: newMatchesDeclined,
+        loading: false
+      };
+
+    case 'DECLINE_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
         loading: false
       };
 

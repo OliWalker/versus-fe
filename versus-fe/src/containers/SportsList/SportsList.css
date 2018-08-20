@@ -7,7 +7,7 @@
 }
 
 .SportsList__header {
-  height: 30vh;
+  height: 25vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -26,19 +26,29 @@
   margin-top: 3.2vh;
   height: 5vh;
   width: 60vw;
-  margin-left: 35vw;
+  margin-left: 30vw;
   border-radius: 20px;
   border: none;
-  background-color: rgba(33, 33, 190, 0.25);
-  color: rgba(231, 231, 231, 0.4);
+  background-color: var(--white);
+  color: rgba(33, 33, 190, 0.25);
   font-size: 1rem;
-  text-align: center
+  text-align: center;
+  position: relative;
+  transition: width 200ms ease-out;
+}
+
+.SportsList__SearchIcon {
+  position: absolute;
+  color: white;
+  right: 5vw;
+  top: 4vh;
+  font-size: 1.5rem
 }
 
 .SportsList__list {
   width: 100vw;
-  height: 70vh;
-  margin-top: 30vh;
+  height: 75vh;
+  margin-top: 25vh;
   background-color: ghostwhite;
   display: flex;
   flex-direction: column;

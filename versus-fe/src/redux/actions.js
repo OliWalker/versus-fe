@@ -28,6 +28,16 @@ export const getAllLeagues = apiInfo => ({
   }
 });
 
+export const joinLeague = apiInfo => ({
+  type: 'JOIN_LEAGUE',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
 export const getOpponent = apiInfo => ({
   type: 'GET_OPPONENT',
   api: {
@@ -52,12 +62,42 @@ export const removeOpponent = () => ({
   type: 'REMOVE_OPPONENT'
 });
 
-export const sendMatchDetails = (apiInfo) => ({
-  type: 'SEND_MATCH_DETAILS',
+export const acceptMatch = apiInfo => ({
+  type: 'ACCEPT_MATCH',
   api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-})
+});
+
+export const declineMatch = apiInfo => ({
+  type: 'DECLINE_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const deleteMatch = apiInfo => ({
+  type: 'DELETE_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const sendMatchDetails = (apiInfo) => ({
+  type: 'SEND_MATCH_DETAILS',
+    api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
