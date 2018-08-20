@@ -17,10 +17,10 @@ import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 
 class App extends Component {
-    componentDidMount() {
+  componentDidMount() {
     if (!this.props.user.user_id) this.props.getUserInfo();
-    }
-  
+  }
+
   render() {
     if (this.props.error) return <ErrorPage />;
     else if (this.props.loading && this.props.user.user_id === undefined) {
