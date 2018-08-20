@@ -19,7 +19,7 @@ class MatchDetailsInfo extends Component {
 
   renderInput = (label, type ,name) => {
     return (
-      <div className="divider">
+      <div className="dividerInfo">
         <span> {label} </span>
         <input className="inputField" type={type} onChange={this.handleFormChange} name={name}/>
       </div>
@@ -45,18 +45,14 @@ class MatchDetailsInfo extends Component {
       <div>
         <div className="infoContainer">
 
-          <div>
-
             <form className="infoForm">
-              {this.renderInput("location","text","location")}
-              {this.renderInput("time","datetime-local","match_datetime")}
+              {this.renderInput("Location","text","location")}
+              {this.renderInput("Time","datetime-local","match_datetime")}
             </form>
 
             <div className="enter" onClick={this.sendFormInfo}>
               <text> Enter </text>
             </div>
-
-          </div>
 
         </div>
       </div>

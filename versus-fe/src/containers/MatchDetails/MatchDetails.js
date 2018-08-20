@@ -3,7 +3,6 @@ import './MatchDetails.css'
 
 import MatchDetailsInfo from '../../components/MatchDetailsInfo/MatchDetailsInfo'
 import OpponentDetails from '../../components/OpponentDetails/OpponentDetails'
-import Loading from '../../components/LoadingPage/LoadingPage'
 
 
 import { connect } from 'react-redux'
@@ -36,21 +35,16 @@ class MatchDetails extends Component {
 
   renderOpponentStats = () => {
     if(this.state.opponentNow !== 'false') {
-      return <OpponentDetails theOpponent={this.state.opponentNow}/>
+        return <OpponentDetails theOpponent={this.state.opponentNow}/>
       }
     }
 
   render() {
       return (
-        <div className="MatchDetailsContainer">
+        <div className="matchDetailsContainer">
 
-          <div>
+          <div className="matchTitle">
             <h1> Match Details </h1>
-          </div>
-
-          <div className="viewController">
-            <button type="button" name="details"> Details </button>
-            <button type="button" name="details"> Messages </button>
           </div>
 
           {this.renderOpponentStats()}

@@ -2,6 +2,7 @@
   display:flex;
   justify-content: space-between;
   border: 1px solid lightGrey;
+  border-radius: 2px;
   width: 75vw;
 }
 
@@ -9,6 +10,6 @@
   margin: 2vw;
 }
 
-.result{
+.result {
   margin: 2vw;
 }

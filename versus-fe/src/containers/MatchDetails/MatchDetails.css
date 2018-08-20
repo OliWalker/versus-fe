@@ -1,0 +1,11 @@
+.matchDetailsContainer{
+  height: 100vh;
+}
+
+.matchTitle {
+  background: var(--blueGrad);
+  height: 20vh;
+  padding-top:10vh;
+  color: white;
+}
+  

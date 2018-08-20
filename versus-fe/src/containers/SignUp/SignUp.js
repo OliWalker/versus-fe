@@ -14,7 +14,6 @@ class SignUp extends Component {
   }
     sendSignUp = (event) => {
       event.preventDefault()
-      console.log("ahhhh")
       const signUpDetails = {
         username:this.state.username,
         first_name:this.state.first_name,

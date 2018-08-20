@@ -14,23 +14,17 @@ class OpponentDetails extends Component {
     return (
       <div>
         <div className='opponentContainer'>
-
           <div className="opponentProfile">
-
             <div className='opponentPhotoDiv'>
               <img className="opponentPhoto" src={this.props.theOpponent.image_path} alt="the beautiful"/>
             </div>
-
             <div className='opponentNameDiv'>
               <text className='opponentName'> {this.props.theOpponent.username} </text>
             </div>
-
           </div>
-
           <div className='opponentPastGames'>
             {this.renderMatch_history()}
           </div>
-
         </div>
       </div>
     );

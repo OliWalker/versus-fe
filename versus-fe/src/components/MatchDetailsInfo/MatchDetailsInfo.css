@@ -1,4 +1,34 @@
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dividerInfo {
+  margin: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75vw;
+}
+
+.dividerInfo > span {
+  font-size: 15px;
+  color:grey;
+}
+.dividerInfo > input {
+  width: 75vw;
+  border-bottom:
+}
+
 .enter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--blueGrad);
   color:white;
+  width: 75vw;
+  height: 5vh;
+  border-radius: 30px;
 }
