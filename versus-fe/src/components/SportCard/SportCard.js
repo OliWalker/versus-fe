@@ -44,7 +44,9 @@ class SportCard extends React.Component {
         </div>
 
         <div className="SportCard SportCard__JoinLeague" style={joinHeight}>
-          <div className="SkillLevel">Choose Your Skill Level</div>
+          <div className="SkillLevel" onClick={this.toggleJoin}>
+            Choose Your Skill Level
+          </div>
           <div className="SportCard__JoinLeague__buttons">
             <button
               className="SportCard__button"

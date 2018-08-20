@@ -38,6 +38,7 @@ class Match extends Component {
       default:
         innerComponent = null;
     }
+    console.log('PROPS', this.props);
 
     return (
       <div>
@@ -45,7 +46,11 @@ class Match extends Component {
           <div className="MatchContainer__imageContainer">
             <img
               className="MatchContainer__sportImage"
-              src="http://www1.pictures.zimbio.com/gi/Roger+Federer+Olympics+Day+5+Tennis+UT0s03tVnhVl.jpg"
+              src={
+                user1.user_id === this.props.user.user_id
+                  ? user2.image_path
+                  : user1.image_path
+              }
               alt="logo for the chosen sport"
             />
             <h3>
