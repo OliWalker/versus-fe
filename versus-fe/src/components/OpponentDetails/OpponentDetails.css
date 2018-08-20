@@ -14,6 +14,7 @@
   padding: 5vw;
   border: 1px solid grey;
   border-radius: 10px;
+  background: white;
 }
 
 .opponentPhoto {
@@ -29,6 +30,7 @@
 }
 
 .opponentPastGames{
+  background: white;
   height: 30vh;
   overflow: auto;
   border: 2px solid black;

@@ -42,7 +42,7 @@ class MatchDetailsInfo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="infoBackGround">
         <div className="infoContainer">
 
             <form className="infoForm">

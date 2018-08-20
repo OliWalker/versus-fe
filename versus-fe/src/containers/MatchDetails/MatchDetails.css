@@ -1,5 +1,9 @@
-.matchDetailsContainer{
+.matchDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
+  background-color: ghostWhite;
 }
 
 .matchTitle {
@@ -8,4 +12,11 @@
   padding-top:10vh;
   color: white;
 }
-  
+
+.matchOpponentStats {
+  margin: 3vw;
+}
+
+.matchDetailsInfo {
+  margin-bottom: 5vh;
+}

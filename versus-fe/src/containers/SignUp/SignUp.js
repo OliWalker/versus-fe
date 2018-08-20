@@ -51,11 +51,9 @@ class SignUp extends Component {
   render() {
     return (
       <div className="signUpContainer">
-
         <div className="title">
           <h1> Sign Up </h1>
         </div>
-
         <div className="signUpFormContainer">
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
@@ -63,12 +61,9 @@ class SignUp extends Component {
             {this.renderInput("Email", "text", "email")}
           </form>
         </div>
-
         <div className="SignUpButton" onClick={this.sendSignUp}>
           <text> Register </text>
         </div>
-
-
       </div>
     );
   }

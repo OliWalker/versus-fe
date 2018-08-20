@@ -47,8 +47,13 @@ class MatchDetails extends Component {
             <h1> Match Details </h1>
           </div>
 
-          {this.renderOpponentStats()}
-          <MatchDetailsInfo sendAction={this.props.sendMatchDetails} />
+          <div className="matchOpponentStats">
+            {this.renderOpponentStats()}
+          </div>
+
+          <div className="matchDetailsInfo">
+            <MatchDetailsInfo sendAction={this.props.sendMatchDetails} />
+          </div>
 
         </div>
       )
