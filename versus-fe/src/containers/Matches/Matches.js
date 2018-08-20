@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import './Matches.css';
 import Match from '../../components/Match/Match';
 import { connect } from 'react-redux';
-import './Matches.css'
-import Match from '../../components/Match/Match'
-import {Link} from 'react-router-dom'
+import './Matches.css';
+import { Link } from 'react-router-dom';
 
-import { getUserInfo } from '../../redux/actions'
+import { getUserInfo } from '../../redux/actions';
 
 import Loading from '../../components/LoadingPage/LoadingPage';
 

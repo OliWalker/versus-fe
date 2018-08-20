@@ -11,7 +11,7 @@ import SportsList from './containers/SportsList/SportsList';
 import League from './containers/League/League';
 import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList';
 import MatchOne from './containers/MatchOne/MatchOne';
-import MatchDetails from './containers/MatchDetails/MatchDetails'
+import MatchDetails from './containers/MatchDetails/MatchDetails';
 
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Loading from './components/LoadingPage/LoadingPage';
@@ -25,23 +25,20 @@ class App extends Component {
 
   render() {
     if (this.props.error) return <ErrorPage />;
-    else if (this.props.loading && !this.props.user.user_id)
-      return <Loading />;
+    else if (this.props.loading && !this.props.user.user_id) return <Loading />;
     else
-      return(
+      return (
         <div className="App">
-
           <Route path="/" component={Drawer} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signUp" component={SignUp} />
-          <Route path="/matches" component={Matches} />
+          <Route path="/myMatches" component={Matches} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/sportsList" component={SportsList} />
           <Route path="/league/:id" component={League} />
           <Route path="/match/:league/:opponent" component={MatchOne} />
           <Route path="/opponents" component={MatchingCardsList} />
           <Route path="/matchDetails/:id" component={MatchDetails} />
-
         </div>
       );
   }
