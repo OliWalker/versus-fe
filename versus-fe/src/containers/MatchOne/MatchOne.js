@@ -50,7 +50,11 @@ class MatchOne extends Component {
 
         <div className="MatchOne__players">
           <div className="MatchOne__user">
-            <MatchOneOpponent user={this.props.user} stats={this.props.stats} />
+            <MatchOneOpponent
+              user={this.props.user}
+              stats={this.props.stats}
+              league={this.props.match.params.league}
+            />
           </div>
 
           <div className="MatchOne__opponent">

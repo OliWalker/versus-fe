@@ -1,7 +1,24 @@
 .MatchOneOpponent {
-  width: 80vw;
+  width: 90vw;
+  padding: 5px 0;
   display: flex;
   justify-content: space-evenly;
+  border: 1px solid gray;
+  border-radius: 7px;
+}
+
+.MatchOneOpponent__info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.MatchOneOpponent__info__user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 12vh;
 }
 
 .MatchOneOpponent__picture {
@@ -47,7 +64,7 @@
   width: 40%;
 }
 
-.MatchOneOpponent__graph {
+/* .MatchOneOpponent__graph {
   max-width: 80%;
   overflow: hidden;
   border-radius: 50%;
@@ -55,7 +72,7 @@
 
 .MatchOneOpponent__graph img {
   height: 100px;
-}
+} */
 
 /* entire container, keeps perspective */
 
