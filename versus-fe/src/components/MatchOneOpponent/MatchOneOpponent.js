@@ -32,45 +32,40 @@ export default class MatchOneOpponent extends Component {
 
   render() {
     return (
-      <div
-        className={`flip-container ${this.state.hover}`}
-        onTouchStart={this.handleFlip}
-      >
-        <div className="MatchOneOpponent flipper">
-          {this.props.opponent ? (
-            <div className="MatchOneOpponent__info">
-              <h2> {this.props.opponent.username} </h2>
-              <h1> {this.props.opponent.score} </h1>
-              <span> wins </span>
-              <span> {this.props.opponent.matches_won} </span>
-              <span> lost </span>
-              <span> {this.props.opponent.matches_lost} </span>
-            </div>
-          ) : null}
-
-          <div className="MatchOneOpponent__picture">
-            {this.props.opponent ? (
-              <img src={this.props.opponent.image_path} alt="opponent" />
-            ) : (
-              <img src={this.props.user.image_path} alt="user" />
-            )}
+      <div className="MatchOneOpponent">
+        {this.props.opponent ? (
+          <div className="MatchOneOpponent__info">
+            <h2> {this.props.opponent.username} </h2>
+            <h1> {this.props.opponent.score} </h1>
+            <span> wins </span>
+            <span> {this.props.opponent.matches_won} </span>
+            <span> lost </span>
+            <span> {this.props.opponent.matches_lost} </span>
           </div>
+        ) : null}
 
-          {this.props.user ? (
-            <div className="MatchOneOpponent__info">
-              <h2> {this.props.user.username} </h2>
-              <h1> {this.props.user.total_score} </h1>
-              <span> wins </span>
-              {this.state.sport.length > 0 ? (
-                <div className="MatchOneOpponent__info__user">
-                  <span> {this.state.sport[0].data.matches_won} </span>
-                  <span> lost </span>
-                  <span> {this.state.sport[0].data.matches_lost} </span>
-                </div>
-              ) : null}
-            </div>
-          ) : null}
+        <div className="MatchOneOpponent__picture">
+          {this.props.opponent ? (
+            <img src={this.props.opponent.image_path} alt="opponent" />
+          ) : (
+            <img src={this.props.user.image_path} alt="user" />
+          )}
         </div>
+
+        {this.props.user ? (
+          <div className="MatchOneOpponent__info">
+            <h2> {this.props.user.username} </h2>
+            <h1> {this.props.user.total_score} </h1>
+            <span> wins </span>
+            {this.state.sport.length > 0 ? (
+              <div className="MatchOneOpponent__info__user">
+                <span> {this.state.sport[0].data.matches_won} </span>
+                <span> lost </span>
+                <span> {this.state.sport[0].data.matches_lost} </span>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     );
   }
