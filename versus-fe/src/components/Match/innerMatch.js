@@ -42,7 +42,6 @@ export default {
   },
 
   denied: props => {
-    console.log(props);
     return (
       <div className="MatchContainer__Content__denied">
         <div className="MatchContainer__Content__denied__banner">

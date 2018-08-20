@@ -38,7 +38,6 @@ class Match extends Component {
       default:
         innerComponent = null;
     }
-    console.log('PROPS', this.props);
 
     return (
       <div>

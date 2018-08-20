@@ -14,7 +14,6 @@ export default class MatchOneOpponent extends Component {
         stat => stat.league_id === Number(this.props.league)
       );
       stats = sport.map(el => el.elo_history);
-      console.log('stats', stats);
     }
     this.state = {
       hover: '',

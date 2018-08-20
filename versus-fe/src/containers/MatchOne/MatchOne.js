@@ -59,17 +59,12 @@ class MatchOne extends Component {
         </div>
 
         <div className="MatchOne__players" style={this.state.challengeStyle}>
-          <div className="MatchOne__user">
-            <MatchOneOpponent
-              user={this.props.user}
-              stats={this.props.stats}
-              league={this.props.match.params.league}
-            />
-          </div>
-
-          <div className="MatchOne__opponent">
-            <MatchOneOpponent opponent={this.props.opponentNow} />
-          </div>
+          <MatchOneOpponent
+            user={this.props.user}
+            stats={this.props.stats}
+            league={this.props.match.params.league}
+          />
+          <MatchOneOpponent opponent={this.props.opponentNow} />
         </div>
 
         <div
@@ -77,17 +72,14 @@ class MatchOne extends Component {
           style={this.state.challengeSentStyle}
         >
           <h1> Challenge Sent </h1>
+          <h2> Good Luck. </h2>
           <Link to="/myMatches">
             <button className="MatchOne__button">To Matches</button>
           </Link>
         </div>
 
         <div className="MatchOne__buttons">
-          <button
-            className="MatchOne__button"
-            onClick={this.challenge}
-            onTouchStart={helpers.ots}
-          >
+          <button className="MatchOne__button" onClick={this.challenge}>
             Challenge
           </button>
           <button className="MatchOne__button" onClick={this.backButton}>
