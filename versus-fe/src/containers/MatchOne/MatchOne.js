@@ -8,6 +8,7 @@ import {
   createMatch
 } from '../../redux/actions';
 import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent';
+import Loading from '../../components/LoadingPage/LoadingPage';
 
 class MatchOne extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class MatchOne extends Component {
   };
 
   render() {
-    if (!this.props.opponentNow.user_id) return <h1> loading </h1>;
+    if (!this.props.opponentNow.user_id) return <Loading />;
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">

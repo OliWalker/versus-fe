@@ -11,7 +11,7 @@ import reducer from './redux/reducers';
 import logger from 'redux-logger';
 import apiMiddleware from './redux/middlewares/apiMiddleware';
 
-let Store = createStore(
+const Store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(logger, apiMiddleware)

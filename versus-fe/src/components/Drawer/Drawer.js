@@ -5,14 +5,11 @@ import { Link } from 'react-router-dom';
 import { getOneLeague } from '../../redux/actions';
 
 class Drawer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerStatus: '',
-      hamburgerStatus: '',
-      leaguesStatus: ''
-    };
-  }
+  state = {
+    drawerStatus: '',
+    hamburgerStatus: '',
+    leaguesStatus: ''
+  };
 
   toggleLeagues = () => {
     const target = document.querySelector('.Drawer__LeagueList');
