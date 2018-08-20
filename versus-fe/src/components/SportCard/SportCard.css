@@ -5,13 +5,19 @@
   align-items: center;
   justify-content: space-evenly;
   background: white;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  border-radius: 1px;
   box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+}
+
+.SportCard img {
+  max-width: 38%;
 }
 
 .SportCard__buttons {
   height: 0;
+  margin-top: -10px;
   overflow: hidden;
   background: white;
   border-bottom-left-radius: 5px;
@@ -49,6 +55,7 @@
 }
 
 .SportCard__JoinLeague {
+  margin-top: -10px;
   height: 0;
   overflow: hidden;
   display: flex;

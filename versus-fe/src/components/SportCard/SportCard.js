@@ -40,10 +40,13 @@ class SportCard extends React.Component {
       <div>
         <div className="SportCard" onClick={this.toggle}>
           <h2> {this.props.sport.sport_name} </h2>
+          <img src={this.props.sport.image_path} alt="lets play this sport" />
         </div>
 
         <div className="SportCard SportCard__JoinLeague" style={joinHeight}>
-          <div className="SkillLevel">Choose Your Skill Level</div>
+          <div className="SkillLevel" onClick={this.toggleJoin}>
+            Choose Your Skill Level
+          </div>
           <div className="SportCard__JoinLeague__buttons">
             <button
               className="SportCard__button"

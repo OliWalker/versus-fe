@@ -7,17 +7,18 @@
 }
 
 .SportsList__header {
-  height: 25vh;
+  height: 23vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   position: fixed;
-  background: var(--flatBlue)
+  background: var(--flatBlue);
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
 }
 
 .SportsList__header span {
   color: var(--white);
-  margin-top: 5vh;
+  margin-top: 3vh;
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -47,8 +48,8 @@
 
 .SportsList__list {
   width: 100vw;
-  height: 75vh;
-  margin-top: 25vh;
+  height: 77vh;
+  margin-top: 23vh;
   background-color: ghostwhite;
   display: flex;
   flex-direction: column;

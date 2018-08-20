@@ -7,6 +7,13 @@
   border-bottom: 1px solid rgb(211, 208, 208, .5);
 }
 
+.LeagueCard__user {
+  background-color: var(--flatBlue);
+  color: var(--white);
+  width: 90vw;
+  padding: 0 10vw;
+}
+
 .LeagueCard__score {
   display: flex;
 }

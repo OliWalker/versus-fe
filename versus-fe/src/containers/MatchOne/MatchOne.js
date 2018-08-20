@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MatchOne.css';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   getOpponent,
   removeOpponent,
@@ -9,13 +10,18 @@ import {
 } from '../../redux/actions';
 import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent';
 import Loading from '../../components/LoadingPage/LoadingPage';
+import helpers from '../../Helpers/helperFunctions';
 
 class MatchOne extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     const { league, opponent } = this.props.match.params;
     this.props.getOpponent(league, opponent);
   }
+
+  state = {
+    challengeStyle: { height: 750 },
+    challengeSentStyle: { height: 0 }
+  };
 
   challenge = () => {
     const user1_id = this.props.user.user_id;
@@ -32,6 +38,10 @@ class MatchOne extends Component {
       }
     };
     this.props.createMatch(info);
+    this.setState({
+      challengeStyle: { height: 0 },
+      challengeSentStyle: { height: 750 }
+    });
   };
 
   backButton = () => {
@@ -48,14 +58,24 @@ class MatchOne extends Component {
           <h1> Versus </h1>
         </div>
 
-        <div className="MatchOne__players">
-          <div className="MatchOne__user">
-            <MatchOneOpponent user={this.props.user} stats={this.props.stats} />
-          </div>
+        <div className="MatchOne__players" style={this.state.challengeStyle}>
+          <MatchOneOpponent
+            user={this.props.user}
+            stats={this.props.stats}
+            league={this.props.match.params.league}
+          />
+          <MatchOneOpponent opponent={this.props.opponentNow} />
+        </div>
 
-          <div className="MatchOne__opponent">
-            <MatchOneOpponent opponent={this.props.opponentNow} />
-          </div>
+        <div
+          className="MatchOne__ChallengeSent"
+          style={this.state.challengeSentStyle}
+        >
+          <h1> Challenge Sent </h1>
+          <h2> Good Luck. </h2>
+          <Link to="/myMatches">
+            <button className="MatchOne__button">To Matches</button>
+          </Link>
         </div>
 
         <div className="MatchOne__buttons">

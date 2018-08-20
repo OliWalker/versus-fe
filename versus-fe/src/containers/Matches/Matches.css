@@ -7,7 +7,7 @@
 
 .MyMatches__header {
   width: 100vw;
-  height: 20vh;
+  height: 23vh;
   background-color: var(--flatBlue);
   color: var(--white);
   display: flex;
@@ -15,6 +15,7 @@
   align-items: center;
   justify-content: space-evenly;
   position: fixed;
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
 }
 
 .MyMatches__buttonFilter {
@@ -53,8 +54,8 @@
 
 .MyMatches__displayMatches {
   width: 100vw;
-  height: 80vh;
-  margin-top: 20vh;
+  height: 77vh;
+  margin-top: 23vh;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -3,9 +3,13 @@ import './LeagueCard.css';
 import { Link } from 'react-router-dom';
 
 export default function LeagueCard(props) {
+  const thisClass =
+    props.mainUser.user_id === props.user.user_id
+      ? 'LeagueCard LeagueCard__user'
+      : 'LeagueCard';
   return (
     <Link to={`/match/${props.league}/${props.user.user_id}`}>
-      <div className="LeagueCard">
+      <div className={thisClass}>
         <div className="LeagueCard__score">
           <p>{props.i + 1}</p>
           <div className="LeagueCard__picture">

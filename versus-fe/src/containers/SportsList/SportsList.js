@@ -17,22 +17,25 @@ class SportsList extends Component {
   componentDidMount() {
     if (this.props.allLeagues.length === 0 && this.props.stats.length > 0)
       this.props.getAllLeagues();
+    else this.sortLeagues(this.props.allLeagues);
   }
+
+  sortLeagues = allLeagues => {
+    const mySports = this.props.stats.map(sport => sport.sport_name);
+    const myLeagues = allLeagues.filter(el => mySports.includes(el.sport_name));
+    const otherLeagues = allLeagues.filter(
+      el => !mySports.includes(el.sport_name)
+    );
+    this.setState({
+      allLeagues,
+      myLeagues,
+      otherLeagues
+    });
+  };
 
   componentDidUpdate(prevProps) {
     if (prevProps.allLeagues.length === 0 && this.props.allLeagues.length > 0) {
-      const mySports = this.props.stats.map(sport => sport.sport_name);
-      const myLeagues = this.props.allLeagues.filter(el =>
-        mySports.includes(el.sport_name)
-      );
-      const otherLeagues = this.props.allLeagues.filter(
-        el => !mySports.includes(el.sport_name)
-      );
-      this.setState({
-        allLeagues: this.props.allLeagues,
-        myLeagues,
-        otherLeagues
-      });
+      this.sortLeagues(this.props.allLeagues);
     }
   }
 
@@ -49,20 +52,13 @@ class SportsList extends Component {
 
   handleSearch = e => {
     this.setState({ search: e.target.value });
-    const mySports = this.props.stats.map(sport => sport.sport_name);
-    const regex = RegExp(e.target.value);
+    // const regex = RegExp(e.target.value);
+    const regex = RegExp(this.state.search);
+
     const allLeagues = this.props.allLeagues.filter(el =>
       regex.test(el.sport_name)
     );
-    const myLeagues = allLeagues.filter(el => mySports.includes(el.sport_name));
-    const otherLeagues = allLeagues.filter(
-      el => !mySports.includes(el.sport_name)
-    );
-    this.setState({
-      allLeagues,
-      myLeagues,
-      otherLeagues
-    });
+    this.sortLeagues(allLeagues);
   };
 
   render() {
