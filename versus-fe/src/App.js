@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/1' }) )
+  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/3' }) )
 });
 
 export default withRouter(

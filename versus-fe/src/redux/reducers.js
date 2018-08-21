@@ -18,10 +18,13 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
+      const newStats = []
+      const stats = action.data.stats
+      for(let sport in stats) {newStats.push(stats[sport])}
       return {
         ...state,
         user: action.data.user,
-        stats: action.data.stats,
+        stats: newStats,
         matches: action.data.matches,
         loading: false
       };

@@ -13,14 +13,18 @@ class SignUp extends Component {
     this.state = {
       username:'',
       first_name:'',
+      last_name: '',
+      password: '',
       email:'',
-      image_Path:''
+      user_image_path:'',
+      signedUp: false
     }
   }
 
   componentDidUpdate(prevProps){
     if (this.props.user !== prevProps.user) {
-
+      console.log('yes ')
+      this.setState({signedUp: true})
     }
   }
     sendSignUp = (event) => {
@@ -29,13 +33,15 @@ class SignUp extends Component {
 
       const signUpDetails = {
         username:this.state.username,
-        first_name:this.state.first_name,
-        email:this.state.email,
-        image_Path:this.state.image_Path
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        password: this.state.password,
+        email: this.state.email,
+        user_image_path: this.state.user_image_path
       }
 
       this.props.createNewUser({
-        endpoint:'/users/id',
+        endpoint:`/users/`,
         method: 'POST',
         body: signUpDetails
       })
@@ -57,6 +63,13 @@ class SignUp extends Component {
       )
     }
 
+    renderProfile = () => {
+      if (this.state.signedUp) {
+        console.log('yes NUMERO DOS ')
+        return <Redirect to="/profile" />
+      }
+    }
+
 
   render() {
     return (
@@ -70,6 +83,8 @@ class SignUp extends Component {
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
             {this.renderInput("First Name", "text", "first_name")}
+            {this.renderInput("Last Name", "text" , "last_name")}
+            {this.renderInput("Password", "text" , "password")}
             {this.renderInput("Email", "text", "email")}
           </form>
         </div>
@@ -78,6 +93,7 @@ class SignUp extends Component {
           <text> Register </text>
         </div>
 
+        {this.renderProfile()}
       </div>
     );
   }
