@@ -30,10 +30,10 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" component={Drawer} />
-        <Route path="/login" component={LoginPage} />
+        <Route exact path="/" component={LoginPage} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/myMatches" component={Matches} />
-        <Route path="/profile" component={ProfilePage} />
+        <Route path="/myProfile" component={ProfilePage} />
         <Route path="/sportsList" component={SportsList} />
         <Route path="/league/:id" component={League} />
         <Route path="/match/:league/:opponent" component={MatchOne} />

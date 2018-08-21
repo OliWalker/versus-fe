@@ -47,7 +47,7 @@ class Drawer extends Component {
           onClick={this.toggleDrawer}
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
-          <Link to="/profile" onClick={this.toggleDrawer}>
+          <Link to="/myProfile" onClick={this.toggleDrawer}>
             <h1 className="Drawer__logo">Versus</h1>
           </Link>
 
