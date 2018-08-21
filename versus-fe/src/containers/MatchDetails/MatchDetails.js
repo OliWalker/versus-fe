@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MatchDetails.css';
-import innerComponents from './innerMatchComponent';
+import LocationMap from './innerMatchComponent'
 import MatchDetailsFinished from './MatchDetailsFinished';
 import OpponentDetails from '../../components/OpponentDetails/OpponentDetails';
 
@@ -35,9 +35,7 @@ class MatchDetails extends Component {
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
-      return innerComponents.loactionSetter({
-        sendMatchDetails: this.props.sendMatchDetails
-      });
+      return <LocationMap />
     else if (this.state.activeButton === 'Finished')
       return <MatchDetailsFinished match_id={this.props.match.params.id} />;
   };
