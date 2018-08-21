@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blueGrad);
+  background: var(--flatBlue);
   color: white;
   width: 75vw;
   height: 5vh;

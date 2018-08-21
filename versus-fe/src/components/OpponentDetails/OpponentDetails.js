@@ -24,7 +24,6 @@ class OpponentDetails extends Component {
       return { i: i, score: match.elo };
     });
     const highScore = data.slice(0).sort((a, b) => b.score - a.score)[0].score;
-    console.log(this.props);
     return (
       <div className="opponentContainer">
         <div className="opponentProfile">

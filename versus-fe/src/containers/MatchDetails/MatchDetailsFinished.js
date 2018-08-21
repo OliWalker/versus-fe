@@ -42,7 +42,7 @@ export class MatchDetailsFinished extends Component {
             />
             <span> your score </span>
           </div>
-          <p>/</p>
+          <p>-</p>
           <div className="MatchDetails__finished__Score">
             <input
               type="number"

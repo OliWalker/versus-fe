@@ -23,10 +23,11 @@ class League extends Component {
           <span>1000</span>
         </div>
 
+        <div className="League__leaderboard__trophy">
+          <i className="fas fa-trophy" />
+        </div>
+
         <div className="League__leaderboard">
-          <div className="League__leaderboard__trophy">
-            <i className="fas fa-trophy" />
-          </div>
           {league.users
             ? league.users.map((user, i) => (
                 <LeagueCard
