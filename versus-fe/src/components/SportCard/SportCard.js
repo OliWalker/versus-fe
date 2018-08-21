@@ -40,7 +40,10 @@ class SportCard extends React.Component {
       <div>
         <div className="SportCard" onClick={this.toggle}>
           <h2> {this.props.sport.sport_name} </h2>
-          <img src={this.props.sport.image_path} alt="lets play this sport" />
+          <img
+            src={`./${this.props.sport.sport_name}.png`}
+            alt="lets play this sport"
+          />
         </div>
 
         <div className="SportCard SportCard__JoinLeague" style={joinHeight}>
@@ -99,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
   joinLeague: (leagueId, body) =>
     dispatch(
       joinLeague({
-        endpoint: `/leagues/${leagueId}/join`,
+        endpoint: `/barcelona/leagues/${leagueId}/join`,
         method: 'POST',
         body
       })

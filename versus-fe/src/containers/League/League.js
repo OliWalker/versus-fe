@@ -17,10 +17,10 @@ class League extends Component {
     return (
       <div className="League">
         <div className="League__info">
-          <h1> {league.sport_name} </h1>
-          <span>
-            <i>1000</i>
-          </span>
+          <h1>
+            <i>{league.sport_name}</i>
+          </h1>
+          <span>1000</span>
         </div>
 
         <div className="League__leaderboard">
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getOneLeague: league_id =>
-    dispatch(getOneLeague({ endpoint: `/leagues/${league_id}` }))
+    dispatch(getOneLeague({ endpoint: `/barcelona/leagues/${league_id}` }))
 });
 
 export default connect(

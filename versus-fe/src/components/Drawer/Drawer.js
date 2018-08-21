@@ -14,7 +14,7 @@ class Drawer extends Component {
   toggleLeagues = () => {
     const target = document.querySelector('.Drawer__LeagueList');
     if (this.state.leaguesStatus === '') {
-      target.style.height = '300px';
+      target.style.height = `${this.props.stats.length * 55}px`;
       this.setState({ leaguesStatus: 'open' });
     } else {
       target.style.height = '0';
@@ -116,7 +116,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getOneLeague: league_id =>
-    dispatch(getOneLeague({ endpoint: `/leagues/${league_id}` }))
+    dispatch(getOneLeague({ endpoint: `/barcelona/leagues/${league_id}` }))
 });
 export default connect(
   mapStateToProps,

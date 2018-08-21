@@ -16,10 +16,12 @@ a {
   --darkWhite: rgb(219, 219, 219);
   --blueGrad: linear-gradient(to left, rgb(1, 67, 114) 0%, rgb(0, 34, 73) 86%, var(--flatBlue) 100%);
   --flatBlue: rgba(0, 38, 82, 1);
+  --shadow: 0px 2px 2px rgb(170, 170, 170, .4);
 }
 
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 input:focus {

@@ -8,7 +8,7 @@
   margin-top: 12px;
   margin-bottom: 10px;
   border-radius: 1px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: var(--shadow);
 }
 
 .SportCard img {
@@ -22,7 +22,7 @@
   background: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: var(--shadow);
   transition: height 200ms ease-out;
   height: 100%;
   display: flex;
@@ -46,7 +46,7 @@
   padding: 15px;
   border: 2px solid rgba(0, 38, 82, .8);
   border-radius: 18px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: var(--shadow);
 }
 
 .SportCard__button:hover {
