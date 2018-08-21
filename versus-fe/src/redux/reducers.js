@@ -203,6 +203,26 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+    case 'CREATE_USER_REQUEST':
+      return {
+        ...state,
+        loading:true
+      };
+
+    case 'CREATE_USER_SUCCESS':
+      return {
+        ...state,
+        user: action.data,
+        loading: false
+      }
+
+    case 'CREATE_USER_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      }
+
     default:
       return state;
   }

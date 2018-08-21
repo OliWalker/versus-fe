@@ -101,3 +101,13 @@ export const sendMatchDetails = (apiInfo) => ({
     headers: apiInfo.headers
   }
 });
+
+export const createUser = (apiInfo) => ({
+  type: 'CREATE_USER',
+    api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+})

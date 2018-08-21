@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './SignUp.css'
 
+import { connect } from 'react-redux';
+import { createUser } from '../../redux/actions';
+
 
 class SignUp extends Component {
+
   constructor(props){
     super(props)
     this.state = {
@@ -12,8 +16,11 @@ class SignUp extends Component {
       image_Path:''
     }
   }
+
     sendSignUp = (event) => {
+
       event.preventDefault()
+
       const signUpDetails = {
         username:this.state.username,
         first_name:this.state.first_name,
@@ -21,14 +28,11 @@ class SignUp extends Component {
         image_Path:this.state.image_Path
       }
 
-      fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
+      this.props.createNewUser({
+        endpoint:'users/id',
+        method: 'POST',
         body: JSON.stringify(signUpDetails)
-      }).then(res => res.json())
-      .then(data => console.log(data))
+      })
 
     }
 
@@ -51,9 +55,11 @@ class SignUp extends Component {
   render() {
     return (
       <div className="signUpContainer">
+
         <div className="title">
           <h1> Sign Up </h1>
         </div>
+
         <div className="signUpFormContainer">
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
@@ -61,13 +67,26 @@ class SignUp extends Component {
             {this.renderInput("Email", "text", "email")}
           </form>
         </div>
+
         <div className="SignUpButton" onClick={this.sendSignUp}>
           <text> Register </text>
         </div>
+
       </div>
     );
   }
 
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  createNewUser: (apiInfo) => dispatch(createUser(apiInfo))
+})
+
+const mapStateToProps = (state) => ({
+  error: state.error
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
