@@ -1,4 +1,5 @@
 const initalState = {
+  loginError: false,
   user: {},
   stats: [],
   matches: [],
@@ -14,7 +15,8 @@ const reducer = (state = initalState, action) => {
     case 'LOG_IN_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
+        loginError: false
       };
 
     case 'LOG_IN_SUCCESS':
@@ -23,13 +25,14 @@ const reducer = (state = initalState, action) => {
         user: action.data.user,
         stats: action.data.stats,
         matches: action.data.matches,
+        loginError: false,
         loading: false
       };
 
     case 'LOG_IN_FAILURE':
       return {
         ...state,
-        error: action.error,
+        loginError: true,
         loading: false
       };
 

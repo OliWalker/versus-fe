@@ -10,9 +10,23 @@ export class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
-      redirect: false
+      redirect: false,
+      loginError: false
     };
   }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loginError && this.props.loginError) {
+      this.loginRetry();
+    }
+  }
+
+  loginRetry = () => {
+    this.setState({ loginError: true });
+    setTimeout(() => {
+      this.setState({ loginError: false });
+    }, 800);
+  };
 
   sendDetails = event => {
     const loginDetails = [
@@ -29,12 +43,13 @@ export class LoginPage extends Component {
   };
 
   render() {
+    const loginClass = this.state.loginError ? 'Error' : '';
     return (
       <div className="background">
         <div className="loginContainer">
           <h1> Welcome to Versus </h1>
 
-          <div className="loginDetails">
+          <div className={`loginDetails ${loginClass}`}>
             <form>
               <span> Username </span>
               <input
@@ -68,7 +83,9 @@ export class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  loginError: state.loginError
+});
 
 const mapDispatchToProps = dispatch => ({
   logIn: details => dispatch(logIn({ endpoint: '/login', headers: details }))

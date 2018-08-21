@@ -3,13 +3,11 @@ const BASE_URL = 'http://192.168.1.122:3000';
 
 export default store => next => action => {
   if (!action.api) return next(action);
-  console.log(action.api);
 
   const { endpoint, method } = action.api;
   let { body, headers } = action.api;
 
   const defaultHeaders = {};
-  console.log(headers);
   if (body) {
     body = JSON.stringify(body);
     defaultHeaders['Content-type'] = 'application/json';

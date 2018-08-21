@@ -24,23 +24,23 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.error) return <ErrorPage />;
-    else if (this.props.loading && !this.props.user.user_id) return <Loading />;
-    else
-      return (
-        <div className="App">
-          <Route path="/" component={Drawer} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signUp" component={SignUp} />
-          <Route path="/myMatches" component={Matches} />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/sportsList" component={SportsList} />
-          <Route path="/league/:id" component={League} />
-          <Route path="/match/:league/:opponent" component={MatchOne} />
-          <Route path="/opponents" component={MatchingCardsList} />
-          <Route path="/matchDetails/:id" component={MatchDetails} />
-        </div>
-      );
+    // if (this.props.error) return <ErrorPage />;
+    // else if (this.props.loading && !this.props.user.user_id) return <Loading />;
+    // else
+    return (
+      <div className="App">
+        <Route path="/" component={Drawer} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signUp" component={SignUp} />
+        <Route path="/myMatches" component={Matches} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/sportsList" component={SportsList} />
+        <Route path="/league/:id" component={League} />
+        <Route path="/match/:league/:opponent" component={MatchOne} />
+        <Route path="/opponents" component={MatchingCardsList} />
+        <Route path="/matchDetails/:id" component={MatchDetails} />
+      </div>
+    );
   }
 }
 
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/1' }))
+  getUserInfo: () => dispatch(getUserInfo({ endpoint: '/users/3' }))
 });
 
 export default withRouter(
