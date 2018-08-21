@@ -47,7 +47,7 @@ class Drawer extends Component {
           onClick={this.toggleDrawer}
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
-          <Link to="/myProfile" onClick={this.toggleDrawer}>
+          <Link to="/Profile" onClick={this.toggleDrawer}>
             <h1 className="Drawer__logo">Versus</h1>
           </Link>
 
@@ -77,7 +77,7 @@ class Drawer extends Component {
               })}
             </div>
 
-            <Link to="/myMatches" onClick={this.toggleDrawer}>
+            <Link to="/Matches" onClick={this.toggleDrawer}>
               <div className="Drawer__button Drawer__button__notie">
                 {notifications > 0 ? (
                   <div className="Drawer__button__notification">

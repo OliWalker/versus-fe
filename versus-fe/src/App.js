@@ -32,8 +32,8 @@ class App extends Component {
         <Route path="/" component={Drawer} />
         <Route exact path="/" component={LoginPage} />
         <Route path="/signUp" component={SignUp} />
-        <Route path="/myMatches" component={Matches} />
-        <Route path="/myProfile" component={ProfilePage} />
+        <Route path="/Matches" component={Matches} />
+        <Route path="/Profile" component={ProfilePage} />
         <Route path="/sportsList" component={SportsList} />
         <Route path="/league/:id" component={League} />
         <Route path="/match/:league/:opponent" component={MatchOne} />
