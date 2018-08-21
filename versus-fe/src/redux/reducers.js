@@ -43,8 +43,8 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
-      let newStats = [];
-      let stats = action.data.stats;
+      const newStats = [];
+      const stats = action.data.stats;
       for (let sport in stats) {
         newStats.push(stats[sport]);
       }

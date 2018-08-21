@@ -4,8 +4,7 @@ import './OpponentDetails.css';
 
 class OpponentDetails extends Component {
   state = {
-    buttonClass1: 'active',
-    buttonClass2: ''
+    buttonClass: true
   };
 
   renderMatch_history = () => {
@@ -15,11 +14,8 @@ class OpponentDetails extends Component {
     ));
   };
 
-  toggleButton = e => {
-    console.log(e.target.name);
-    this.state[e.target.name] === ''
-      ? this.setState({ [e.target.name]: 'active' })
-      : this.setState({ [e.target.name]: '' });
+  toggleButton = () => {
+    this.setState({ buttonClass: !this.state.buttonClass });
   };
 
   render() {
@@ -35,21 +31,25 @@ class OpponentDetails extends Component {
         </div>
         <div className="Opponent__Details__buttons">
           <button
-            className={this.state.buttonClass1}
+            className={this.state.buttonClass ? 'active' : null}
             onClick={this.toggleButton}
             name="buttonClass1"
           >
             Match History
           </button>
           <button
-            className={this.state.buttonClass2}
+            className={this.state.buttonClass ? null : 'active'}
             onClick={this.toggleButton}
             name="buttonClass2"
           >
             Performance
           </button>
         </div>
-        <div className="opponentPastGames">{this.renderMatch_history()}</div>
+        {this.state.buttonClass ? (
+          <div className="opponentPastGames">{this.renderMatch_history()}</div>
+        ) : (
+          <div className="opponentPastGames" />
+        )}
       </div>
     );
   }
