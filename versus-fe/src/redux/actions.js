@@ -121,3 +121,13 @@ export const sendMatchDetails = apiInfo => ({
     headers: apiInfo.headers
   }
 });
+
+export const finishMatch = apiInfo => ({
+  type: 'FINISH_MATCH',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});

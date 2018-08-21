@@ -10,16 +10,30 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75vw;
 }
 
-.dividerInfo > span {
+.dividerInfo>span {
   font-size: 15px;
-  color:grey;
+  color: grey;
 }
-.dividerInfo > input {
+
+.dividerInfo input[type=text] {
   width: 75vw;
-  border-bottom:
+  height: 5vh;
+}
+
+.dividerInfo input[type=time],
+.dividerInfo input[type=date] {
+  height: 5vh;
+  width: 35vw;
+  font-size: 1.25rem;
+  margin-bottom: 6vh;
+}
+
+.infoForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .enter {
@@ -27,7 +41,7 @@
   align-items: center;
   justify-content: center;
   background: var(--blueGrad);
-  color:white;
+  color: white;
   width: 75vw;
   height: 5vh;
   border-radius: 30px;

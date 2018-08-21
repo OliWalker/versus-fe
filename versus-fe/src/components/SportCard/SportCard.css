@@ -9,6 +9,7 @@
   margin-bottom: 10px;
   border-radius: 1px;
   box-shadow: var(--shadow);
+  font-size: 1rem;
 }
 
 .SportCard img {
@@ -47,6 +48,7 @@
   border: 2px solid rgba(0, 38, 82, .8);
   border-radius: 18px;
   box-shadow: var(--shadow);
+  font-size: .9rem;
 }
 
 .SportCard__button:hover {

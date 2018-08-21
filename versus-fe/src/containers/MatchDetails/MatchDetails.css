@@ -1,16 +1,17 @@
 .matchDetailsContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100vh;
   background-color: ghostWhite;
 }
 
 .matchTitle {
-  background: var(--blueGrad);
+  background: var(--flatBlue);
   height: 20vh;
-  padding-top:10vh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly
 }
 
 .matchOpponentStats {
@@ -18,5 +19,72 @@
 }
 
 .matchDetailsInfo {
+  margin-bottom: 5vh;
+}
+
+.MatchDetails__map {}
+
+.MatchDetails__map img {
+  width: 90vw;
+  height: 40vh;
+  padding-top: 5vh;
+}
+
+.MatchDetails__finished {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MatchDetails__finished {
+  padding-top: 10vh;
+}
+
+.MatchDetails__finished__scorecards {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90vw;
+  height: 40vh;
+}
+
+.MatchDetails__finished__scorecards p {
+  font-size: 15rem;
+  line-height: 14rem;
+  font-weight: 10;
+}
+
+.MatchDetails__finished__Score {
+  display: flex;
+  flex-direction: column;
+}
+
+.MatchDetails__finished__Score span {
+  margin-top: 10px;
+}
+
+.MatchDetails__finished__Score input {
+  height: 25vh;
+  width: 30vw;
+  font-size: 8rem;
+  text-align: center;
+}
+
+.endNote {
+  width: 60vw;
+  margin-bottom: 5vh
+}
+
+.MatchDetails__finished__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blueGrad);
+  color: white;
+  width: 75vw;
+  height: 5vh;
+  border-radius: 30px;
   margin-bottom: 5vh;
 }
