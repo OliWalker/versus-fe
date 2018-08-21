@@ -42,7 +42,7 @@ class Match extends Component {
         break;
 
       default:
-        innerComponent = null;
+        innerComponent = console.log('no component');
     }
 
     return (
