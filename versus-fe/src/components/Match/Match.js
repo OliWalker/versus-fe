@@ -9,7 +9,7 @@ class Match extends Component {
 
   decline = () => this.props.declineMatch(this.props.match_id);
 
-  delete = () => this.props.deleteMatch(this.props.match_id);
+  delete = () => this.props.deleteMatch(this.props.matchInfo.match_id);
 
   render() {
     const opponent_id =
@@ -40,46 +40,46 @@ class Match extends Component {
         innerComponent = innerMatch.denied;
         innerFunction = this.delete;
         break;
-
       default:
-        innerComponent = console.log('no component');
+        innerComponent = null;
     }
+    if (innerComponent === null) return <div />;
+    else
+      return (
+        <div>
+          <div className="MatchContainer">
+            <div className="MatchContainer__imageContainer">
+              <img
+                className="MatchContainer__sportImage"
+                src={
+                  user1.user_id === this.props.user.user_id
+                    ? user2.image_path
+                    : user1.image_path
+                }
+                alt="logo for the chosen sport"
+              />
+              <h3>
+                {user1.user_id === this.props.user.user_id
+                  ? user2.username
+                  : user1.username}
+              </h3>
+            </div>
 
-    return (
-      <div>
-        <div className="MatchContainer">
-          <div className="MatchContainer__imageContainer">
-            <img
-              className="MatchContainer__sportImage"
-              src={
-                user1.user_id === this.props.user.user_id
-                  ? user2.image_path
-                  : user1.image_path
-              }
-              alt="logo for the chosen sport"
-            />
-            <h3>
-              {user1.user_id === this.props.user.user_id
-                ? user2.username
-                : user1.username}
-            </h3>
-          </div>
-
-          <div className="MatchContainer__UsersMatched">
-            <div className="MatchContainer__Content">
-              <h2> {this.props.matchInfo.sport_name}</h2>
-              {innerComponent({
-                user1,
-                user2,
-                innerFunction,
-                league_id,
-                opponent_id
-              })}
+            <div className="MatchContainer__UsersMatched">
+              <div className="MatchContainer__Content">
+                <h2> {this.props.matchInfo.sport_name}</h2>
+                {innerComponent({
+                  user1,
+                  user2,
+                  innerFunction,
+                  league_id,
+                  opponent_id
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 
@@ -100,7 +100,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       deleteMatch({
         endpoint: `/matches/${match_id}/delete}`,
-        method: 'DELETE'
+        method: 'PUT'
       })
     )
 });
