@@ -41,7 +41,7 @@ class SportCard extends React.Component {
         <div className="SportCard" onClick={this.toggle}>
           <h2> {this.props.sport.sport_name} </h2>
           <img
-            src={`./${this.props.sport.sport_name}.png`}
+            src={`./SportIcons/${this.props.sport.sport_name}.png`}
             alt="lets play this sport"
           />
         </div>
