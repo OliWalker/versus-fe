@@ -13,6 +13,14 @@ class League extends Component {
   render() {
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
+    let score;
+    try {
+      score = this.props.stats.filter(
+        stat => stat.sport_name === league.sport_name
+      )[0].data.current_elo;
+    } catch (e) {
+      score = 'loading...';
+    }
 
     return (
       <div className="League">
@@ -20,7 +28,7 @@ class League extends Component {
           <h1>
             <i>{league.sport_name}</i>
           </h1>
-          <span>1000</span>
+          <span>{score}</span>
         </div>
 
         <div className="League__leaderboard__trophy">
@@ -47,7 +55,8 @@ class League extends Component {
 
 const mapStateToProps = state => ({
   leagueNow: state.leagueNow,
-  user: state.user
+  user: state.user,
+  stats: state.stats
 });
 
 const mapDispatchToProps = dispatch => ({

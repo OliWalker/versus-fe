@@ -13,8 +13,8 @@ import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList'
 import MatchOne from './containers/MatchOne/MatchOne';
 import MatchDetails from './containers/MatchDetails/MatchDetails';
 
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import Loading from './components/LoadingPage/LoadingPage';
+// import ErrorPage from './components/ErrorPage/ErrorPage';
+// import Loading from './components/LoadingPage/LoadingPage';
 import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 

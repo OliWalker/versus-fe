@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { XAxis, Tooltip, AreaChart, Area } from 'recharts';
+import { Tooltip, AreaChart, Area } from 'recharts';
 import PastMatchCard from '../PastMatchCard/PastMatchCard';
 import './OpponentDetails.css';
 

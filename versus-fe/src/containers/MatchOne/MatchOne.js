@@ -10,7 +10,6 @@ import {
 } from '../../redux/actions';
 import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent';
 import Loading from '../../components/LoadingPage/LoadingPage';
-import helpers from '../../Helpers/helperFunctions';
 
 class MatchOne extends Component {
   componentDidMount() {

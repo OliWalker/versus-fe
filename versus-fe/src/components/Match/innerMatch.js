@@ -32,13 +32,16 @@ export default {
     );
   },
 
-  waiting: () => {
+  waiting: props => {
     return (
-      <div className="MatchContainer__Content__waiting">
+      <Link
+        className="MatchContainer__Content__waiting"
+        to={`/matchdetails/${props.league_id}/${props.opponent_id}`}
+      >
         <h2>
           <i>waiting...</i>
         </h2>
-      </div>
+      </Link>
     );
   },
 
