@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SignUp.css'
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router'
 import { createUser } from '../../redux/actions';
 
 
@@ -17,6 +18,11 @@ class SignUp extends Component {
     }
   }
 
+  componentDidUpdate(prevProps){
+    if (this.props.user !== prevProps.user) {
+
+    }
+  }
     sendSignUp = (event) => {
 
       event.preventDefault()
@@ -29,9 +35,9 @@ class SignUp extends Component {
       }
 
       this.props.createNewUser({
-        endpoint:'users/id',
+        endpoint:'/users/id',
         method: 'POST',
-        body: JSON.stringify(signUpDetails)
+        body: signUpDetails
       })
 
     }
@@ -83,6 +89,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
+  user: state.user,
   error: state.error
 })
 
