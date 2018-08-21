@@ -8,13 +8,9 @@ import { connect } from 'react-redux';
 import { sendMatchDetails, getOpponent } from '../../redux/actions';
 
 class MatchDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      aMatch: {},
-      activeButton: 'Finished'
-    };
-  }
+  state = {
+    activeButton: 'Match Details'
+  };
 
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;
