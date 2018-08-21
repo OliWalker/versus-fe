@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default {
   finished: props => {
@@ -54,15 +55,18 @@ export default {
     );
   },
 
-  accepted: () => {
+  accepted: props => {
     return (
-      <div className="MatchContainer__Content__accepted">
+      <Link
+        className="MatchContainer__Content__accepted"
+        to={`/matchdetails/${props.league_id}/${props.opponent_id}`}
+      >
         <div className="MatchContainer__Content__date">
           <span>7th Spt</span>
           <span>18:00 hr</span>
         </div>
         <h5> location </h5>
-      </div>
+      </Link>
     );
   }
 };

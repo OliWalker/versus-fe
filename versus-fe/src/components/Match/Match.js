@@ -12,7 +12,15 @@ class Match extends Component {
   delete = () => this.props.deleteMatch(this.props.match_id);
 
   render() {
-    const { user1, user2 } = this.props.matchInfo;
+    console.log('MATCH', this.props);
+    const id =
+      this.props.user.user_id === this.props.matchInfo.user1.user_id
+        ? this.props.matchInfo.user2.user_id
+        : this.props.user.user_id;
+
+    const opponent_id = { opponent_id: id };
+
+    const { user1, user2, league_id } = this.props.matchInfo;
     let innerComponent, innerFunction;
 
     switch (this.props.matchInfo.status) {
@@ -62,7 +70,13 @@ class Match extends Component {
           <div className="MatchContainer__UsersMatched">
             <div className="MatchContainer__Content">
               <h2> {this.props.matchInfo.sport_name}</h2>
-              {innerComponent({ user1, user2, innerFunction })}
+              {innerComponent({
+                user1,
+                user2,
+                innerFunction,
+                league_id,
+                opponent_id
+              })}
             </div>
           </div>
         </div>
