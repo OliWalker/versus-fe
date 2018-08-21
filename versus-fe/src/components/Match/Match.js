@@ -12,16 +12,14 @@ class Match extends Component {
   delete = () => this.props.deleteMatch(this.props.match_id);
 
   render() {
-    console.log('MATCH', this.props);
-    const id =
+    const opponent_id =
       this.props.user.user_id === this.props.matchInfo.user1.user_id
         ? this.props.matchInfo.user2.user_id
         : this.props.user.user_id;
 
-    const opponent_id = { opponent_id: id };
-
     const { user1, user2, league_id } = this.props.matchInfo;
     let innerComponent, innerFunction;
+    console.log(league_id, opponent_id);
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':

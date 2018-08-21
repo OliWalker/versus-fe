@@ -12,33 +12,26 @@ class MatchDetails extends Component {
     super(props);
     this.state = {
       aMatch: {},
-      opponentNow: 'false',
       activeButton: 'Finished'
     };
-    this.filteredMatchAndGetOpponent();
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.opponentNow !== prevProps.opponentNow) {
-      this.setState({ opponentNow: this.props.opponentNow });
-    }
-  }
-
-  filteredMatchAndGetOpponent = () => {
-    const IdParam = this.props.match.params.id;
-    const IdOfMatch = parseInt(IdParam, 10);
-    const matchedWithId = this.props.matches.filter(
-      theMatch => theMatch.matches_id === IdOfMatch
-    );
-    this.setState({ aMatch: { ...matchedWithId } });
-    this.props.getOpponent();
+  getOpponent = () => {
+    const { league_id, user_id } = this.props.match.params;
+    this.props.getOpponent(league_id, user_id);
   };
+
+  componentDidMount() {
+    if (!this.props.opponentNow.user_id) this.getOpponent();
+    else if (this.props.opponentNow.user_id !== this.props.match.params.user_id)
+      this.getOpponent();
+  }
 
   renderSubComponent = () => {
     if (this.state.activeButton === 'Opponent')
       return (
         <div className="matchOpponentStats">
-          <OpponentDetails theOpponent={this.state.opponentNow} />
+          <OpponentDetails theOpponent={this.props.opponentNow} />
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
@@ -99,8 +92,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   sendMatchDetails: apiInfo => dispatch(sendMatchDetails(apiInfo)),
-  getOpponent: () =>
-    dispatch(getOpponent({ endpoint: '/opponent/leagueid/userid' }))
+  getOpponent: (league_id, user_id) => {
+    dispatch(getOpponent({ endpoint: `/opponent/${league_id}/${user_id}` }));
+  }
 });
 
 export default connect(
