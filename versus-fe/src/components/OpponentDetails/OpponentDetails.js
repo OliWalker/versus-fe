@@ -11,7 +11,7 @@ class OpponentDetails extends Component {
   renderMatch_history = () => {
     const previousMatches = this.props.theOpponent.match_history;
     return previousMatches.map(previousMatch => (
-      <PastMatchCard pastMatch={previousMatch} />
+      <PastMatchCard pastMatch={previousMatch} key={previousMatch.match_id} />
     ));
   };
 

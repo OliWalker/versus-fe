@@ -56,7 +56,7 @@ class MatchDetailsInfo extends Component {
           </form>
 
           <div className="enter" onClick={this.sendFormInfo}>
-            <text> Enter </text>
+            Enter
           </div>
         </div>
       </div>
