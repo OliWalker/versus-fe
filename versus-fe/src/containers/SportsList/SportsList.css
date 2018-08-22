@@ -58,9 +58,13 @@
   overflow-y: scroll;
 }
 
-.SportsList__mySports {}
-
-.SportList__allSports {
-  margin-top: 20px;
-  border-top: 2px solid black;
+.SportsList__list__divider {
+  width: 100vw;
+  background-color: var(--flatBlue);
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1.5vh 0;
+  margin-top: 2.5vh;
+  margin-bottom: 1vh;
 }

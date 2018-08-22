@@ -71,7 +71,7 @@ class SportCard extends React.Component {
               onClick={this.setSkill}
               name={800}
             >
-              Begginer
+              Beginer
             </button>
             <button
               className="SportCard__button"

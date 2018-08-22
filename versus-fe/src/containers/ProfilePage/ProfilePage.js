@@ -17,6 +17,13 @@ class ProfilePage extends Component {
     });
   };
 
+  renderScore = () => {
+    const scoreList = this.props.stats.map(stat => stat.data.current_elo);
+    let score = scoreList.reduce((a, b) => a + b, 0);
+    const scoreForPage = Math.ceil(score / scoreList.length);
+    return scoreForPage;
+  };
+
   render() {
     const { user, stats } = this.props;
     return (
@@ -32,7 +39,7 @@ class ProfilePage extends Component {
           className="ProfilePage__score"
           onClick={() => this.toggleGraph(this.props.user.elo_history)}
         >
-          <i>{user.total_score}</i>
+          <i>{this.renderScore()}</i>
         </span>
 
         <div className="ProfilePage__all__scores">
@@ -41,7 +48,7 @@ class ProfilePage extends Component {
               <ProfileSportScore
                 key={sport.league_id}
                 sport={sport}
-                onClick={() => this.toggleGraph(sport.elo_history)}
+                onClick={() => this.toggleGraph(sport.data.elo_history)}
               />
             );
           })}
