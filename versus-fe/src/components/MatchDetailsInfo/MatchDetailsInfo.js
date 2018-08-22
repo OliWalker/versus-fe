@@ -33,8 +33,7 @@ class MatchDetailsInfo extends Component {
 
   sendFormInfo = () => {
     const matchDetails = {
-      time: this.state.time,
-      date: this.state.date,
+      match_datetime: `${this.state.date} ${this.state.time}:00`,
       location: this.state.location
     };
 

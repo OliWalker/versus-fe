@@ -7,9 +7,9 @@ import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 class Match extends Component {
   state = { deleted: false };
 
-  accept = () => this.props.acceptMatch(this.props.match_id);
+  accept = () => this.props.acceptMatch(this.props.matchInfo.match_id);
 
-  decline = () => this.props.declineMatch(this.props.match_id);
+  decline = () => this.props.declineMatch(this.props.matchInfo.match_id);
 
   delete = () => {
     this.setState({ deleted: true });
