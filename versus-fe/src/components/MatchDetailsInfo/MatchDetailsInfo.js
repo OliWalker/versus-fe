@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './MatchDetailsInfo.css';
 
+import { connect } from 'react-redux';
+
+
 class MatchDetailsInfo extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +57,6 @@ class MatchDetailsInfo extends Component {
             {this.renderInput('Time', 'time', 'time')}
             {this.renderInput('Date', 'date', 'date')}
           </form>
-
           <div className="enter" onClick={this.sendFormInfo}>
             <text> Enter </text>
           </div>
@@ -64,4 +66,12 @@ class MatchDetailsInfo extends Component {
   }
 }
 
-export default MatchDetailsInfo;
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MatchDetailsInfo);

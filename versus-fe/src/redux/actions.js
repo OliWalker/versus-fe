@@ -131,3 +131,13 @@ export const finishMatch = apiInfo => ({
     headers: apiInfo.headers
   }
 });
+
+export const requestLocation = apiInfo => ({
+  type: 'REQUEST_LOCATION',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});

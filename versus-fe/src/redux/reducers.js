@@ -7,7 +7,9 @@ const initalState = {
   error: false,
   leagueNow: {},
   allLeagues: [],
-  opponentNow: {}
+  opponentNow: {},
+  location:'',
+  googlePlaces: {}
 };
 
 const reducer = (state = initalState, action) => {
@@ -234,6 +236,31 @@ const reducer = (state = initalState, action) => {
         error: action.error,
         loading: false
       };
+
+    case 'REQUEST_LOCATION_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'REQUEST_LOCATION_SUCCESS':
+      return {
+        ...state,
+        googlePlaces: action.data,
+        loading: false
+      }
+
+    case 'REQUEST_LOCATION_FAILURE':
+      return {
+        ...state,
+        loading: false
+      }
+
+    case 'LOCATION_CHOSEN':
+      return {
+        ...state,
+        location: action.location
+      }
 
     default:
       return state;
