@@ -14,13 +14,13 @@
   border: 1px solid lightgrey;
   border-radius: 2px;
   background: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .opponentPhoto {
   display: block;
   margin: 2vw;
-  width: 20vw;
+  height: 14vh;
   border-radius: 50%;
   padding: 5px;
 }

@@ -10,9 +10,13 @@ class OpponentDetails extends Component {
 
   renderMatch_history = () => {
     const previousMatches = this.props.theOpponent.match_history;
-    return previousMatches.map(previousMatch => (
-      <PastMatchCard pastMatch={previousMatch} key={previousMatch.match_id} />
-    ));
+    return previousMatches.length > 0 ? (
+      previousMatches.map(previousMatch => (
+        <PastMatchCard pastMatch={previousMatch} key={previousMatch.match_id} />
+      ))
+    ) : (
+      <div>no match history</div>
+    );
   };
 
   toggleButton = () => {
@@ -20,19 +24,24 @@ class OpponentDetails extends Component {
   };
 
   render() {
-    const data = this.props.theOpponent.match_history.map((match, i) => {
+    console.log(this.props);
+    const { theOpponent } = this.props;
+    const data = theOpponent.match_history.map((match, i) => {
       return { i: i, score: match.elo };
     });
-    const highScore = data.slice(0).sort((a, b) => b.score - a.score)[0].score;
+    const highScore =
+      data.length > 1
+        ? data.slice(0).sort((a, b) => b.score - a.score)[0].score
+        : theOpponent.score;
     return (
       <div className="opponentContainer">
         <div className="opponentProfile">
           <img
             className="opponentPhoto"
-            src={this.props.theOpponent.image_path}
+            src={theOpponent.image_path}
             alt="the beautiful"
           />
-          {this.props.theOpponent.username}
+          {theOpponent.username}
         </div>
         <div className="Opponent__Details__buttons">
           <button
@@ -57,13 +66,17 @@ class OpponentDetails extends Component {
             <div className="opponentPastGames__Stats">
               <div className="opponentPastGames__One__Stat">
                 <span>Won</span>
-                <span>12</span>
+                <span>{theOpponent.matches_won}</span>
               </div>
               <div className="opponentPastGames__One__Stat">
-                <span>Drawn</span> <span>3</span>
+                <span>Drawn</span>
+                <span>
+                  {theOpponent.match_history.length -
+                    (theOpponent.matches_won + theOpponent.matches_lost)}
+                </span>
               </div>
               <div className="opponentPastGames__One__Stat">
-                <span>Lost</span> <span>10</span>
+                <span>Lost</span> <span>{theOpponent.matches_lost}</span>
               </div>
             </div>
             <div className="opponentPastGames__highScore">

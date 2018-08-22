@@ -54,11 +54,13 @@ class SportCard extends React.Component {
     return (
       <div>
         <div className="SportCard" onClick={this.toggle}>
-          <h2> {this.props.sport.sport_name} </h2>
-          <img
-            src={`./SportIcons/${this.props.sport.sport_name}.png`}
-            alt="lets play this sport"
-          />
+          <div className="SportCard__inner">
+            <h2> {this.props.sport.sport_name} </h2>
+            <img
+              src={`./SportIcons/${this.props.sport.sport_name}.png`}
+              alt={`${this.props.sport.sport_name}`}
+            />
+          </div>
         </div>
 
         <div className="SportCard SportCard__JoinLeague" style={joinHeight}>
@@ -69,7 +71,7 @@ class SportCard extends React.Component {
             <button
               className="SportCard__button"
               onClick={this.setSkill}
-              name={800}
+              name={700}
             >
               Beginer
             </button>
@@ -83,7 +85,7 @@ class SportCard extends React.Component {
             <button
               className="SportCard__button"
               onClick={this.setSkill}
-              name={1200}
+              name={1300}
             >
               Advanced
             </button>
