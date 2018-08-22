@@ -60,7 +60,7 @@ class SignUp extends Component {
             {this.renderInput("First Name", "text", "first_name")}
             {this.renderInput("Email", "text", "email")}
           </form>
-        </div>
+        </div>npm
         <div className="SignUpButton" onClick={this.sendSignUp}>
           <text> Register </text>
         </div>
