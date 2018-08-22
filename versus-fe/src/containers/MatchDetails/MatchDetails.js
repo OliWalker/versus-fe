@@ -12,7 +12,8 @@ class MatchDetails extends Component {
     super(props);
     this.state = {
       aMatch: {},
-      activeButton: 'Finished'
+      activeButton: 'Finished',
+      locationQuery:''
     };
   }
 
