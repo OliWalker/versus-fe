@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
 
 .MatchContainer__Content__result {
@@ -109,11 +109,30 @@
   padding-top: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
 }
 
 .MatchContainer__Content__date {
   width: 100%;
+  height: 20vh !important;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
+}
+
+.Match__Content__set {
+  border: 1px solid var(--flatBlue);
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: .8rem;
+  font-weight: bold;
+  color: var(--flatBlue);
+}
+
+.MatchContainer__Content__date h5 {
+  margin-top: 10px;
+  font-size: 1rem;
 }

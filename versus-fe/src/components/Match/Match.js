@@ -22,7 +22,14 @@ class Match extends Component {
         ? this.props.matchInfo.user2.user_id
         : this.props.user.user_id;
 
-    const { user1, user2, league_id, match_id } = this.props.matchInfo;
+    const {
+      user1,
+      user2,
+      league_id,
+      match_id,
+      match_datetime,
+      location
+    } = this.props.matchInfo;
     let innerComponent, innerFunction;
 
     switch (this.props.matchInfo.status) {
@@ -79,7 +86,9 @@ class Match extends Component {
                   innerFunction,
                   league_id,
                   opponent_id,
-                  match_id
+                  match_id,
+                  match_datetime,
+                  location
                 })}
               </div>
             </div>
