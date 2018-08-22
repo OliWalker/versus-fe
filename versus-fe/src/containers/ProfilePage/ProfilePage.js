@@ -17,14 +17,28 @@ class ProfilePage extends Component {
     });
   };
 
+  allProfileScores = () => {
+    return [
+      { date: 1, score: 1000 },
+      { date: 2, score: 950 },
+      { date: 3, score: 975 },
+      { date: 4, score: 1000 },
+      { date: 5, score: 1100 },
+      { date: 6, score: 1150 },
+      { date: 7, score: 1200 },
+      { date: 8, score: 1350 }
+    ];
+  };
+
   renderScore = () => {
     const scoreList = this.props.stats.map(stat => stat.data.current_elo);
-    let score = scoreList.reduce((a, b) => a + b, 0);
+    const score = scoreList.reduce((a, b) => a + b, 0);
     const scoreForPage = Math.ceil(score / scoreList.length);
     return scoreForPage;
   };
 
   render() {
+    console.log(this.allProfileScores());
     const { user, stats } = this.props;
     return (
       <div className="ProfilePage">
@@ -55,7 +69,7 @@ class ProfilePage extends Component {
         </div>
 
         <div className="ProfilePage__stats">
-          <AreaChart width={400} height={200} data={this.state.data}>
+          <AreaChart width={400} height={200} data={this.allProfileScores()}>
             <XAxis dataKey="date" padding={{ bottom: -150 }} />
             <Tooltip />
             <Area
