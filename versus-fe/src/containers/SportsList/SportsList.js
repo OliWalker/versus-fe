@@ -50,11 +50,9 @@ class SportsList extends Component {
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
 
-  handleSearch = e => {
-    this.setState({ search: e.target.value });
-    // const regex = RegExp(e.target.value);
+  handleSearch = async e => {
+    await this.setState({ search: e.target.value });
     const regex = RegExp(this.state.search);
-
     const allLeagues = this.props.allLeagues.filter(el =>
       regex.test(el.sport_name)
     );
