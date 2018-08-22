@@ -13,7 +13,10 @@ export default {
         </div>
 
         <div className="matchDetailsInfo">
-          <MatchDetailsInfo sendAction={props.sendMatchDetails} />
+          <MatchDetailsInfo
+            sendAction={props.sendMatchDetails}
+            match_id={props.match_id}
+          />
         </div>
       </div>
     );

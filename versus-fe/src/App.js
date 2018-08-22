@@ -39,7 +39,7 @@ class App extends Component {
           <Route path="/match/:league/:opponent" component={MatchOne} />
           <Route path="/opponents" component={MatchingCardsList} />
           <Route
-            path="/matchDetails/:league_id/:user_id"
+            path="/matchDetails/:match_id/:league_id/:opponent_id"
             component={MatchDetails}
           />
         </div>

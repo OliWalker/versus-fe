@@ -32,10 +32,13 @@ class MatchDetails extends Component {
       );
     else if (this.state.activeButton === 'Match Details')
       return innerComponents.loactionSetter({
-        sendMatchDetails: this.props.sendMatchDetails
+        sendMatchDetails: this.props.sendMatchDetails,
+        match_id: this.props.match.params.match_id
       });
     else if (this.state.activeButton === 'Finished')
-      return <MatchDetailsFinished match_id={this.props.match.params.id} />;
+      return (
+        <MatchDetailsFinished match_id={this.props.match.params.match_id} />
+      );
   };
 
   buttonActive = event => {

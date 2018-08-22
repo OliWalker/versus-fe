@@ -39,7 +39,7 @@ class MatchDetailsInfo extends Component {
     };
 
     this.props.sendAction({
-      endpoint: '/matches/id/set',
+      endpoint: `/matches/${this.props.match_id}/set`,
       method: 'POST',
       body: matchDetails
     });

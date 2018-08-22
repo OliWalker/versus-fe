@@ -36,7 +36,9 @@ export default {
     return (
       <Link
         className="MatchContainer__Content__waiting"
-        to={`/matchdetails/${props.league_id}/${props.opponent_id}`}
+        to={`/matchdetails/${props.match_id}/${props.league_id}/${
+          props.opponent_id
+        }`}
       >
         <h2>
           <i>waiting...</i>
@@ -62,7 +64,9 @@ export default {
     return (
       <Link
         className="MatchContainer__Content__accepted"
-        to={`/matchdetails/${props.league_id}/${props.opponent_id}`}
+        to={`/matchdetails/${props.match_id}/${props.league_id}/${
+          props.opponent_id
+        }`}
       >
         <div className="MatchContainer__Content__date">
           <span>7th Spt</span>
