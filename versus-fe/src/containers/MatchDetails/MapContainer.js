@@ -57,6 +57,7 @@ export class MapContainer extends Component {
           lat: 41.379327,
           lng: 2.173349
         }}
+        center={this.state.markerPosition}
         containerStyle={containerStyle}
         zoom={14}
       >
