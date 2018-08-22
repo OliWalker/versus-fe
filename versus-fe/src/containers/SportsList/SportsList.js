@@ -92,7 +92,7 @@ class SportsList extends Component {
 
           <div className="SportList__allSports">
             {this.state.otherLeagues.map((sport, i) => (
-              <SportCard key={i} sport={sport} />
+              <SportCard key={i} sport={sport} path={this.props.history} />
             ))}
           </div>
         </div>

@@ -14,7 +14,7 @@ class Drawer extends Component {
   toggleLeagues = () => {
     const target = document.querySelector('.Drawer__LeagueList');
     if (this.state.leaguesStatus === '') {
-      target.style.height = `${this.props.stats.length * 55}px`;
+      target.style.height = `${this.props.stats.length * 7}vh`;
       this.setState({ leaguesStatus: 'open' });
     } else {
       target.style.height = '0';

@@ -8,7 +8,8 @@ class SportCard extends React.Component {
   state = {
     isOpen: false,
     isJoinOpen: false,
-    skill: 0
+    skill: 0,
+    finished: false
   };
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
@@ -31,9 +32,24 @@ class SportCard extends React.Component {
       initial_elo
     };
     this.props.joinLeague(league_id, body);
+    this.setState({
+      skill: 0,
+      isJoinOpen: false,
+      isOpen: false,
+      finished: true
+    });
   };
 
+  componentDidUpdate() {
+    if (this.state.finished) {
+      setTimeout(() => {
+        this.props.path.push(`/league/${this.props.sport.league_id}`);
+      }, 300);
+    }
+  }
+
   render() {
+    console.log(this.props);
     const height = this.state.isOpen ? { height: 100 } : { height: 0 };
     const joinHeight = this.state.isJoinOpen ? { height: 175 } : { height: 0 };
     return (

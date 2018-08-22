@@ -13,8 +13,8 @@ import MatchingCardsList from './containers/MatchingCardsList/MatchingCardsList'
 import MatchOne from './containers/MatchOne/MatchOne';
 import MatchDetails from './containers/MatchDetails/MatchDetails';
 
-// import ErrorPage from './components/ErrorPage/ErrorPage';
-// import Loading from './components/LoadingPage/LoadingPage';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import Loading from './components/LoadingPage/LoadingPage';
 import { getUserInfo } from './redux/actions';
 import Drawer from './components/Drawer/Drawer';
 
@@ -24,26 +24,26 @@ class App extends Component {
   }
 
   render() {
-    // if (this.props.error) return <ErrorPage />;
-    // else if (this.props.loading && !this.props.user.user_id) return <Loading />;
-    // else
-    return (
-      <div className="App">
-        <Route path="/" component={Drawer} />
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/signUp" component={SignUp} />
-        <Route path="/Matches" component={Matches} />
-        <Route path="/Profile" component={ProfilePage} />
-        <Route path="/sportsList" component={SportsList} />
-        <Route path="/league/:id" component={League} />
-        <Route path="/match/:league/:opponent" component={MatchOne} />
-        <Route path="/opponents" component={MatchingCardsList} />
-        <Route
-          path="/matchDetails/:league_id/:user_id"
-          component={MatchDetails}
-        />
-      </div>
-    );
+    if (this.props.error) return <ErrorPage />;
+    else if (this.props.loading && !this.props.user.user_id) return <Loading />;
+    else
+      return (
+        <div className="App">
+          <Route path="/" component={Drawer} />
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/signUp" component={SignUp} />
+          <Route path="/Matches" component={Matches} />
+          <Route path="/Profile" component={ProfilePage} />
+          <Route path="/sportsList" component={SportsList} />
+          <Route path="/league/:id" component={League} />
+          <Route path="/match/:league/:opponent" component={MatchOne} />
+          <Route path="/opponents" component={MatchingCardsList} />
+          <Route
+            path="/matchDetails/:league_id/:user_id"
+            component={MatchDetails}
+          />
+        </div>
+      );
   }
 }
 
