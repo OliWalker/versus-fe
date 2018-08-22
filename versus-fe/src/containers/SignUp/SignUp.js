@@ -1,34 +1,50 @@
 import React, { Component } from 'react';
 import './SignUp.css'
 
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router'
+import { createUser } from '../../redux/actions';
+
 
 class SignUp extends Component {
+
   constructor(props){
     super(props)
     this.state = {
       username:'',
       first_name:'',
+      last_name: '',
+      password: '',
       email:'',
-      image_Path:''
+      user_image_path:'',
+      signedUp: false
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if (this.props.user !== prevProps.user) {
+      console.log('yes ')
+      this.setState({signedUp: true})
     }
   }
     sendSignUp = (event) => {
+
       event.preventDefault()
+
       const signUpDetails = {
         username:this.state.username,
-        first_name:this.state.first_name,
-        email:this.state.email,
-        image_Path:this.state.image_Path
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        password: this.state.password,
+        email: this.state.email,
+        user_image_path: this.state.user_image_path
       }
 
-      fetch(`http://private-1cf21-versus3.apiary-mock.com/users/id`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        body: JSON.stringify(signUpDetails)
-      }).then(res => res.json())
-      .then(data => console.log(data))
+      this.props.createNewUser({
+        endpoint:`/users/`,
+        method: 'POST',
+        body: signUpDetails
+      })
 
     }
 
@@ -47,27 +63,53 @@ class SignUp extends Component {
       )
     }
 
+    renderProfile = () => {
+      if (this.state.signedUp) {
+        console.log('yes NUMERO DOS ')
+        return <Redirect to="/profile" />
+      }
+    }
+
 
   render() {
     return (
       <div className="signUpContainer">
+
         <div className="title">
           <h1> Sign Up </h1>
         </div>
+
         <div className="signUpFormContainer">
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
             {this.renderInput("First Name", "text", "first_name")}
+            {this.renderInput("Last Name", "text" , "last_name")}
+            {this.renderInput("Password", "text" , "password")}
             {this.renderInput("Email", "text", "email")}
           </form>
         </div>
+
         <div className="SignUpButton" onClick={this.sendSignUp}>
           <text> Register </text>
         </div>
+
+        {this.renderProfile()}
       </div>
     );
   }
 
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  createNewUser: (apiInfo) => dispatch(createUser(apiInfo))
+})
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+  error: state.error
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
