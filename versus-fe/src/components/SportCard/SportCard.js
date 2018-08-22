@@ -49,7 +49,6 @@ class SportCard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const height = this.state.isOpen ? { height: 100 } : { height: 0 };
     const joinHeight = this.state.isJoinOpen ? { height: 175 } : { height: 0 };
     return (

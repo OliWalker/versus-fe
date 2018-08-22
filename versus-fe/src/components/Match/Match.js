@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 
 class Match extends Component {
+  state = { deleted: false };
+
   accept = () => this.props.acceptMatch(this.props.match_id);
 
   decline = () => this.props.declineMatch(this.props.match_id);
 
-  delete = () => this.props.deleteMatch(this.props.matchInfo.match_id);
+  delete = () => {
+    this.setState({ deleted: true });
+    this.props.deleteMatch(this.props.matchInfo.match_id);
+  };
 
   render() {
     const opponent_id =
@@ -19,7 +24,6 @@ class Match extends Component {
 
     const { user1, user2, league_id } = this.props.matchInfo;
     let innerComponent, innerFunction;
-    console.log(league_id, opponent_id);
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':
@@ -44,6 +48,7 @@ class Match extends Component {
         innerComponent = null;
     }
     if (innerComponent === null) return <div />;
+    if (this.state.deleted) return <div />;
     else
       return (
         <div>
