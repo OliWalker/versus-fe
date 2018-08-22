@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {Map , InfoWindow , Marker , GoogleApiWrapper } from 'google-maps-react';
 
+import { connect } from 'react-redux'
+
 export class MapContainer extends Component {
 
   queryPlaces = () => {
-    // if (this.props.query) {
         const params = {
           key: 'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto',
           input: 'Nova Icaria',
@@ -18,18 +19,22 @@ export class MapContainer extends Component {
             const keyString = obj1[key].split(' ').join('\%20')
             aStr = aStr.concat(key.toString(), '=', keyString, '&')
           }
-          return aStr;
+          return aStr.slice(0, (aStr.length-1));
         }
 
         const paramStr = paramToString(params)
-        // fetch(`https://maps.googleapis.com/maps/
-        // api/place/findplacefromtext/json?${paramStr}`)
-        // .then()
-    // }
+
+
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.location !== prevProps.location){
+      this.queryPlaces()
+    }
+
   }
 
   render(){
-    {this.queryPlaces()}
     const style = {
       width: '100%',
       height: '100%'
@@ -53,7 +58,16 @@ export class MapContainer extends Component {
     }
   }
 
-  export default GoogleApiWrapper ({
+const mapStateToProps = state => ({
+  location: state.location
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps)(
+    GoogleApiWrapper ({
     apiKey:'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto',
     libraries: ['places']
-  })(MapContainer)
+  })(MapContainer))

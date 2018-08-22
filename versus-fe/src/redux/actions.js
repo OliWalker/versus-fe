@@ -141,3 +141,8 @@ export const requestLocation = apiInfo => ({
     headers: apiInfo.headers
   }
 });
+
+export const locationChosen = info => ({
+  type: 'LOCATION_CHOSEN',
+  location: info
+})

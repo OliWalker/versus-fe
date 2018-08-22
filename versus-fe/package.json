@@ -5,6 +5,7 @@
   "dependencies": {
     "ajv": "^6.5.2",
     "google-maps-react": "^2.0.2",
+    "lodash": "^4.17.10",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
