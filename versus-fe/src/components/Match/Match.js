@@ -17,12 +17,14 @@ class Match extends Component {
   };
 
   render() {
+    console.log(this.props);
+
     const opponent_id =
       this.props.user.user_id === this.props.matchInfo.user1.user_id
         ? this.props.matchInfo.user2.user_id
         : this.props.user.user_id;
 
-    const { user1, user2, league_id } = this.props.matchInfo;
+    const { user1, user2, league_id, match_id } = this.props.matchInfo;
     let innerComponent, innerFunction;
 
     switch (this.props.matchInfo.status) {
@@ -78,7 +80,8 @@ class Match extends Component {
                   user2,
                   innerFunction,
                   league_id,
-                  opponent_id
+                  opponent_id,
+                  match_id
                 })}
               </div>
             </div>

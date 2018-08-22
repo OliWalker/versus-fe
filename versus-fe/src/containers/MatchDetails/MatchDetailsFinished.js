@@ -29,6 +29,7 @@ export class MatchDetailsFinished extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="MatchDetails__finished">
         <div className="MatchDetails__finished__scorecards">

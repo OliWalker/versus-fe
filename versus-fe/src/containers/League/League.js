@@ -16,8 +16,9 @@ class League extends Component {
 
   getScore = () => {
     const id = Number(this.props.match.params.id);
+    console.log(id);
     const score = this.props.stats.filter(stat => stat.league_id === id)[0].data
-      .score;
+      .current_elo;
     this.setState({ score });
   };
 
@@ -29,6 +30,7 @@ class League extends Component {
   }
 
   render() {
+    console.log(this.state);
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
     return (

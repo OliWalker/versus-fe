@@ -45,6 +45,7 @@ class MatchDetails extends Component {
   };
 
   render() {
+    console.log(this.props);
     const buttons = document.querySelectorAll('button');
 
     buttons.forEach(button => {
