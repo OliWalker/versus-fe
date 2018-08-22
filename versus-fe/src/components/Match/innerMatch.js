@@ -50,7 +50,10 @@ export default {
   denied: props => {
     return (
       <div className="MatchContainer__Content__denied">
-        <div className="MatchContainer__Content__denied__banner">
+        <div
+          className="MatchContainer__Content__denied__banner"
+          onClick={props.innerFunction}
+        >
           <h2>
             <i>canceled</i>
           </h2>

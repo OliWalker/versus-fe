@@ -46,7 +46,6 @@ class MatchDetailsInfo extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="infoBackGround">
         <div className="infoContainer">

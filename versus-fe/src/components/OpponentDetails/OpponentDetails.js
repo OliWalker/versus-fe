@@ -24,7 +24,6 @@ class OpponentDetails extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { theOpponent } = this.props;
     const data = theOpponent.match_history.map((match, i) => {
       return { i: i, score: match.elo };

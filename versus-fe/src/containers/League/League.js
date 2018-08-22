@@ -16,7 +16,6 @@ class League extends Component {
 
   getScore = () => {
     const id = Number(this.props.match.params.id);
-    console.log(id);
     const score = this.props.stats.filter(stat => stat.league_id === id)[0].data
       .current_elo;
     this.setState({ score });
@@ -25,12 +24,10 @@ class League extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.user.user_id !== undefined && this.state.score === '')
       this.getScore();
-
     if (this.props.leagueNow !== prevProps.leagueNow) this.getScore();
   }
 
   render() {
-    console.log(this.state);
     const league = this.props.leagueNow;
     const league_id = this.props.match.params.id;
     return (

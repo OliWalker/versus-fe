@@ -17,8 +17,6 @@ class Match extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     const opponent_id =
       this.props.user.user_id === this.props.matchInfo.user1.user_id
         ? this.props.matchInfo.user2.user_id

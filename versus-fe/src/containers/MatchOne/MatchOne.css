@@ -15,11 +15,11 @@
 }
 
 .MatchOne__Header span {
-  color: var(--darkWhite);
-  font-size: 1.4rem;
-  margin-left: 50vw;
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-left: 70vw;
   font-weight: bold;
-  line-height: 3rem;
+  line-height: 3.5rem;
 }
 
 .MatchOne__Header h1 {

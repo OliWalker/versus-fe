@@ -29,10 +29,8 @@ export class LoginPage extends Component {
   };
 
   sendDetails = event => {
-    const loginDetails = [
-      { username: this.state.username },
-      { password: this.state.password }
-    ];
+    const details = btoa(this.state.username + ':' + this.state.password);
+    const loginDetails = { Authorization: `Basic ${details}` };
     this.props.logIn(loginDetails);
   };
 

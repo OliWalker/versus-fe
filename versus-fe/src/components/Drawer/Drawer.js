@@ -32,6 +32,10 @@ class Drawer extends Component {
 
   switchLeague = leagueId => this.props.getOneLeague(leagueId);
 
+  logout = () => {
+    this.props.removeCookie();
+  };
+
   render() {
     const stats = this.props.stats;
     const notifications = this.props.matches.filter(
@@ -47,7 +51,7 @@ class Drawer extends Component {
           onClick={this.toggleDrawer}
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
-          <Link to="/Profile" onClick={this.toggleDrawer}>
+          <Link to="/" onClick={this.toggleDrawer}>
             <h1 className="Drawer__logo">Versus</h1>
           </Link>
 
@@ -97,7 +101,7 @@ class Drawer extends Component {
             </Link>
 
             <Link to="/" onClick={this.toggleDrawer}>
-              <div className="Drawer__button">
+              <div className="Drawer__button" onClick={this.logout}>
                 <i className="fas fa-power-off" />
                 <span> Log-out </span>
               </div>

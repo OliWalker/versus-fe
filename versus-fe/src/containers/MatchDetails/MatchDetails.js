@@ -18,10 +18,18 @@ class MatchDetails extends Component {
   };
 
   componentDidMount() {
+    if (
+      this.props.opponentNow.user_id === Number(this.props.match.params.user_id)
+    )
+      return;
     if (!this.props.opponentNow.user_id) this.getOpponent();
     else if (this.props.opponentNow.user_id !== this.props.match.params.user_id)
       this.getOpponent();
   }
+
+  goBack = () => {
+    this.props.history.goBack();
+  };
 
   renderSubComponent = () => {
     if (this.state.activeButton === 'Opponent')
@@ -37,7 +45,11 @@ class MatchDetails extends Component {
       });
     else if (this.state.activeButton === 'Finished')
       return (
-        <MatchDetailsFinished match_id={this.props.match.params.match_id} />
+        <MatchDetailsFinished
+          match_id={this.props.match.params.match_id}
+          league_id={this.props.match.params.league_id}
+          goBack={this.goBack}
+        />
       );
   };
 
@@ -48,7 +60,6 @@ class MatchDetails extends Component {
   };
 
   render() {
-    console.log(this.props);
     const buttons = document.querySelectorAll('button');
 
     buttons.forEach(button => {

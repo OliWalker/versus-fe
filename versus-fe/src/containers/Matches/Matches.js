@@ -11,13 +11,16 @@ class Matches extends Component {
   };
 
   renderMatches = () =>
-    this.state.filteredMatches.map(theMatch => (
-      <Match
-        key={theMatch.match_id}
-        matchInfo={theMatch}
-        user={this.props.user}
-      />
-    ));
+    this.state.filteredMatches.map((theMatch, i) => {
+      if (theMatch.match_id === null) return <div key={i} />;
+      return (
+        <Match
+          key={theMatch.match_id}
+          matchInfo={theMatch}
+          user={this.props.user}
+        />
+      );
+    });
 
   renderMatchesFilter = event => {
     const matches = this.props.matches;
@@ -53,7 +56,10 @@ class Matches extends Component {
         <div className="MyMatches__header">
           <h1>My Matches</h1>
 
-          <div className="MyMatches__buttonFilter">
+          <div
+            className="MyMatches__buttonFilter"
+            ref={ref => (this.buttons = ref)}
+          >
             {buttonsNames.map(el => (
               <button
                 key={el}
