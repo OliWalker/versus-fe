@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './SignUp.css';
 
 class SignUp extends Component {
@@ -40,12 +41,13 @@ class SignUp extends Component {
   renderInput = (label, type, name) => {
     return (
       <div className="divider">
-        <span> {label} </span>
+        {/*<span> {label} </span>*/}
         <input
           className="inputField"
           type={type}
           onChange={this.handleFormChange}
           name={name}
+          placeholder={label}
         />
       </div>
     );
@@ -55,17 +57,21 @@ class SignUp extends Component {
     return (
       <div className="signUpContainer">
         <div className="title">
-          <h1> Sign Up </h1>
+          <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
+          <h3> Sign Up </h3>
         </div>
         <div className="signUpFormContainer">
           <form className="signUpForm">
             {this.renderInput('Username', 'text', 'username')}
-            {this.renderInput('First Name', 'text', 'first_name')}
+            {this.renderInput('First name', 'text', 'first_name')}
             {this.renderInput('Email', 'text', 'email')}
           </form>
         </div>
         <div className="SignUpButton" onClick={this.sendSignUp}>
           Register
+        </div>
+        <div className="SignUp">
+          <Link to="/"> Returning? <strong>Login.</strong> </Link>
         </div>
       </div>
     );

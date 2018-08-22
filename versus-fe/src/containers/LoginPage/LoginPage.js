@@ -28,11 +28,11 @@ export class LoginPage extends Component {
     }, 800);
   };
 
-  sendDetails = event => {
-    const loginDetails = [
-      { username: this.state.username },
-      { password: this.state.password }
-    ];
+   sendDetails = event => {
+    const details = btoa(this.state.username + ':' + this.state.password);
+
+    const loginDetails = { Authorization: `Basic ${details}` };
+
     this.props.logIn(loginDetails);
   };
 
@@ -47,23 +47,26 @@ export class LoginPage extends Component {
     return (
       <div className="background">
         <div className="loginContainer">
-          <h1> Welcome to Versus </h1>
+          {/*<h1> Versus </h1>*/}
+          <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
 
           <div className={`loginDetails ${loginClass}`}>
             <form>
-              <span> Username </span>
+              {/*<span> Username </span>*/}
               <input
                 type="text"
                 value={this.state.username}
                 onChange={this.handleFormChange}
                 name="username"
+                placeholder="Username"
               />
-              <span> Password </span>
+              {/*<span> Password </span>*/}
               <input
                 type="password"
                 value={this.state.password}
                 onChange={this.handleFormChange}
                 name="password"
+                placeholder="Password"
               />
             </form>
           </div>
@@ -74,7 +77,7 @@ export class LoginPage extends Component {
             </div>
 
             <div className="SignUp">
-              <Link to="/SignUp"> Sign Up for an account </Link>
+              <Link to="/SignUp"> New user? <strong> Sign up. </strong> </Link>
             </div>
           </div>
         </div>
