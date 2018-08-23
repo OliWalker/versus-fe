@@ -92,7 +92,7 @@ class SignUp extends Component {
             {this.renderInput("Email", "text", "email")}
           </form>
         </div>
-
+      
         <div className="SignUpButton" onClick={this.sendSignUp}>
           Register
         </div>

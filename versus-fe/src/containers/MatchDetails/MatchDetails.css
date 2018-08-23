@@ -22,7 +22,15 @@
   margin-bottom: 5vh;
 }
 
-.MatchDetails__map {}
+.MatchDetails__map {
+  height:50vh;
+  width:90vw;
+}
+
+Map{
+  height:50vh;
+  width:90vw;
+}
 
 .MatchDetails__map img {
   width: 90vw;

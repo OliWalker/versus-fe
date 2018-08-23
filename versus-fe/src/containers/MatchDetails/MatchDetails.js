@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MatchDetails.css';
-import innerComponents from './innerMatchComponent';
+import LocationMap from './innerMatchComponent'
 import MatchDetailsFinished from './MatchDetailsFinished';
 import OpponentDetails from '../../components/OpponentDetails/OpponentDetails';
 
@@ -8,9 +8,15 @@ import { connect } from 'react-redux';
 import { sendMatchDetails, getOpponent } from '../../redux/actions';
 
 class MatchDetails extends Component {
-  state = {
-    activeButton: 'Match Details'
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      aMatch: {},
+      activeButton: 'Finished',
+      locationQuery:''
+    };
+  }
+
 
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;
@@ -39,10 +45,7 @@ class MatchDetails extends Component {
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
-      return innerComponents.loactionSetter({
-        sendMatchDetails: this.props.sendMatchDetails,
-        match_id: this.props.match.params.match_id
-      });
+      return <LocationMap />
     else if (this.state.activeButton === 'Finished')
       return (
         <MatchDetailsFinished

@@ -1,4 +1,3 @@
-
 import React , { Component } from 'react';
 import MatchDetailsInfo from '../../components/MatchDetailsInfo/MatchDetailsInfo';
 import MapContainer from './MapContainer'
@@ -22,6 +21,5 @@ class LocationMap extends Component {
          );
        }
 }
-
 
 export default LocationMap;

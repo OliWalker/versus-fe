@@ -7,7 +7,9 @@ const initalState = {
   error: false,
   leagueNow: {},
   allLeagues: [],
-  opponentNow: {}
+  opponentNow: {},
+  location:'',
+  googlePlaces: {}
 };
 
 const reducer = (state = initalState, action) => {
@@ -234,6 +236,32 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+
+    case 'REQUEST_LOCATION_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'REQUEST_LOCATION_SUCCESS':
+      return {
+        ...state,
+        googlePlaces: action.data,
+        loading: false
+      }
+
+    case 'REQUEST_LOCATION_FAILURE':
+      return {
+        ...state,
+        loading: false
+      }
+
+    case 'LOCATION_CHOSEN':
+      return {
+        ...state,
+        location: action.location
+      }
+      
     case 'CREATE_USER_REQUEST':
       return {
         ...state,
@@ -253,7 +281,7 @@ const reducer = (state = initalState, action) => {
         error: action.error,
         loading: false
       }
-
+      
     default:
       return state;
   }
