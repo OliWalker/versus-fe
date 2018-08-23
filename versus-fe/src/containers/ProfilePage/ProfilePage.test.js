@@ -10,9 +10,9 @@ const user = {
 };
 
 const stats = [
-  { name: 'Tennis', data: { score: 1000 } },
-  { name: 'PingPong', data: { score: 1900 } },
-  { name: 'Football', data: { score: 700 } }
+  { sport_name: 'Tennis', data: { current_elo: 1000 } },
+  { sport_name: 'PingPong', data: { current_elo: 1900 } },
+  { sport_name: 'Football', data: { current_elo: 700 } }
 ];
 
 const component = shallow(<ProfilePage user={user} stats={stats} />);
@@ -36,11 +36,13 @@ test('Should print all the "ProfileSportScore" components', () => {
 });
 
 test('all props should match stats', () => {
-  const props = component.find('ProfileSportScore').map(el => el.props().title);
+  const props = component
+    .find('ProfileSportScore')
+    .map(el => el.props().sport.sport_name);
   expect(props).toEqual(['Tennis', 'PingPong', 'Football']);
 
   const moreProps = component
     .find('ProfileSportScore')
-    .map(el => el.props().score);
+    .map(el => el.props().sport.data.current_elo);
   expect(moreProps).toEqual([1000, 1900, 700]);
 });

@@ -6,7 +6,7 @@ import ProfileSportScore from '../../components/ProfileSportScore/ProfileSportSc
 
 import { XAxis, Tooltip, AreaChart, Area } from 'recharts';
 
-class ProfilePage extends Component {
+export class ProfilePage extends Component {
   state = {
     data: this.props.user.elo_history
   };
