@@ -3,50 +3,47 @@ import { Link } from 'react-router-dom';
 import './SignUp.css';
 
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import { createUser } from '../../redux/actions';
 
-
 class SignUp extends Component {
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      username:'',
-      first_name:'',
+      username: '',
+      first_name: '',
       last_name: '',
       password: '',
-      email:'',
-      user_image_path:'',
+      email: '',
+      user_image_path: '',
       signedUp: false
-    }
+    };
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
-      console.log('yes ')
-      this.setState({signedUp: true})
+      console.log('yes ');
+      this.setState({ signedUp: true });
     }
   }
-    sendSignUp = (event) => {
+  sendSignUp = event => {
+    event.preventDefault();
 
-      event.preventDefault()
+    const signUpDetails = {
+      username: this.state.username,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      password: this.state.password,
+      email: this.state.email,
+      user_image_path: this.state.user_image_path
+    };
 
-      const signUpDetails = {
-        username:this.state.username,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        password: this.state.password,
-        email: this.state.email,
-        user_image_path: this.state.user_image_path
-      }
-
-      this.props.createNewUser({
-        endpoint:`/users/`,
-        method: 'POST',
-        body: signUpDetails
-      })
-
+    this.props.createNewUser({
+      endpoint: `/users/`,
+      method: 'POST',
+      body: signUpDetails
+    });
+  };
 
   handleFormChange = event => {
     this.setState({
@@ -68,40 +65,40 @@ class SignUp extends Component {
       </div>
     );
   };
-    renderProfile = () => {
-      if (this.state.signedUp) {
-        console.log('yes NUMERO DOS ')
-        return <Redirect to="/profile" />
-      }
+  renderProfile = () => {
+    if (this.state.signedUp) {
+      console.log('yes NUMERO DOS ');
+      return <Redirect to="/profile" />;
     }
-
+  };
 
   render() {
     return (
       <div className="signUpContainer">
-       <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
+        <img className="logo" src="backgrounds/logo.png" alt="App logo" />
 
         <div className="title">
           <h3> Sign Up </h3>
         </div>
 
         <div className="signUpFormContainer">
-
-
-          <form className="signUpForm" >
-            {this.renderInput("Username", "text", "username")}
-            {this.renderInput("First Name", "text", "first_name")}
-            {this.renderInput("Last Name", "text" , "last_name")}
-            {this.renderInput("Password", "text" , "password")}
-            {this.renderInput("Email", "text", "email")}
+          <form className="signUpForm">
+            {this.renderInput('Username', 'text', 'username')}
+            {this.renderInput('First Name', 'text', 'first_name')}
+            {this.renderInput('Last Name', 'text', 'last_name')}
+            {this.renderInput('Password', 'text', 'password')}
+            {this.renderInput('Email', 'text', 'email')}
           </form>
         </div>
-      
+
         <div className="SignUpButton" onClick={this.sendSignUp}>
           Register
         </div>
         <div className="SignUp">
-          <Link to="/"> Returning? <strong>Login.</strong> </Link>
+          <Link to="/">
+            {' '}
+            Returning? <strong>Login.</strong>{' '}
+          </Link>
         </div>
 
         {this.renderProfile()}
@@ -110,14 +107,14 @@ class SignUp extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  createNewUser: (apiInfo) => dispatch(createUser(apiInfo))
-})
+const mapDispatchToProps = dispatch => ({
+  createNewUser: apiInfo => dispatch(createUser(apiInfo))
+});
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   error: state.error
-})
+});
 
 export default connect(
   mapStateToProps,
