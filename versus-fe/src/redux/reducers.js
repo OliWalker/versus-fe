@@ -8,7 +8,7 @@ const initalState = {
   leagueNow: {},
   allLeagues: [],
   opponentNow: {},
-  location:'',
+  location: '',
   googlePlaces: {}
 };
 
@@ -45,10 +45,11 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
-
-      const newStats = []
-      const stats = action.data.stats
-      for(let sport in stats) {newStats.push(stats[sport])}
+      const newStats = [];
+      const stats = action.data.stats;
+      for (let sport in stats) {
+        newStats.push(stats[sport]);
+      }
       return {
         ...state,
         user: action.data.user,
@@ -236,6 +237,28 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+    case 'FINISH_MATCH_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'FINISH_MATCH_SUCCESS':
+      const newMatches = state.matches.map(
+        el => (el.match_id === action.data.match_id ? (el = action.data) : el)
+      );
+      return {
+        ...state,
+        matches: newMatches,
+        loading: false
+      };
+
+    case 'FINISH_MATCH_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      };
 
     case 'REQUEST_LOCATION_REQUEST':
       return {
@@ -248,24 +271,24 @@ const reducer = (state = initalState, action) => {
         ...state,
         googlePlaces: action.data,
         loading: false
-      }
+      };
 
     case 'REQUEST_LOCATION_FAILURE':
       return {
         ...state,
         loading: false
-      }
+      };
 
     case 'LOCATION_CHOSEN':
       return {
         ...state,
         location: action.location
-      }
-      
+      };
+
     case 'CREATE_USER_REQUEST':
       return {
         ...state,
-        loading:true
+        loading: true
       };
 
     case 'CREATE_USER_SUCCESS':
@@ -273,15 +296,15 @@ const reducer = (state = initalState, action) => {
         ...state,
         user: action.data,
         loading: false
-      }
+      };
 
     case 'CREATE_USER_FAILURE':
       return {
         ...state,
         error: action.error,
         loading: false
-      }
-      
+      };
+
     default:
       return state;
   }

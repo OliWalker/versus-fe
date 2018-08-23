@@ -17,29 +17,29 @@
   margin: 20px
 }
 
-h3 {
+.title h3 {
   margin-top: 80px;
   font-size: 1.6em;
   color: white;
 }
 
 .signUpContainer {
-  height:100vh;
-  display:flex;
+  height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0) ), url(/backgrounds/court-4.jpeg) no-repeat center top;
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)), url(/backgrounds/court-4.jpeg) no-repeat center top;
   background-size: cover;
   background-color: #00295A;
 }
 
 .signUpFormContainer {
-  width:100vw
+  width: 100vw
 }
 
 .signUpForm {
-/*  display
+  /*  display
   align-items: flex-start;*/
   width: 300px;
 }
@@ -52,25 +52,24 @@ h3 {
   width: 90vw;
 }
 
-.divider > span {
+.divider>span {
   font-size: 15px;
   margin-left: 20px;
-  color:grey;
+  color: grey;
 }
 
-.divider > input {
+.divider>input {
   margin: 15px;
   border-radius: 5px;
   width: 80vw;
   height: 5vh;
   border: 0px;
-   border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
   /*border-color: black;*/
   font-size: 0.8em;
   font-weight: 500;
   text-align: center;
 }
-
 
 .SignUpButton {
   background: var(--blueGrad);

@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { ProfilePage } from '../../containers/ProfilePage/ProfilePage';
+
+const randomScore = () => {
+  return Math.floor(Math.random() * 50);
+};
 
 export default {
   finished: props => {
@@ -9,7 +14,7 @@ export default {
         <span>
           <b>{props.user1.score}</b> / {props.user2.score}
         </span>
-        <i> + 30 points! </i>
+        <i> + {props.user1.elo_diff || randomScore()} points! </i>
       </div>
     );
   },

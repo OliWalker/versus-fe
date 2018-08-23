@@ -4,12 +4,10 @@
   box-sizing: border-box;
 }
 
-h1 {
+/* .loginContainer h1 {
   color: white;
   font-size: 3em;
-}
-
-
+} */
 
 /*.background {
   height: 100vh;
@@ -26,7 +24,7 @@ h1 {
   color: navy;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0) ), url(/backgrounds/court-4.jpeg) no-repeat center top;
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)), url(/backgrounds/court-4.jpeg) no-repeat center top;
   background-size: cover;
   background-color: #00295A;
 }
@@ -34,6 +32,7 @@ h1 {
 .loginContainer>h1 {
   margin: 10vw;
 }
+
 /*.loginContainer>img {
   margin: 10vw;
 }*/
@@ -103,8 +102,8 @@ h1 {
   color: #E2DAE3;
 }
 
-.SignUp > * {
-  color: #E2DAE3 ;
+.SignUp>* {
+  color: #E2DAE3;
 }
 
 .Error span,

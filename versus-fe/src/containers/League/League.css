@@ -16,9 +16,16 @@
 }
 
 .League__info h1 {
-  margin-left: 70vw;
+  /* margin-left: 70vw; */
   font-size: 1.3rem;
   margin-top: 2.5vh;
+  margin-bottom: 20px;
+  width: 100vw;
+}
+
+.League__info i {
+  float: right;
+  padding-right: 20px;
 }
 
 .League__info span {
