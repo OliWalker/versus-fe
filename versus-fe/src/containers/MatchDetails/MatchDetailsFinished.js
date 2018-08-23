@@ -8,6 +8,7 @@ export class MatchDetailsFinished extends Component {
     opScore: '',
     message: 'Enter Your Scores'
   };
+  
   handleFormChange = event => {
     this.setState({
       [event.target.name]: event.target.value

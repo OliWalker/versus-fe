@@ -3,7 +3,7 @@ import './MatchDetailsInfo.css';
 
 import { debounce } from 'lodash'
 import { connect } from 'react-redux';
-import { locationChosen } from '../../redux/actions'
+import { locationChosen , sendMatchDetails } from '../../redux/actions'
 
 
 class MatchDetailsInfo extends Component {
@@ -43,7 +43,7 @@ class MatchDetailsInfo extends Component {
       location: this.state.location
     };
 
-    this.props.sendAction({
+    this.props.sendMatchDetails({
       endpoint: `/matches/${this.props.match_id}/set`,
       method: 'POST',
       body: matchDetails
@@ -77,7 +77,8 @@ class MatchDetailsInfo extends Component {
 
 const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
-  locationChosen: (info) => dispatch(locationChosen(info))
+  locationChosen: (info) => dispatch(locationChosen(info)),
+  sendMatchDetails: apiInfo => dispatch(sendMatchDetails(apiInfo))
 })
 
 export default connect(

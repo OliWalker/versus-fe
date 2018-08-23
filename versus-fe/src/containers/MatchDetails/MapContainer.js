@@ -44,7 +44,8 @@ export class MapContainer extends Component {
       height: '100%'
     };
     const containerStyle = {
-      height: '50%'
+      width: '100%',
+      height: '40%',
     };
     return (
       <Map
