@@ -33,6 +33,10 @@
   font-weight: bold;
 }
 
+.Profile__small {
+  color: var(--white)
+}
+
 .ProfilePage__all__scores {
   width: 70vw;
   margin-top: 6vh;

@@ -55,7 +55,7 @@ export class ProfilePage extends Component {
         >
           <i>{this.renderScore()}</i>
         </span>
-        <small>City Avg</small>
+        <small className="Profile__small">City Avg</small>
 
         <div className="ProfilePage__all__scores">
           {stats.map(sport => {

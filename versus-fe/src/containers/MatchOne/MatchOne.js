@@ -56,6 +56,7 @@ class MatchOne extends Component {
 
   render() {
     if (!this.props.opponentNow.user_id) return <Loading />;
+    if (!this.props.user.user_id) return <Loading />;
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">

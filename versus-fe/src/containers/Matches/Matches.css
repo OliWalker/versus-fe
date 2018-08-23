@@ -18,6 +18,10 @@
   box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
 }
 
+.MyMatches__header h1 {
+  font-size: 2rem;
+}
+
 .MyMatches__buttonFilter {
   width: 100vw;
   display: flex;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MatchDetails.css';
-import LocationMap from './innerMatchComponent'
+import LocationMap from './innerMatchComponent';
 import MatchDetailsFinished from './MatchDetailsFinished';
 import OpponentDetails from '../../components/OpponentDetails/OpponentDetails';
 
@@ -12,11 +12,10 @@ class MatchDetails extends Component {
     super(props);
     this.state = {
       aMatch: {},
-      activeButton: 'Finished',
-      locationQuery:''
+      activeButton: 'Match Details',
+      locationQuery: ''
     };
   }
-
 
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;
@@ -45,6 +44,7 @@ class MatchDetails extends Component {
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
+
       return <LocationMap match_id={this.props.match.params.match_id}/>
     else if (this.state.activeButton === 'Finished')
       return (
