@@ -45,7 +45,7 @@ class MatchDetails extends Component {
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
-      return <LocationMap />
+      return <LocationMap match_id={this.props.match.params.match_id}/>
     else if (this.state.activeButton === 'Finished')
       return (
         <MatchDetailsFinished
