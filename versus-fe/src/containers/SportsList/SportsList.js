@@ -15,6 +15,8 @@ class SportsList extends Component {
   };
 
   componentDidMount() {
+    if (this.props.user.user_id === 31) this.props.getAllLeagues();
+
     if (this.props.allLeagues.length === 0 && this.props.stats.length > 0)
       this.props.getAllLeagues();
     else this.sortLeagues(this.props.allLeagues);
@@ -106,6 +108,7 @@ class SportsList extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   stats: state.stats,
   loading: state.loading,
   allLeagues: state.allLeagues

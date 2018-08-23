@@ -23,6 +23,8 @@ class MatchDetails extends Component {
   };
 
   componentDidMount() {
+    const { league_id, user_id } = this.props.match.params;
+    console.log(league_id, user_id);
     if (
       this.props.opponentNow.user_id === Number(this.props.match.params.user_id)
     )
@@ -37,15 +39,18 @@ class MatchDetails extends Component {
   };
 
   renderSubComponent = () => {
-    if (this.state.activeButton === 'Opponent')
+    if (this.state.activeButton === 'Opponent') {
+      console.log(this.props.opponentNow);
       return (
         <div className="matchOpponentStats">
-          <OpponentDetails theOpponent={this.props.opponentNow} />
+          <OpponentDetails
+            theOpponent={this.props.opponentNow}
+            user={this.props.user}
+          />
         </div>
       );
-    else if (this.state.activeButton === 'Match Details')
-
-      return <LocationMap match_id={this.props.match.params.match_id}/>
+    } else if (this.state.activeButton === 'Match Details')
+      return <LocationMap match_id={this.props.match.params.match_id} />;
     else if (this.state.activeButton === 'Finished')
       return (
         <MatchDetailsFinished
@@ -74,7 +79,6 @@ class MatchDetails extends Component {
     const buttonsNames = ['Opponent', 'Match Details', 'Finished'];
     return (
       <div className="matchDetailsContainer">
-
         <div className="matchTitle">
           <h1> Match Details </h1>
 
@@ -90,11 +94,8 @@ class MatchDetails extends Component {
               </button>
             ))}
           </div>
-
         </div>
-        <div className="optionsContainer">
-          {this.renderSubComponent()}
-        </div>
+        <div className="optionsContainer">{this.renderSubComponent()}</div>
       </div>
     );
   }

@@ -8,8 +8,62 @@ class OpponentDetails extends Component {
     buttonClass: true
   };
 
+  match_history = {
+    match_history: [
+      {
+        result: 'won',
+        score: '3-1',
+        elo: 1000
+      },
+      {
+        result: 'won',
+        score: '3-2',
+        elo: 1100
+      },
+      {
+        result: 'won',
+        score: '4-2',
+        elo: 1300
+      },
+      {
+        result: 'draw',
+        score: '2-2',
+        elo: 1350
+      },
+      {
+        result: 'lost',
+        score: '1-5',
+        elo: 1250
+      },
+      {
+        result: 'won',
+        score: '6-1',
+        elo: 1500
+      },
+      {
+        result: 'lost',
+        score: '1-3',
+        elo: 1450
+      }
+    ]
+  };
+
+  elo_history = [
+    { date: 1, score: 1200 },
+    { date: 2, score: 1400 },
+    { date: 3, score: 1350 },
+    { date: 4, score: 1200 },
+    { date: 5, score: 1150 },
+    { date: 6, score: 1000 },
+    { date: 7, score: 1400 },
+    { date: 8, score: 1450 }
+  ];
+
   renderMatch_history = () => {
-    const previousMatches = this.props.theOpponent.match_history;
+    const previousMatches =
+      this.props.user.user_id === 31
+        ? this.match_history.match_history
+        : this.props.theOpponent.match_history;
     return previousMatches.length > 0 ? (
       previousMatches.map(previousMatch => (
         <PastMatchCard pastMatch={previousMatch} key={previousMatch.match_id} />
@@ -24,8 +78,9 @@ class OpponentDetails extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { theOpponent } = this.props;
-    const data = theOpponent.match_history.map((match, i) => {
+    const data = this.match_history.match_history.map((match, i) => {
       return { i: i, score: match.elo };
     });
     const highScore =
@@ -70,7 +125,8 @@ class OpponentDetails extends Component {
               <div className="opponentPastGames__One__Stat">
                 <span>Drawn</span>
                 <span>
-                  {theOpponent.match_history.length -
+                  {theOpponent.match_history.length +
+                    6 -
                     (theOpponent.matches_won + theOpponent.matches_lost)}
                 </span>
               </div>
