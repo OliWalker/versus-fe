@@ -25,8 +25,8 @@
 .dividerInfo input[type=time],
 .dividerInfo input[type=date] {
   height: 5vh;
-  width: 38vw;
-  font-size: 1.25rem;
+  width: 35vw;
+  font-size: 1rem;
   margin-bottom: 6vh;
 }
 

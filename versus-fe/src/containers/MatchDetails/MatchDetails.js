@@ -74,6 +74,7 @@ class MatchDetails extends Component {
     const buttonsNames = ['Opponent', 'Match Details', 'Finished'];
     return (
       <div className="matchDetailsContainer">
+
         <div className="matchTitle">
           <h1> Match Details </h1>
 
@@ -89,9 +90,11 @@ class MatchDetails extends Component {
               </button>
             ))}
           </div>
-        </div>
 
-        {this.renderSubComponent()}
+        </div>
+        <div className="optionsContainer">
+          {this.renderSubComponent()}
+        </div>
       </div>
     );
   }
