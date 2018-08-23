@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './SignUp.css'
+import { Link } from 'react-router-dom';
+import './SignUp.css';
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router'
@@ -56,12 +57,13 @@ class SignUp extends Component {
   renderInput = (label, type, name) => {
     return (
       <div className="divider">
-        <span> {label} </span>
+        {/*<span> {label} </span>*/}
         <input
           className="inputField"
           type={type}
           onChange={this.handleFormChange}
           name={name}
+          placeholder={label}
         />
       </div>
     );
@@ -77,12 +79,14 @@ class SignUp extends Component {
   render() {
     return (
       <div className="signUpContainer">
+       <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
 
         <div className="title">
-          <h1> Sign Up </h1>
+          <h3> Sign Up </h3>
         </div>
 
         <div className="signUpFormContainer">
+
 
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
@@ -95,6 +99,9 @@ class SignUp extends Component {
       
         <div className="SignUpButton" onClick={this.sendSignUp}>
           Register
+        </div>
+        <div className="SignUp">
+          <Link to="/"> Returning? <strong>Login.</strong> </Link>
         </div>
 
         {this.renderProfile()}
