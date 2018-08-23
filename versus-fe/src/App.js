@@ -83,6 +83,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getUserInfo: user_id =>
     dispatch(getUserInfo({ endpoint: `/users/${user_id}` }))
+
 });
 
 export default withCookies(
