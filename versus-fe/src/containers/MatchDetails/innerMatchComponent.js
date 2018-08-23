@@ -15,7 +15,7 @@ class LocationMap extends Component {
               {this.renderMap()}
              </div>
              <div className="matchDetailsInfo">
-               <MatchDetailsInfo sendAction={this.props.sendMatchDetails} />
+               <MatchDetailsInfo match_id={this.props.match_id} sendAction={this.props.sendMatchDetails} />
              </div>
            </div>
          );
