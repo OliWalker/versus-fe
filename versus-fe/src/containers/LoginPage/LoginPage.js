@@ -45,7 +45,7 @@ export class LoginPage extends Component {
   render() {
     const loginClass = this.state.loginError ? 'Error' : '';
     return (
-      <div className="background">
+
         <div className="loginContainer">
           {/*<h1> Versus </h1>*/}
           <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
@@ -81,7 +81,7 @@ export class LoginPage extends Component {
             </div>
           </div>
         </div>
-      </div>
+
     );
   }
 }

@@ -56,8 +56,8 @@ class SignUp extends Component {
   render() {
     return (
       <div className="signUpContainer">
+       <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
         <div className="title">
-          <img className="logo" src="backgrounds/logo.png" alt="App logo"/>
           <h3> Sign Up </h3>
         </div>
         <div className="signUpFormContainer">

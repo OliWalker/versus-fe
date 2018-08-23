@@ -1,6 +1,16 @@
 .title {
-  margin-top: 8vh;
+  /*margin-top: 8vh;*/
   color: Navy;
+}
+
+/*.signUpContainer>img {
+  margin: 10vw;
+}*/
+
+.logo {
+  padding-top: 100px;
+  width: 260px;
+  text-align: center;
 }
 
 .divider {

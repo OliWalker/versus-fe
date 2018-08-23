@@ -11,12 +11,12 @@ h1 {
 
 
 
-.background {
+/*.background {
   height: 100vh;
   background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0) ), url(/backgrounds/court-4.jpeg) no-repeat center top;
   background-size: cover;
   background-color: #00295A;
-}
+}*/
 
 .loginContainer {
   display: flex;
@@ -26,17 +26,21 @@ h1 {
   color: navy;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0) ), url(/backgrounds/court-4.jpeg) no-repeat center top;
+  background-size: cover;
+  background-color: #00295A;
 }
 
 .loginContainer>h1 {
   margin: 10vw;
 }
-.loginContainer>img {
+/*.loginContainer>img {
   margin: 10vw;
-}
+}*/
 
 .logo {
-  width: 300px;
+  padding-top: 100px;
+  width: 260px;
   text-align: center;
 }
 
