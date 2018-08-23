@@ -42,7 +42,7 @@ class SportsList extends Component {
   handleScroll = e => {
     const myViewPort = e.target.scrollTop;
     const allSportsDiv = this.sportListAllSport.scrollHeight;
-    myViewPort > allSportsDiv + 200
+    myViewPort > allSportsDiv + 400
       ? this.setState({ mySportsHeader: false })
       : this.setState({ mySportsHeader: true });
   };
@@ -87,12 +87,14 @@ class SportsList extends Component {
             ))}
           </div>
 
-          <div className="SportsList__list__divider">All Sports</div>
-
           <div
+            className="SportsList__list__divider"
             ref={ref => (this.sportListAllSport = ref)}
-            className="SportList__allSports"
           >
+            All Sports
+          </div>
+
+          <div className="SportList__allSports">
             {this.state.otherLeagues.map((sport, i) => (
               <SportCard key={i} sport={sport} path={this.props.history} />
             ))}

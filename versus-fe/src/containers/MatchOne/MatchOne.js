@@ -14,6 +14,8 @@ import Loading from '../../components/LoadingPage/LoadingPage';
 class MatchOne extends Component {
   componentDidMount() {
     const { league, opponent } = this.props.match.params;
+
+    if (this.props.opponentNow.user_id === Number(opponent)) return;
     this.props.getOpponent(league, opponent);
   }
 
@@ -57,7 +59,9 @@ class MatchOne extends Component {
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">
-          <span> {this.props.leagueNow.sport_name} </span>
+          <span>
+            <i>{this.props.leagueNow.sport_name}</i>
+          </span>
           <h1> Versus </h1>
         </div>
 

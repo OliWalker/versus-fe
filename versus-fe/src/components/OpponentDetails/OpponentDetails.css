@@ -20,7 +20,8 @@
 .opponentPhoto {
   display: block;
   margin: 2vw;
-  height: 14vh;
+  height: 12vh;
+  width: 12vh;
   border-radius: 50%;
   padding: 5px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MatchDetails.css';
-import innerComponents from './innerMatchComponent';
+import LocationMap from './innerMatchComponent'
 import MatchDetailsFinished from './MatchDetailsFinished';
 import OpponentDetails from '../../components/OpponentDetails/OpponentDetails';
 
@@ -8,9 +8,15 @@ import { connect } from 'react-redux';
 import { sendMatchDetails, getOpponent } from '../../redux/actions';
 
 class MatchDetails extends Component {
-  state = {
-    activeButton: 'Match Details'
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      aMatch: {},
+      activeButton: 'Finished',
+      locationQuery:''
+    };
+  }
+
 
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;
@@ -18,10 +24,18 @@ class MatchDetails extends Component {
   };
 
   componentDidMount() {
+    if (
+      this.props.opponentNow.user_id === Number(this.props.match.params.user_id)
+    )
+      return;
     if (!this.props.opponentNow.user_id) this.getOpponent();
     else if (this.props.opponentNow.user_id !== this.props.match.params.user_id)
       this.getOpponent();
   }
+
+  goBack = () => {
+    this.props.history.goBack();
+  };
 
   renderSubComponent = () => {
     if (this.state.activeButton === 'Opponent')
@@ -31,13 +45,14 @@ class MatchDetails extends Component {
         </div>
       );
     else if (this.state.activeButton === 'Match Details')
-      return innerComponents.loactionSetter({
-        sendMatchDetails: this.props.sendMatchDetails,
-        match_id: this.props.match.params.match_id
-      });
+      return <LocationMap />
     else if (this.state.activeButton === 'Finished')
       return (
-        <MatchDetailsFinished match_id={this.props.match.params.match_id} />
+        <MatchDetailsFinished
+          match_id={this.props.match.params.match_id}
+          league_id={this.props.match.params.league_id}
+          goBack={this.goBack}
+        />
       );
   };
 
@@ -48,7 +63,6 @@ class MatchDetails extends Component {
   };
 
   render() {
-    console.log(this.props);
     const buttons = document.querySelectorAll('button');
 
     buttons.forEach(button => {

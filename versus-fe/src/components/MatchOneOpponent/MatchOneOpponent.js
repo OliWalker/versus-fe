@@ -28,6 +28,13 @@ export default class MatchOneOpponent extends Component {
   };
 
   render() {
+    let score, realScore;
+    if (this.props.stats) {
+      score = this.props.stats.filter(
+        stat => stat.league_id === Number(this.props.league)
+      );
+      if (score.length > 0) realScore = score[0].data.current_elo;
+    }
     return (
       <div className="MatchOneOpponent">
         {this.props.opponent ? (
@@ -52,7 +59,7 @@ export default class MatchOneOpponent extends Component {
         {this.props.user ? (
           <div className="MatchOneOpponent__info">
             <h2> {this.props.user.username} </h2>
-            <h1> {this.props.user.total_score} </h1>
+            <h1> {realScore} </h1>
             <span> wins </span>
             {this.state.sport.length > 0 ? (
               <div className="MatchOneOpponent__info__user">

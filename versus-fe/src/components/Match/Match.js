@@ -7,9 +7,9 @@ import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 class Match extends Component {
   state = { deleted: false };
 
-  accept = () => this.props.acceptMatch(this.props.match_id);
+  accept = () => this.props.acceptMatch(this.props.matchInfo.match_id);
 
-  decline = () => this.props.declineMatch(this.props.match_id);
+  decline = () => this.props.declineMatch(this.props.matchInfo.match_id);
 
   delete = () => {
     this.setState({ deleted: true });
@@ -17,14 +17,19 @@ class Match extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     const opponent_id =
       this.props.user.user_id === this.props.matchInfo.user1.user_id
         ? this.props.matchInfo.user2.user_id
         : this.props.user.user_id;
 
-    const { user1, user2, league_id, match_id } = this.props.matchInfo;
+    const {
+      user1,
+      user2,
+      league_id,
+      match_id,
+      match_datetime,
+      location
+    } = this.props.matchInfo;
     let innerComponent, innerFunction;
 
     switch (this.props.matchInfo.status) {
@@ -81,7 +86,9 @@ class Match extends Component {
                   innerFunction,
                   league_id,
                   opponent_id,
-                  match_id
+                  match_id,
+                  match_datetime,
+                  location
                 })}
               </div>
             </div>

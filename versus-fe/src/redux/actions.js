@@ -131,3 +131,31 @@ export const finishMatch = apiInfo => ({
     headers: apiInfo.headers
   }
 });
+
+
+export const requestLocation = apiInfo => ({
+  type: 'REQUEST_LOCATION',
+  api: { 
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.header
+  }});
+    
+    
+export const createUser = (apiInfo) => ({
+  type: 'CREATE_USER',
+    api: {
+
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+
+});
+
+export const locationChosen = info => ({
+  type: 'LOCATION_CHOSEN',
+  location: info
+})

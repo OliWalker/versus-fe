@@ -1,24 +1,25 @@
-import React from 'react';
+import React , { Component } from 'react';
 import MatchDetailsInfo from '../../components/MatchDetailsInfo/MatchDetailsInfo';
+import MapContainer from './MapContainer'
 
-export default {
-  loactionSetter: props => {
-    return (
-      <div>
-        <div className="MatchDetails__map">
-          <img
-            alt="match location"
-            src="https://s.hdnux.com/photos/50/72/62/10726554/3/rawImage.png"
-          />
-        </div>
+class LocationMap extends Component {
 
-        <div className="matchDetailsInfo">
-          <MatchDetailsInfo
-            sendAction={props.sendMatchDetails}
-            match_id={props.match_id}
-          />
-        </div>
-      </div>
-    );
-  }
-};
+   renderMap = () => {
+      return <MapContainer/>
+   }
+
+  render() {
+         return (
+           <div>
+             <div className="MatchDetails__map" >
+              {this.renderMap()}
+             </div>
+             <div className="matchDetailsInfo">
+               <MatchDetailsInfo sendAction={this.props.sendMatchDetails} />
+             </div>
+           </div>
+         );
+       }
+}
+
+export default LocationMap;

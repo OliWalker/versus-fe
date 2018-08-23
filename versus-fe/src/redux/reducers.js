@@ -7,7 +7,9 @@ const initalState = {
   error: false,
   leagueNow: {},
   allLeagues: [],
-  opponentNow: {}
+  opponentNow: {},
+  location:'',
+  googlePlaces: {}
 };
 
 const reducer = (state = initalState, action) => {
@@ -43,11 +45,10 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
-      const newStats = [];
-      const stats = action.data.stats;
-      for (let sport in stats) {
-        newStats.push(stats[sport]);
-      }
+
+      const newStats = []
+      const stats = action.data.stats
+      for(let sport in stats) {newStats.push(stats[sport])}
       return {
         ...state,
         user: action.data.user,
@@ -235,6 +236,52 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+
+    case 'REQUEST_LOCATION_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    case 'REQUEST_LOCATION_SUCCESS':
+      return {
+        ...state,
+        googlePlaces: action.data,
+        loading: false
+      }
+
+    case 'REQUEST_LOCATION_FAILURE':
+      return {
+        ...state,
+        loading: false
+      }
+
+    case 'LOCATION_CHOSEN':
+      return {
+        ...state,
+        location: action.location
+      }
+      
+    case 'CREATE_USER_REQUEST':
+      return {
+        ...state,
+        loading:true
+      };
+
+    case 'CREATE_USER_SUCCESS':
+      return {
+        ...state,
+        user: action.data,
+        loading: false
+      }
+
+    case 'CREATE_USER_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        loading: false
+      }
+      
     default:
       return state;
   }
