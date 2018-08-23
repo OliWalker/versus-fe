@@ -7,13 +7,23 @@
   background: white;
   margin-top: 12px;
   margin-bottom: 10px;
-  border-radius: 1px;
+  border-radius: 8px;
   box-shadow: var(--shadow);
   font-size: 1rem;
 }
 
-.SportCard img {
-  max-width: 20%;
+.SportCard__inner {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.SportCard__inner img {
+  width: 20vw;
+  height: 10vh;
 }
 
 .SportCard__buttons {

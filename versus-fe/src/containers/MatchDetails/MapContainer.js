@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Map , InfoWindow , Marker , GoogleApiWrapper } from 'google-maps-react';
 
+
 import { connect } from 'react-redux'
 import { requestLocation } from '../../redux/actions'
 
@@ -61,9 +62,7 @@ export class MapContainer extends Component {
         containerStyle={containerStyle}
         zoom={14}
       >
-
       {this.renderMarker()}
-
         <InfoWindow onClose={this.onInfoWindowClose}>
           <div>
             <h1> </h1>
@@ -74,6 +73,7 @@ export class MapContainer extends Component {
       )
     }
   }
+
 
 const mapStateToProps = state => ({
   location: state.location,
@@ -91,3 +91,6 @@ const mapDispatchToProps = dispatch => ({
     apiKey:'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto',
     libraries: ['places']
   })(MapContainer))
+  export default GoogleApiWrapper ({
+    apiKey:'AIzaSyBzBvfaosQJN9iUMMRAPD9ATnIPjofrCto'
+  })(MapContainer)

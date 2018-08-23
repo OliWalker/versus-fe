@@ -10,20 +10,24 @@ import {
 } from '../../redux/actions';
 import MatchOneOpponent from '../../components/MatchOneOpponent/MatchOneOpponent';
 import Loading from '../../components/LoadingPage/LoadingPage';
-import helpers from '../../Helpers/helperFunctions';
 
 class MatchOne extends Component {
   componentDidMount() {
     const { league, opponent } = this.props.match.params;
+
+    if (this.props.opponentNow.user_id === Number(opponent)) return;
     this.props.getOpponent(league, opponent);
   }
 
   state = {
     challengeStyle: { height: 750 },
-    challengeSentStyle: { height: 0 }
+    challengeSentStyle: { height: 0 },
+    matchCreated: false
   };
 
   challenge = () => {
+    if (this.state.matchCreated) return;
+
     const user1_id = this.props.user.user_id;
     const league_id = this.props.match.params.league;
     const user2_id = this.props.opponentNow.user_id;
@@ -40,7 +44,8 @@ class MatchOne extends Component {
     this.props.createMatch(info);
     this.setState({
       challengeStyle: { height: 0 },
-      challengeSentStyle: { height: 750 }
+      challengeSentStyle: { height: 750 },
+      matchCreated: true
     });
   };
 
@@ -54,7 +59,9 @@ class MatchOne extends Component {
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">
-          <span> {this.props.leagueNow.sport_name} </span>
+          <span>
+            <i>{this.props.leagueNow.sport_name}</i>
+          </span>
           <h1> Versus </h1>
         </div>
 
@@ -73,7 +80,7 @@ class MatchOne extends Component {
         >
           <h1> Challenge Sent </h1>
           <h2> Good Luck. </h2>
-          <Link to="/myMatches">
+          <Link to="/matches">
             <button className="MatchOne__button">To Matches</button>
           </Link>
         </div>

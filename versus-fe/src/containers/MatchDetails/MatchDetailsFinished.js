@@ -5,7 +5,8 @@ import { finishMatch } from '../../redux/actions';
 export class MatchDetailsFinished extends Component {
   state = {
     myScore: '',
-    opScore: ''
+    opScore: '',
+    message: 'Enter Your Scores'
   };
   handleFormChange = event => {
     this.setState({
@@ -22,8 +23,18 @@ export class MatchDetailsFinished extends Component {
       user2: {
         user_id: this.props.opponentNow.user_id,
         score: this.state.opScore
-      }
+      },
+      league_id: this.props.league_id
     };
+
+    if (this.state.myScore > this.state.opScore)
+      this.setState({ message: 'You Are A Champion!' });
+    else if (this.state.myScore < this.state.opScore)
+      this.setState({ message: 'Better Luck Next Time...' });
+    else this.setState({ message: 'A Draw... how exciting' });
+    setTimeout(() => {
+      this.props.goBack();
+    }, 700);
 
     return this.props.finishMatch(users, this.props.match_id);
   };
@@ -42,7 +53,7 @@ export class MatchDetailsFinished extends Component {
             />
             <span> your score </span>
           </div>
-          <p>/</p>
+          <p>-</p>
           <div className="MatchDetails__finished__Score">
             <input
               type="number"
@@ -55,7 +66,7 @@ export class MatchDetailsFinished extends Component {
           </div>
         </div>
 
-        <div className="endNote">good job</div>
+        <div className="endNote">{this.state.message}</div>
 
         <div
           className="MatchDetails__finished__button"

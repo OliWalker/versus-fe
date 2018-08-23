@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   overflow: scroll;
-  background: linear-gradient( var(--flatBlue) 23%, ghostWhite 15%);
+  background: linear-gradient(var(--flatBlue) 23%, ghostWhite 15%);
 }
 
 .League__info {
@@ -18,8 +18,7 @@
 .League__info h1 {
   margin-left: 70vw;
   font-size: 1.3rem;
-  margin-top: 4vh;
-  /* line-height: .5rem; */
+  margin-top: 2.5vh;
 }
 
 .League__info span {
@@ -33,12 +32,13 @@
   border-radius: 25px;
   width: 90vw;
   height: 77vh;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, 0.4);
   position: relative;
   padding-top: 7vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 
 .League__leaderboard__trophy {
@@ -54,7 +54,7 @@
   color: var(--white);
   display: relative;
   position: absolute;
-  left: 35vw;
-  top: -5vh;
+  left: 41vw;
+  top: 15vh;
   z-index: 5;
 }

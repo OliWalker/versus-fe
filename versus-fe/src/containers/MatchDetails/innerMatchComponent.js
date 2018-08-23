@@ -22,5 +22,4 @@ class LocationMap extends Component {
        }
 }
 
-
 export default LocationMap;

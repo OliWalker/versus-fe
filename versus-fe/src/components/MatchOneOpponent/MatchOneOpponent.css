@@ -1,5 +1,5 @@
 .MatchOneOpponent {
-  width: 90vw;
+  width: 85vw;
   padding: 5px 0;
   display: flex;
   justify-content: space-evenly;
@@ -23,9 +23,10 @@
 }
 
 .MatchOneOpponent__picture {
-  width: 50vw;
-  height: 50vw;
+  width: 40vw;
+  height: 40vw;
   border-radius: 50%;
+  margin: 15px;
   /* border: 4px solid var(--darkWhite); */
   background: var(--flatBlue);
   display: flex;
@@ -34,6 +35,7 @@
 }
 
 .MatchOneOpponent__picture img {
+  display: cover;
   width: 100%;
   height: 100%;
   border-radius: 50%;

@@ -8,7 +8,8 @@ class SportCard extends React.Component {
   state = {
     isOpen: false,
     isJoinOpen: false,
-    skill: 0
+    skill: 0,
+    finished: false
   };
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
@@ -31,7 +32,21 @@ class SportCard extends React.Component {
       initial_elo
     };
     this.props.joinLeague(league_id, body);
+    this.setState({
+      skill: 0,
+      isJoinOpen: false,
+      isOpen: false,
+      finished: true
+    });
   };
+
+  componentDidUpdate() {
+    if (this.state.finished) {
+      setTimeout(() => {
+        this.props.path.push(`/league/${this.props.sport.league_id}`);
+      }, 300);
+    }
+  }
 
   render() {
     const height = this.state.isOpen ? { height: 100 } : { height: 0 };
@@ -39,11 +54,13 @@ class SportCard extends React.Component {
     return (
       <div>
         <div className="SportCard" onClick={this.toggle}>
-          <h2> {this.props.sport.sport_name} </h2>
-          <img
-            src={`./SportIcons/${this.props.sport.sport_name}.png`}
-            alt="lets play this sport"
-          />
+          <div className="SportCard__inner">
+            <h2> {this.props.sport.sport_name} </h2>
+            <img
+              src={`./SportIcons/${this.props.sport.sport_name}.png`}
+              alt={`${this.props.sport.sport_name}`}
+            />
+          </div>
         </div>
 
         <div className="SportCard SportCard__JoinLeague" style={joinHeight}>
@@ -54,9 +71,9 @@ class SportCard extends React.Component {
             <button
               className="SportCard__button"
               onClick={this.setSkill}
-              name={800}
+              name={700}
             >
-              Begginer
+              Beginer
             </button>
             <button
               className="SportCard__button"
@@ -68,7 +85,7 @@ class SportCard extends React.Component {
             <button
               className="SportCard__button"
               onClick={this.setSkill}
-              name={1200}
+              name={1300}
             >
               Advanced
             </button>

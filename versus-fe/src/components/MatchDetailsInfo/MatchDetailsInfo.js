@@ -39,13 +39,12 @@ class MatchDetailsInfo extends Component {
 
   sendFormInfo = () => {
     const matchDetails = {
-      time: this.state.time,
-      date: this.state.date,
+      match_datetime: `${this.state.date} ${this.state.time}:00`,
       location: this.state.location
     };
 
     this.props.sendAction({
-      endpoint: '/matches/id/set',
+      endpoint: `/matches/${this.props.match_id}/set`,
       method: 'POST',
       body: matchDetails
     });
@@ -68,7 +67,7 @@ class MatchDetailsInfo extends Component {
           </form>
 
           <div className="enter" onClick={this.sendFormInfo}>
-            <text> Enter </text>
+            Enter
           </div>
         </div>
       </div>

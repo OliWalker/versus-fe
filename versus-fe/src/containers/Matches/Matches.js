@@ -7,22 +7,25 @@ import './Matches.css';
 class Matches extends Component {
   state = {
     filteredMatches: this.props.matches,
-    activeButton: null
+    activeButton: 'ALL'
   };
 
   renderMatches = () =>
-    this.state.filteredMatches.map(theMatch => (
-      <Match
-        key={theMatch.match_id}
-        matchInfo={theMatch}
-        user={this.props.user}
-      />
-    ));
+    this.state.filteredMatches.map((theMatch, i) => {
+      if (theMatch.match_id === null) return <div key={i} />;
+      return (
+        <Match
+          key={theMatch.match_id}
+          matchInfo={theMatch}
+          user={this.props.user}
+        />
+      );
+    });
 
   renderMatchesFilter = event => {
     const matches = this.props.matches;
     let requestedMatches;
-    event.target.name
+    event.target.name !== 'ALL'
       ? (requestedMatches = matches.filter(
           theMatch => theMatch.status === event.target.name
         ))
@@ -33,6 +36,10 @@ class Matches extends Component {
     });
   };
 
+  componentDidMount() {
+    console.log('hi');
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.matches !== this.props.matches)
       this.setState({ filteredMatches: this.props.matches });
@@ -40,21 +47,23 @@ class Matches extends Component {
 
   render() {
     const buttons = document.querySelectorAll('button');
-
     buttons.forEach(button => {
       button.name === this.state.activeButton
         ? button.classList.add('MyMatches__button__active')
         : button.classList.remove('MyMatches__button__active');
     });
 
-    const buttonsNames = ['ACCEPTED', 'PENDING', 'FINISHED', 'DENIED'];
+    const buttonsNames = ['ALL', 'ACCEPTED', 'PENDING', 'FINISHED'];
 
     return (
       <div className="MyMatches">
         <div className="MyMatches__header">
-          <h1 onClick={this.renderMatchesFilter}>My Matches</h1>
+          <h1>My Matches</h1>
 
-          <div className="MyMatches__buttonFilter">
+          <div
+            className="MyMatches__buttonFilter"
+            ref={ref => (this.buttons = ref)}
+          >
             {buttonsNames.map(el => (
               <button
                 key={el}

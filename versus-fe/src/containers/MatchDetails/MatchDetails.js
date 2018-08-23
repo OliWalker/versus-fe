@@ -17,16 +17,25 @@ class MatchDetails extends Component {
     };
   }
 
+
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;
     this.props.getOpponent(league_id, user_id);
   };
 
   componentDidMount() {
+    if (
+      this.props.opponentNow.user_id === Number(this.props.match.params.user_id)
+    )
+      return;
     if (!this.props.opponentNow.user_id) this.getOpponent();
     else if (this.props.opponentNow.user_id !== this.props.match.params.user_id)
       this.getOpponent();
   }
+
+  goBack = () => {
+    this.props.history.goBack();
+  };
 
   renderSubComponent = () => {
     if (this.state.activeButton === 'Opponent')
@@ -38,7 +47,13 @@ class MatchDetails extends Component {
     else if (this.state.activeButton === 'Match Details')
       return <LocationMap />
     else if (this.state.activeButton === 'Finished')
-      return <MatchDetailsFinished match_id={this.props.match.params.id} />;
+      return (
+        <MatchDetailsFinished
+          match_id={this.props.match.params.match_id}
+          league_id={this.props.match.params.league_id}
+          goBack={this.goBack}
+        />
+      );
   };
 
   buttonActive = event => {

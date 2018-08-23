@@ -60,7 +60,7 @@ Map{
 
 .MatchDetails__finished__scorecards p {
   font-size: 15rem;
-  line-height: 14rem;
+  line-height: 8rem;
   font-weight: 10;
 }
 
@@ -89,7 +89,7 @@ Map{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blueGrad);
+  background: var(--flatBlue);
   color: white;
   width: 75vw;
   height: 5vh;

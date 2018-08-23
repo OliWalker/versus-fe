@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import { acceptMatch, declineMatch, deleteMatch } from '../../redux/actions';
 
 class Match extends Component {
-  accept = () => this.props.acceptMatch(this.props.match_id);
+  state = { deleted: false };
 
-  decline = () => this.props.declineMatch(this.props.match_id);
+  accept = () => this.props.acceptMatch(this.props.matchInfo.match_id);
 
-  delete = () => this.props.deleteMatch(this.props.match_id);
+  decline = () => this.props.declineMatch(this.props.matchInfo.match_id);
+
+  delete = () => {
+    this.setState({ deleted: true });
+    this.props.deleteMatch(this.props.matchInfo.match_id);
+  };
 
   render() {
     const opponent_id =
@@ -17,9 +22,15 @@ class Match extends Component {
         ? this.props.matchInfo.user2.user_id
         : this.props.user.user_id;
 
-    const { user1, user2, league_id } = this.props.matchInfo;
+    const {
+      user1,
+      user2,
+      league_id,
+      match_id,
+      match_datetime,
+      location
+    } = this.props.matchInfo;
     let innerComponent, innerFunction;
-    console.log(league_id, opponent_id);
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':
@@ -40,46 +51,50 @@ class Match extends Component {
         innerComponent = innerMatch.denied;
         innerFunction = this.delete;
         break;
-
       default:
-        innerComponent = console.log('no component');
+        innerComponent = null;
     }
+    if (innerComponent === null) return <div />;
+    if (this.state.deleted) return <div />;
+    else
+      return (
+        <div>
+          <div className="MatchContainer">
+            <div className="MatchContainer__imageContainer">
+              <img
+                className="MatchContainer__sportImage"
+                src={
+                  user1.user_id === this.props.user.user_id
+                    ? user2.image_path
+                    : user1.image_path
+                }
+                alt="logo for the chosen sport"
+              />
+              <h3>
+                {user1.user_id === this.props.user.user_id
+                  ? user2.username
+                  : user1.username}
+              </h3>
+            </div>
 
-    return (
-      <div>
-        <div className="MatchContainer">
-          <div className="MatchContainer__imageContainer">
-            <img
-              className="MatchContainer__sportImage"
-              src={
-                user1.user_id === this.props.user.user_id
-                  ? user2.image_path
-                  : user1.image_path
-              }
-              alt="logo for the chosen sport"
-            />
-            <h3>
-              {user1.user_id === this.props.user.user_id
-                ? user2.username
-                : user1.username}
-            </h3>
-          </div>
-
-          <div className="MatchContainer__UsersMatched">
-            <div className="MatchContainer__Content">
-              <h2> {this.props.matchInfo.sport_name}</h2>
-              {innerComponent({
-                user1,
-                user2,
-                innerFunction,
-                league_id,
-                opponent_id
-              })}
+            <div className="MatchContainer__UsersMatched">
+              <div className="MatchContainer__Content">
+                <h2> {this.props.matchInfo.sport_name}</h2>
+                {innerComponent({
+                  user1,
+                  user2,
+                  innerFunction,
+                  league_id,
+                  opponent_id,
+                  match_id,
+                  match_datetime,
+                  location
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 
@@ -100,7 +115,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       deleteMatch({
         endpoint: `/matches/${match_id}/delete}`,
-        method: 'DELETE'
+        method: 'PUT'
       })
     )
 });
