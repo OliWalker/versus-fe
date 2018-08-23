@@ -52,7 +52,12 @@ class Drawer extends Component {
         />
         <div className={`Drawer ${this.state.drawerStatus}`}>
           <Link to="/" onClick={this.toggleDrawer}>
-            <h1 className="Drawer__logo">Versus</h1>
+            <img
+              alt="versus logo"
+              src="/versus-logo.png"
+              className="Drawer__logo"
+            />
+            {/* <h1 className="Drawer__logo">Versus</h1> */}
           </Link>
 
           <div className="Drawer__button__list">

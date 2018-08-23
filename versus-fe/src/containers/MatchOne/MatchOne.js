@@ -63,7 +63,7 @@ class MatchOne extends Component {
           <span>
             <i>{this.props.leagueNow.sport_name}</i>
           </span>
-          <h1> Versus </h1>
+          <h1> Challenge </h1>
         </div>
 
         <div className="MatchOne__players" style={this.state.challengeStyle}>
