@@ -41,20 +41,17 @@ class SportsList extends Component {
 
   handleScroll = e => {
     const myViewPort = e.target.scrollTop;
-    const allSportsDiv = document.querySelector('.SportList__allSports')
-      .scrollHeight;
-    myViewPort > allSportsDiv
+    const allSportsDiv = this.sportListAllSport.scrollHeight;
+    myViewPort > allSportsDiv + 400
       ? this.setState({ mySportsHeader: false })
       : this.setState({ mySportsHeader: true });
   };
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
 
-  handleSearch = e => {
-    this.setState({ search: e.target.value });
-    // const regex = RegExp(e.target.value);
+  handleSearch = async e => {
+    await this.setState({ search: e.target.value });
     const regex = RegExp(this.state.search);
-
     const allLeagues = this.props.allLeagues.filter(el =>
       regex.test(el.sport_name)
     );
@@ -79,7 +76,7 @@ class SportsList extends Component {
           />
 
           <span>
-            <i>{this.state.mySportsHeader ? 'my Sports' : 'all Sports'}</i>
+            <i>{this.state.mySportsHeader ? 'My Sports' : 'All Sports'}</i>
           </span>
         </div>
 
@@ -90,9 +87,16 @@ class SportsList extends Component {
             ))}
           </div>
 
+          <div
+            className="SportsList__list__divider"
+            ref={ref => (this.sportListAllSport = ref)}
+          >
+            All Sports
+          </div>
+
           <div className="SportList__allSports">
             {this.state.otherLeagues.map((sport, i) => (
-              <SportCard key={i} sport={sport} />
+              <SportCard key={i} sport={sport} path={this.props.history} />
             ))}
           </div>
         </div>

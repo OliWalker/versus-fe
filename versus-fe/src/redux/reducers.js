@@ -1,4 +1,5 @@
 const initalState = {
+  loginError: false,
   user: {},
   stats: [],
   matches: [],
@@ -11,6 +12,30 @@ const initalState = {
 
 const reducer = (state = initalState, action) => {
   switch (action.type) {
+    case 'LOG_IN_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        loginError: false
+      };
+
+    case 'LOG_IN_SUCCESS':
+      return {
+        ...state,
+        user: action.data.user,
+        stats: action.data.stats,
+        matches: action.data.matches,
+        loginError: false,
+        loading: false
+      };
+
+    case 'LOG_IN_FAILURE':
+      return {
+        ...state,
+        loginError: true,
+        loading: false
+      };
+
     case 'GET_USER_INFO_REQUEST':
       return {
         ...state,
@@ -18,6 +43,7 @@ const reducer = (state = initalState, action) => {
       };
 
     case 'GET_USER_INFO_SUCCESS':
+
       const newStats = []
       const stats = action.data.stats
       for(let sport in stats) {newStats.push(stats[sport])}
@@ -147,7 +173,9 @@ const reducer = (state = initalState, action) => {
         loading: true
       };
     case 'SEND_MATCH_DETAILS_SUCCESS':
-      const alteredMatches = state.matches.map( el => el.match_id === action.data.match_id? action.data : el )
+      const alteredMatches = state.matches.map(
+        el => (el.match_id === action.data.match_id ? action.data : el)
+      );
       return {
         ...state,
         matches: alteredMatches,

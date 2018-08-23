@@ -1,3 +1,23 @@
+export const logIn = apiInfo => ({
+  type: 'LOG_IN',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const signUp = apiInfo => ({
+  type: 'SIGN_UP',
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
 export const getUserInfo = apiInfo => ({
   type: 'GET_USER_INFO',
   api: {
@@ -92,9 +112,19 @@ export const deleteMatch = apiInfo => ({
   }
 });
 
-export const sendMatchDetails = (apiInfo) => ({
+export const sendMatchDetails = apiInfo => ({
   type: 'SEND_MATCH_DETAILS',
-    api: {
+  api: {
+    endpoint: apiInfo.endpoint,
+    method: apiInfo.method,
+    body: apiInfo.body,
+    headers: apiInfo.headers
+  }
+});
+
+export const finishMatch = apiInfo => ({
+  type: 'FINISH_MATCH',
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,

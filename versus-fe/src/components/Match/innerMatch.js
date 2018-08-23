@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export default {
   finished: props => {
@@ -31,20 +33,28 @@ export default {
     );
   },
 
-  waiting: () => {
+  waiting: props => {
     return (
-      <div className="MatchContainer__Content__waiting">
+      <Link
+        className="MatchContainer__Content__waiting"
+        to={`/matchdetails/${props.match_id}/${props.league_id}/${
+          props.opponent_id
+        }`}
+      >
         <h2>
           <i>waiting...</i>
         </h2>
-      </div>
+      </Link>
     );
   },
 
   denied: props => {
     return (
       <div className="MatchContainer__Content__denied">
-        <div className="MatchContainer__Content__denied__banner">
+        <div
+          className="MatchContainer__Content__denied__banner"
+          onClick={props.innerFunction}
+        >
           <h2>
             <i>canceled</i>
           </h2>
@@ -54,15 +64,28 @@ export default {
     );
   },
 
-  accepted: () => {
+  accepted: props => {
+    console.log(props);
+    const date = moment(props.match_datetime).format('MMM Do');
+    const time = moment(props.match_datetime).format('h:mm a');
+    console.log(date === 'Invalid date');
     return (
-      <div className="MatchContainer__Content__accepted">
-        <div className="MatchContainer__Content__date">
-          <span>7th Spt</span>
-          <span>18:00 hr</span>
-        </div>
-        <h5> location </h5>
-      </div>
+      <Link
+        className="MatchContainer__Content__accepted"
+        to={`/matchdetails/${props.match_id}/${props.league_id}/${
+          props.opponent_id
+        }`}
+      >
+        {date === 'Invalid date' ? (
+          <div className="Match__Content__set"> Set match details </div>
+        ) : (
+          <div className="MatchContainer__Content__date">
+            <span>{date}</span>
+            <span>{time}</span>
+            <h5> {props.location} </h5>
+          </div>
+        )}
+      </Link>
     );
   }
 };

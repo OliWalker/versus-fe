@@ -7,12 +7,23 @@
   background: white;
   margin-top: 12px;
   margin-bottom: 10px;
-  border-radius: 1px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-size: 1rem;
 }
 
-.SportCard img {
-  max-width: 38%;
+.SportCard__inner {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.SportCard__inner img {
+  width: 20vw;
+  height: 10vh;
 }
 
 .SportCard__buttons {
@@ -22,7 +33,7 @@
   background: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: var(--shadow);
   transition: height 200ms ease-out;
   height: 100%;
   display: flex;
@@ -46,7 +57,8 @@
   padding: 15px;
   border: 2px solid rgba(0, 38, 82, .8);
   border-radius: 18px;
-  box-shadow: 0px 4px 9px 2px rgb(170, 170, 170, .4);
+  box-shadow: var(--shadow);
+  font-size: .9rem;
 }
 
 .SportCard__button:hover {

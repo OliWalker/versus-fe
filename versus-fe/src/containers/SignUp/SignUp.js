@@ -46,23 +46,26 @@ class SignUp extends Component {
         body: signUpDetails
       })
 
-    }
 
-    handleFormChange = (event) => {
-      this.setState({
-        [event.target.name]:event.target.value
-      })
-    }
+  handleFormChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-    renderInput = (label, type ,name) => {
-      return (
-        <div className="divider">
-          <span> {label} </span>
-          <input className="inputField" type={type} onChange={this.handleFormChange} name={name}/>
-        </div>
-      )
-    }
-
+  renderInput = (label, type, name) => {
+    return (
+      <div className="divider">
+        <span> {label} </span>
+        <input
+          className="inputField"
+          type={type}
+          onChange={this.handleFormChange}
+          name={name}
+        />
+      </div>
+    );
+  };
     renderProfile = () => {
       if (this.state.signedUp) {
         console.log('yes NUMERO DOS ')
@@ -80,6 +83,7 @@ class SignUp extends Component {
         </div>
 
         <div className="signUpFormContainer">
+
           <form className="signUpForm" >
             {this.renderInput("Username", "text", "username")}
             {this.renderInput("First Name", "text", "first_name")}
@@ -90,14 +94,13 @@ class SignUp extends Component {
         </div>
 
         <div className="SignUpButton" onClick={this.sendSignUp}>
-          <text> Register </text>
+          Register
         </div>
 
         {this.renderProfile()}
       </div>
     );
   }
-
 }
 
 const mapDispatchToProps = (dispatch) => ({

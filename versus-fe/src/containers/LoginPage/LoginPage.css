@@ -1,11 +1,11 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .background {
-  height:100vh;
+  height: 100vh;
 }
 
 .loginContainer {
@@ -14,11 +14,11 @@
   height: 100vh;
   flex-direction: column;
   color: navy;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
-.loginContainer > h1 {
-  margin:10vw;
+.loginContainer>h1 {
+  margin: 10vw;
 }
 
 .loginDetails {
@@ -26,21 +26,20 @@
   height: 100px
 }
 
-.loginDetails > form {
+.loginDetails>form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 20px
-
 }
 
-.loginDetails > form > span {
+.loginDetails>form>span {
   font-size: 15px;
   margin-left: 20px;
-  color:grey;
+  color: grey;
 }
 
-.loginDetails > form > input {
+.loginDetails>form>input {
   margin: 15px;
   border-radius: 5px;
   width: 80vw;
@@ -50,7 +49,7 @@
   border-color: black;
 }
 
-.signUp{
+.signUp {
   margin-top: 50px;
 }
 
@@ -63,17 +62,32 @@
 }
 
 .submit {
-  background:var(--blueGrad);
-  color:white;
-  height:5vh;
-  width:70vw;
+  background: var(--blueGrad);
+  color: white;
+  height: 5vh;
+  width: 70vw;
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.SignUp{
-  padding:15px;
-  color:#E2DAE3
+.SignUp {
+  padding: 15px;
+  color: #E2DAE3
+}
+
+.Error span,
+.Error input {
+  color: red !important;
+  animation: shake .15s infinite
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
 }

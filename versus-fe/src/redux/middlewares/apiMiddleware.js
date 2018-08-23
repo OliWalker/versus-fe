@@ -1,5 +1,8 @@
+// const BASE_URL = 'http://192.168.1.122:3000'; STEFFANO
 // const BASE_URL = 'http://private-1cf21-versus3.apiary-mock.com';
-const BASE_URL = 'http://192.168.1.122:3000';
+// const BASE_URL = 'http://192.168.1.209:3000';
+// const BASE_URL = 'http://private-1cf21-versus3.apiary-mock.com';
+// const BASE_URL = 'http://192.168.1.122:3000';
 
 
 export default store => next => action => {
@@ -9,7 +12,6 @@ export default store => next => action => {
   let { body, headers } = action.api;
 
   const defaultHeaders = {};
-
   if (body) {
     body = JSON.stringify(body);
     defaultHeaders['Content-type'] = 'application/json';
