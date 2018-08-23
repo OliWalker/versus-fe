@@ -7,8 +7,9 @@ test('Should render data from props', () => {
     <LeagueCard
       key={1}
       i={1}
-      user={{ username: 'Oli', user_id: 3, score: 5 }}
+      user={{ username: 'Oli', user_id: 3, current_elo: 5 }}
       league={5}
+      mainUser={{ user_id: 3 }}
     />
   );
   expect(component.find('Link').props().to).toBe('/match/5/3');
@@ -18,7 +19,7 @@ test('Should render data from props', () => {
 
   component.setProps({
     i: 2,
-    user: { user_id: 4, username: 'Henry', score: 7 }
+    user: { user_id: 4, username: 'Henry', current_elo: 7 }
   });
 
   expect(component.find('Link').props().to).toBe('/match/5/4');

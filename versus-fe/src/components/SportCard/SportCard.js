@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { joinLeague } from '../../redux/actions';
 
-class SportCard extends React.Component {
+export class SportCard extends React.Component {
   state = {
     isOpen: false,
     isJoinOpen: false,
