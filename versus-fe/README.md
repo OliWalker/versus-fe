@@ -8,7 +8,7 @@ Key features include joining leagues for various 1vs1 sports, participating in a
 
 <br>
 <center>
-<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535451700/Versus_Logo_Blue.jpg" alt="logo of app" width="500" height="250" >
+<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535451700/Versus_Logo_Blue.jpg" alt="logo of app" width="500" height="250">
 </center>
 <br>
 
@@ -24,7 +24,7 @@ The app can record your performance to see you game improve over time, providing
 
 <br>
 <center>
-<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535397312/VERSUS_Mockup.png" alt="screen shots of app" width="490" height="380" >
+<img src="https://res.cloudinary.com/dh9xnvxbz/image/upload/v1535397312/VERSUS_Mockup.png" alt="screen shots of app" width="490" height="380">
 </center>
 <br>
 
