@@ -17,19 +17,6 @@ export class ProfilePage extends Component {
     });
   };
 
-  allProfileScores = () => {
-    return [
-      { date: 1, score: 700 },
-      { date: 2, score: 600 },
-      { date: 3, score: 750 },
-      { date: 4, score: 950 },
-      { date: 5, score: 1100 },
-      { date: 6, score: 1150 },
-      { date: 7, score: 1300 },
-      { date: 8, score: 1450 }
-    ];
-  };
-
   renderScore = () => {
     if (this.props.stats.length < 1) return;
     const scoreList = this.props.stats.map(stat => stat.data.current_elo);
@@ -63,15 +50,15 @@ export class ProfilePage extends Component {
               <ProfileSportScore
                 key={sport.league_id}
                 sport={sport}
-                onClick={() => this.toggleGraph(sport.data.elo_history)}
+                onClick={() => this.toggleGraph(sport.elo_history)}
               />
             );
           })}
         </div>
 
         <div className="ProfilePage__stats">
-          <AreaChart width={400} height={200} data={this.allProfileScores()}>
-            <XAxis dataKey="date" padding={{ bottom: -150 }} />
+          <AreaChart width={400} height={200} data={this.state.data}>
+            <XAxis dataKey="date" />
             <Tooltip />
             <Area
               type="monotone"

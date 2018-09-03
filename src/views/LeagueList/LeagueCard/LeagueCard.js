@@ -3,6 +3,7 @@ import './LeagueCard.css';
 import { Link } from 'react-router-dom';
 
 export default function LeagueCard(props) {
+  console.log(props);
   const thisClass =
     props.mainUser.user_id === props.user.user_id
       ? 'LeagueCard LeagueCard__user'
@@ -13,7 +14,7 @@ export default function LeagueCard(props) {
         <div className="LeagueCard__score">
           <p>{props.i + 1}</p>
           <div className="LeagueCard__picture">
-            <img src={props.user.user_image_path} alt="want to play?" />
+            <img src={props.user.image_path} alt="want to play?" />
           </div>
         </div>
         <h2 className="LeagueCard__name"> {props.user.username} </h2>

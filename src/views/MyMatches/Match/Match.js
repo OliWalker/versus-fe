@@ -33,6 +33,7 @@ class Match extends Component {
       location
     } = this.props.matchInfo;
     let innerComponent, innerFunction;
+    console.log(user1, user2);
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':
@@ -72,6 +73,7 @@ class Match extends Component {
                 }
                 alt="logo for the chosen sport"
               />
+
               <h3>
                 {user1.user_id === this.props.user.user_id
                   ? user2.username
