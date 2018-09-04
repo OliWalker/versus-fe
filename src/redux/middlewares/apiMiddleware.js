@@ -1,4 +1,4 @@
-const BASE_URL = 'http://private-1cf21-versus3.apiary-mock.com';
+const BASE_URL = 'https://private-1cf21-versus3.apiary-mock.com';
 
 export default store => next => action => {
   if (!action.api) return next(action);
