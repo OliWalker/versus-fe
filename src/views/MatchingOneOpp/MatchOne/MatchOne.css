@@ -17,7 +17,7 @@
 .MatchOne__Header span {
   color: var(--white);
   font-size: 1.3rem;
-  margin-left: 70vw;
+  margin-left: 65vw;
   font-weight: bold;
   line-height: 3.5rem;
 }
@@ -68,4 +68,21 @@
   align-items: center;
   justify-content: space-evenly;
   transition: height 300ms ease-out;
+}
+
+@media(max-width: 400px) {
+  .MatchOne__Header span {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
+  .MatchOne__Header h1 {
+    font-size: 2rem;
+  }
+
+  .MatchOne__button {
+    font-size: .8rem;
+  }
+
+
 }

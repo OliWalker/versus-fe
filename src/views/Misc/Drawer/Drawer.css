@@ -101,3 +101,17 @@
   transition: all 0.4s;
   transform: translateX(65vw);
 }
+
+@media(max-width: 400px) {
+  .Drawer__button i {
+    font-size: 1.5rem;
+  }
+
+  .Drawer__button span {
+    font-size: 1rem;
+  }
+
+  .Drawer__button__notification {
+    padding: 1px 6px;
+  }
+}

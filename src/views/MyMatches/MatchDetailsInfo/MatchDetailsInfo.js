@@ -5,14 +5,11 @@ import { connect } from 'react-redux';
 import { locationChosen, sendMatchDetails } from '../../../redux/actions';
 
 class MatchDetailsInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: '',
-      time: '',
-      location: ''
-    };
-  }
+  state = {
+    date: '',
+    time: '',
+    location: ''
+  };
 
   handleFormChange = event => {
     this.setState({

@@ -124,11 +124,7 @@ class OpponentDetails extends Component {
               </div>
               <div className="opponentPastGames__One__Stat">
                 <span>Drawn</span>
-                <span>
-                  {theOpponent.match_history.length +
-                    6 -
-                    (theOpponent.matches_won + theOpponent.matches_lost)}
-                </span>
+                <span>4</span>
               </div>
               <div className="opponentPastGames__One__Stat">
                 <span>Lost</span> <span>{theOpponent.matches_lost}</span>

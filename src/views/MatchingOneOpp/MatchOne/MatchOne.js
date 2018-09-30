@@ -20,7 +20,7 @@ class MatchOne extends Component {
   }
 
   state = {
-    challengeStyle: { height: 750 },
+    challengeStyle: { height: 650 },
     challengeSentStyle: { height: 0 },
     matchCreated: false
   };
