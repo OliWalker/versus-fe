@@ -36,10 +36,6 @@ class Matches extends Component {
     });
   };
 
-  componentDidMount() {
-    console.log('hi');
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.matches !== this.props.matches)
       this.setState({ filteredMatches: this.props.matches });

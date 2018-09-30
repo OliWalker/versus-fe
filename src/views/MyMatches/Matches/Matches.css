@@ -67,3 +67,13 @@
   overflow: hidden;
   overflow-y: scroll;
 }
+
+@media(max-width: 400px) {
+  .MyMatches__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .MyMatches__buttonFilter button {
+    font-size: .7rem;
+  }
+}

@@ -65,3 +65,24 @@
   top: 15vh;
   z-index: 5;
 }
+
+@media(max-width: 400px) {
+  .League__info h1 {
+    font-size: 1.2rem;
+    margin-top: 2.5vh;
+    margin-bottom: 10px;
+  }
+
+  .League__info span {
+    font-size: 2.5rem;
+    line-height: 1.3rem;
+  }
+
+  .League__leaderboard__trophy {
+    width: 16vw;
+    height: 16vw;
+    left: 42vw;
+    font-size: 2rem;
+
+  }
+}

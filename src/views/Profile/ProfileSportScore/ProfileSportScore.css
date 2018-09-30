@@ -13,3 +13,9 @@
   font-size: .7rem;
   margin-left: 10px;
 }
+
+@media(max-width:400px) {
+  .ProfilePage__sport__score__single {
+    font-size: 1rem;
+  }
+}

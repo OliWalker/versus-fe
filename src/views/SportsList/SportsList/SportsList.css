@@ -68,3 +68,14 @@
   margin-top: 2.5vh;
   margin-bottom: 1vh;
 }
+
+@media(max-width: 400px) {
+  .SportsList__header span {
+    margin-top: 2vh;
+    font-size: 2rem;
+  }
+
+  .SportsList__list__divider {
+    font-size: 1.5rem;
+  }
+}

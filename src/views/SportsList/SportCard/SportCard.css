@@ -86,3 +86,9 @@
   max-width: 30%;
   color: var(--flatBlue)
 }
+
+@media (max-width: 400px) {
+  .SportCard__button {
+    font-size: .7rem;
+  }
+}
