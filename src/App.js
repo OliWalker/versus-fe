@@ -13,7 +13,6 @@ import ProfilePage from './views/Profile/ProfilePage/ProfilePage';
 
 import SportsList from './views/SportsList/SportsList/SportsList';
 import League from './views/LeagueList/League/League';
-// import MatchingCardsList from './views/MatchingCardsList/MatchingCardsList';
 import MatchOne from './views/MatchingOneOpp/MatchOne/MatchOne';
 
 import Matches from './views/MyMatches/Matches/Matches';
@@ -22,10 +21,15 @@ import MatchDetails from './views/MyMatches/MatchDetails/MatchDetails';
 import ErrorPage from './views/Misc/ErrorPage/ErrorPage';
 import Loading from './views/Misc/LoadingPage/LoadingPage';
 import Drawer from './views/Misc/Drawer/Drawer';
+import Resize from './views/Misc/Resizer/Resize';
 
 class App extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
+  };
+
+  state = {
+    resize: false
   };
 
   componentDidMount() {
@@ -34,7 +38,14 @@ class App extends Component {
       const user_id = cookies.get('versus');
       if (user_id) this.props.getUserInfo(user_id);
     }
+    this.sizeChecker();
+    window.addEventListener('resize', () => this.sizeChecker());
   }
+
+  sizeChecker = () => {
+    if (window.innerWidth > 700) this.setState({ resize: true });
+    else this.setState({ resize: false });
+  };
 
   componentDidUpdate(prevProps) {
     if (!prevProps.user.user_id && this.props.user.user_id) {
@@ -53,6 +64,7 @@ class App extends Component {
   myDrawer = () => <Drawer removeCookie={this.removeCookie} />;
 
   render() {
+    if (this.state.resize) return <Resize />;
     if (!this.props.cookies.get('versus')) return <LoginPage />;
     if (this.props.error) return <ErrorPage />;
     else if (this.props.loading && !this.props.user.user_id) return <Loading />;
@@ -66,7 +78,6 @@ class App extends Component {
           <Route path="/sportsList" component={SportsList} />
           <Route path="/league/:id" component={League} />
           <Route path="/match/:league/:opponent" component={MatchOne} />
-          {/* <Route path="/opponents" component={MatchingCardsList} /> */}
           <Route
             path="/matchDetails/:match_id/:league_id/:user_id"
             component={MatchDetails}
