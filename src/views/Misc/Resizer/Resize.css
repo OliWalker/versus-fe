@@ -1,0 +1,22 @@
+.resizer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: var(--blueGrad);
+  color: white;
+  height: 100vh;
+}
+
+.resizer>* {
+  max-width: 40vw;
+  text-align: center;
+}
+
+.resizer h2 {
+  font-size: 2rem;
+}
+
+.resizer h3 {
+  font-size: 1.5rem;
+}
