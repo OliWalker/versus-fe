@@ -33,7 +33,6 @@ class Match extends Component {
       location
     } = this.props.matchInfo;
     let innerComponent, innerFunction;
-    console.log(user1, user2);
 
     switch (this.props.matchInfo.status) {
       case 'FINISHED':

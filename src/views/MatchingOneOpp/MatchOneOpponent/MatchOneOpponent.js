@@ -35,7 +35,6 @@ export default class MatchOneOpponent extends Component {
       );
       if (score.length > 0) realScore = score[0].data.current_elo;
     }
-    console.log(this.props.user);
     return (
       <div className="MatchOneOpponent">
         {this.props.opponent ? (

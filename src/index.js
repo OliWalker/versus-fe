@@ -8,13 +8,16 @@ import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './redux/reducers';
-import logger from 'redux-logger';
+//import logger from 'redux-logger';
 import apiMiddleware from './redux/middlewares/apiMiddleware';
 
 const Store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(logger, apiMiddleware)
+  applyMiddleware(
+    //logger,
+    apiMiddleware
+  )
 );
 
 ReactDOM.render(

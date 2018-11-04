@@ -69,10 +69,8 @@ export default {
   },
 
   accepted: props => {
-    console.log(props);
     const date = moment(props.match_datetime).format('MMM Do');
     const time = moment(props.match_datetime).format('h:mm a');
-    console.log(date === 'Invalid date');
     return (
       <Link
         className="MatchContainer__Content__accepted"
