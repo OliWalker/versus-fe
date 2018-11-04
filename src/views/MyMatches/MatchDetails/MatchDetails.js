@@ -23,8 +23,6 @@ class MatchDetails extends Component {
   };
 
   componentDidMount() {
-    const { league_id, user_id } = this.props.match.params;
-    console.log(league_id, user_id);
     if (
       this.props.opponentNow.user_id === Number(this.props.match.params.user_id)
     )
@@ -40,7 +38,6 @@ class MatchDetails extends Component {
 
   renderSubComponent = () => {
     if (this.state.activeButton === 'Opponent') {
-      console.log(this.props.opponentNow);
       return (
         <div className="matchOpponentStats">
           <OpponentDetails

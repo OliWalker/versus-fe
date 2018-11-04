@@ -3,7 +3,6 @@ import './LeagueCard.css';
 import { Link } from 'react-router-dom';
 
 export default function LeagueCard(props) {
-  console.log(props);
   const thisClass =
     props.mainUser.user_id === props.user.user_id
       ? 'LeagueCard LeagueCard__user'

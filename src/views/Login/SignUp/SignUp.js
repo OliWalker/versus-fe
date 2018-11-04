@@ -22,7 +22,6 @@ class SignUp extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
-      console.log('yes ');
       this.setState({ signedUp: true });
     }
   }
@@ -67,7 +66,6 @@ class SignUp extends Component {
   };
   renderProfile = () => {
     if (this.state.signedUp) {
-      console.log('yes NUMERO DOS ');
       return <Redirect to="/profile" />;
     }
   };
