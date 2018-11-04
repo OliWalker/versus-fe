@@ -33,11 +33,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    if (!this.props.user.user_id) {
-      const { cookies } = this.props;
-      const user_id = cookies.get('versus');
-      if (user_id) this.props.getUserInfo(user_id);
-    }
+    // if (!this.props.user.user_id) {
+    //   const { cookies } = this.props;
+    //   const user_id = cookies.get('versus');
+    //   if (user_id) this.props.getUserInfo(user_id);
+    // }
     this.sizeChecker();
     window.addEventListener('resize', () => this.sizeChecker());
   }
@@ -48,12 +48,12 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.user.user_id && this.props.user.user_id) {
-      const { cookies } = this.props;
-      if (cookies.get('versus') === undefined) {
-        cookies.set('versus', this.props.user.user_id);
-      }
-    }
+    // if (!prevProps.user.user_id && this.props.user.user_id) {
+    //   const { cookies } = this.props;
+    //   if (cookies.get('versus') === undefined) {
+    //     cookies.set('versus', this.props.user.user_id);
+    //   }
+    // }
   }
 
   removeCookie = () => {
@@ -65,7 +65,9 @@ class App extends Component {
 
   render() {
     if (this.state.resize) return <Resize />;
-    if (!this.props.cookies.get('versus')) return <LoginPage />;
+    //if (!this.props.cookies.get('versus')) return <LoginPage />;
+
+    if (!this.props.user.user_id) return <LoginPage />;
     if (this.props.error) return <ErrorPage />;
     else if (this.props.loading && !this.props.user.user_id) return <Loading />;
     else
@@ -95,7 +97,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUserInfo: user_id =>
-    dispatch(getUserInfo({ endpoint: `/users/${user_id}` }))
+    // dispatch(getUserInfo({ endpoint: `/users/${user_id}` }))
+    dispatch(getUserInfo({ endpoint: `/users/1` }))
 });
 
 export default withCookies(

@@ -49,6 +49,7 @@ export class LoginPage extends Component {
         <div className={`loginDetails ${loginClass}`}>
           <form>
             <input
+              disabled={true}
               type="text"
               value="Guest!"
               onChange={this.handleFormChange}
@@ -56,6 +57,7 @@ export class LoginPage extends Component {
               placeholder="Username"
             />
             <input
+              disabled={true}
               type="password"
               value=""
               onChange={this.handleFormChange}
