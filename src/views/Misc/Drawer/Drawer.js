@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
 import { getOneLeague, logOut } from '../../../redux/actions';
 
 class Drawer extends Component {
+  static propTypes = {
+    stats: PropTypes.array,
+    matches: PropTypes.array,
+    logout: PropTypes.func,
+    getOneLeague: PropTypes.func
+  };
+
   state = {
     drawerStatus: '',
     hamburgerStatus: '',
@@ -32,10 +40,7 @@ class Drawer extends Component {
 
   switchLeague = leagueId => this.props.getOneLeague(leagueId);
 
-  logout = () => {
-    //this.props.removeCookie();
-    this.props.logOut();
-  };
+  logout = () => this.props.logOut();
 
   render() {
     const stats = this.props.stats;
@@ -58,7 +63,6 @@ class Drawer extends Component {
               src="/versus-logo.png"
               className="Drawer__logo"
             />
-            {/* <h1 className="Drawer__logo">Versus</h1> */}
           </Link>
 
           <div className="Drawer__button__list">
@@ -127,7 +131,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getOneLeague: league_id =>
     dispatch(getOneLeague({ endpoint: `/barcelona/leagues/${league_id}` })),
-
   logOut: () => dispatch(logOut())
 });
 export default connect(

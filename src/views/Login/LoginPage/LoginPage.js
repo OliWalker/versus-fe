@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './LoginPage.css';
 import { connect } from 'react-redux';
 import { logIn, getUserInfo } from '../../../redux/actions';
 
-export class LoginPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      redirect: false,
-      loginError: false
-    };
-  }
+class LoginPage extends Component {
+  static propTypes = {
+    loginError: PropTypes.bool,
+    login: PropTypes.func,
+    getUserInfo: PropTypes.func
+  };
+
+  state = {
+    username: '',
+    password: '',
+    redirect: false,
+    loginError: false
+  };
 
   componentDidUpdate(prevProps) {
     if (!prevProps.loginError && this.props.loginError) {
@@ -62,7 +66,7 @@ export class LoginPage extends Component {
               value=""
               onChange={this.handleFormChange}
               name="password"
-              placeholder="Password"
+              placeholder="Click Demo!"
             />
           </form>
         </div>

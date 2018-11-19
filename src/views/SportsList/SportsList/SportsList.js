@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './SportsList.css';
 import SportCard from '../SportCard/SportCard';
 import { connect } from 'react-redux';
 import { getAllLeagues } from '../../../redux/actions';
 
 class SportsList extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    stats: PropTypes.array,
+    loading: PropTypes.bool,
+    allLeagues: PropTypes.array,
+    getAllLeagues: PropTypes.func
+  };
   state = {
     mySportsHeader: true,
     allLeagues: [],
@@ -16,10 +24,14 @@ class SportsList extends Component {
 
   componentDidMount() {
     if (this.props.user.user_id === 31) this.props.getAllLeagues();
-
     if (this.props.allLeagues.length === 0 && this.props.stats.length > 0)
       this.props.getAllLeagues();
     else this.sortLeagues(this.props.allLeagues);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.allLeagues.length === 0 && this.props.allLeagues.length > 0) {
+      this.sortLeagues(this.props.allLeagues);
+    }
   }
 
   sortLeagues = allLeagues => {
@@ -34,12 +46,6 @@ class SportsList extends Component {
       otherLeagues
     });
   };
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.allLeagues.length === 0 && this.props.allLeagues.length > 0) {
-      this.sortLeagues(this.props.allLeagues);
-    }
-  }
 
   handleScroll = e => {
     const myViewPort = e.target.scrollTop;

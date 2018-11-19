@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tooltip, AreaChart, Area } from 'recharts';
 import PastMatchCard from '../PastMatchCard/PastMatchCard';
 import './OpponentDetails.css';
 
 class OpponentDetails extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    theOpponent: PropTypes.object
+  };
+
   state = {
     buttonClass: true
   };
@@ -65,8 +71,8 @@ class OpponentDetails extends Component {
         ? this.match_history.match_history
         : this.props.theOpponent.match_history;
     return previousMatches.length > 0 ? (
-      previousMatches.map(previousMatch => (
-        <PastMatchCard pastMatch={previousMatch} key={previousMatch.match_id} />
+      previousMatches.map((previousMatch, i) => (
+        <PastMatchCard pastMatch={previousMatch} key={i} />
       ))
     ) : (
       <div>no match history</div>

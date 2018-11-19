@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Matches.css';
 import Match from '../Match/Match';
 import { connect } from 'react-redux';
 import './Matches.css';
 
 class Matches extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    matches: PropTypes.array
+  };
+
   state = {
     filteredMatches: this.props.matches,
     activeButton: 'ALL'
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.matches !== this.props.matches)
+      this.setState({ filteredMatches: this.props.matches });
+  }
 
   renderMatches = () =>
     this.state.filteredMatches.map((theMatch, i) => {
       if (theMatch.match_id === null) return <div key={i} />;
       return (
         <Match
-          key={theMatch.match_id}
+          key={theMatch.match_id + i}
           matchInfo={theMatch}
           user={this.props.user}
         />
@@ -35,11 +46,6 @@ class Matches extends Component {
       activeButton: event.target.name
     });
   };
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.matches !== this.props.matches)
-      this.setState({ filteredMatches: this.props.matches });
-  }
 
   render() {
     const buttons = document.querySelectorAll('button');
@@ -72,7 +78,6 @@ class Matches extends Component {
             ))}
           </div>
         </div>
-
         <div className="MyMatches__displayMatches">{this.renderMatches()}</div>
       </div>
     );
