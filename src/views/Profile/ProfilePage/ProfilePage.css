@@ -58,3 +58,21 @@
 .ProfilePage__stats img {
   width: 100%;
 }
+
+@media(max-width:400px) {
+
+  .ProfilePage__picture {
+    width: 100px;
+    height: 100px;
+    margin-top: 10vh;
+    border-radius: 50%;
+  }
+
+  .ProfilePage__score {
+    font-size: 2rem;
+  }
+
+  .ProfilePage__stats {
+    height: 35vh;
+  }
+}

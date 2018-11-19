@@ -136,3 +136,24 @@
   margin-top: 10px;
   font-size: 1rem;
 }
+
+@media (max-width: 400px) {
+  .MatchContainer__sportImage {
+    width: 70px;
+    height: 70px;
+  }
+
+  .MatchContainer__Content h2 {
+    font-size: 1.3rem;
+  }
+
+  .MatchContainer__Content button {
+    padding: .8rem;
+    margin: 3px;
+    font-size: .6rem;
+  }
+
+  .MatchContainer__Content__denied__banner i {
+    font-size: 1rem;
+  }
+}

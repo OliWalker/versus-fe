@@ -24,7 +24,7 @@
   color: navy;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)), url(/backgrounds/court-4.jpeg) no-repeat center top;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)), url(/backgrounds/court-4.jpeg) no-repeat center top;
   background-size: cover;
   background-color: #00295A;
 }
@@ -65,6 +65,7 @@
   margin: 15px;
   border-radius: 5px;
   width: 80vw;
+  max-width: 700px;
   height: 5vh;
   border: 0px;
   border-bottom: 1px solid lightgrey;
@@ -94,6 +95,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  max-width: 700px;
+
 }
 
 .SignUp {
@@ -116,6 +119,7 @@
   0% {
     transform: translateX(-5px);
   }
+
   100% {
     transform: translateX(5px);
   }

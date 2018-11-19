@@ -8,6 +8,10 @@ export const logIn = apiInfo => ({
   }
 });
 
+export const logOut = () => ({
+  type: 'LOG_OUT'
+});
+
 export const signUp = apiInfo => ({
   type: 'SIGN_UP',
   api: {
@@ -132,30 +136,27 @@ export const finishMatch = apiInfo => ({
   }
 });
 
-
 export const requestLocation = apiInfo => ({
   type: 'REQUEST_LOCATION',
-  api: { 
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.header
-  }});
-    
-    
-export const createUser = (apiInfo) => ({
-  type: 'CREATE_USER',
-    api: {
+  }
+});
 
+export const createUser = apiInfo => ({
+  type: 'CREATE_USER',
+  api: {
     endpoint: apiInfo.endpoint,
     method: apiInfo.method,
     body: apiInfo.body,
     headers: apiInfo.headers
   }
-
 });
 
 export const locationChosen = info => ({
   type: 'LOCATION_CHOSEN',
   location: info
-})
+});

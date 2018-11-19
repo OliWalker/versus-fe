@@ -38,6 +38,9 @@ const reducer = (state = initalState, action) => {
         loading: false
       };
 
+    case 'LOG_OUT':
+      return initalState;
+
     case 'GET_USER_INFO_REQUEST':
       return {
         ...state,

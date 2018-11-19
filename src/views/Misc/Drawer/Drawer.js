@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
-import { getOneLeague } from '../../../redux/actions';
+import { getOneLeague, logOut } from '../../../redux/actions';
 
 class Drawer extends Component {
   state = {
@@ -33,7 +33,8 @@ class Drawer extends Component {
   switchLeague = leagueId => this.props.getOneLeague(leagueId);
 
   logout = () => {
-    this.props.removeCookie();
+    //this.props.removeCookie();
+    this.props.logOut();
   };
 
   render() {
@@ -125,7 +126,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getOneLeague: league_id =>
-    dispatch(getOneLeague({ endpoint: `/barcelona/leagues/${league_id}` }))
+    dispatch(getOneLeague({ endpoint: `/barcelona/leagues/${league_id}` })),
+
+  logOut: () => dispatch(logOut())
 });
 export default connect(
   mapStateToProps,

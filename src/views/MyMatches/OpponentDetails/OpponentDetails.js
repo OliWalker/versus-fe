@@ -78,7 +78,6 @@ class OpponentDetails extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { theOpponent } = this.props;
     const data = this.match_history.match_history.map((match, i) => {
       return { i: i, score: match.elo };
@@ -124,11 +123,7 @@ class OpponentDetails extends Component {
               </div>
               <div className="opponentPastGames__One__Stat">
                 <span>Drawn</span>
-                <span>
-                  {theOpponent.match_history.length +
-                    6 -
-                    (theOpponent.matches_won + theOpponent.matches_lost)}
-                </span>
+                <span>4</span>
               </div>
               <div className="opponentPastGames__One__Stat">
                 <span>Lost</span> <span>{theOpponent.matches_lost}</span>

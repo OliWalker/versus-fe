@@ -72,6 +72,7 @@ class Match extends Component {
                 }
                 alt="logo for the chosen sport"
               />
+
               <h3>
                 {user1.user_id === this.props.user.user_id
                   ? user2.username
