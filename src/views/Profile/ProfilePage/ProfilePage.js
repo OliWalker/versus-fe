@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ProfilePage.css';
 
 import { connect } from 'react-redux';
@@ -7,6 +8,11 @@ import ProfileSportScore from '..//ProfileSportScore/ProfileSportScore';
 import { XAxis, Tooltip, AreaChart, Area } from 'recharts';
 
 export class ProfilePage extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    stats: PropTypes.array
+  };
+
   state = {
     data: this.props.user.elo_history
   };
@@ -74,7 +80,6 @@ export class ProfilePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  laoding: state.loading,
   user: state.user,
   stats: state.stats
 });
