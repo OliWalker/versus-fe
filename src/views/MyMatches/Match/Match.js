@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Match.css';
 import innerMatch from './innerMatch';
 import { connect } from 'react-redux';
 import { acceptMatch, declineMatch, deleteMatch } from '../../../redux/actions';
 
 class Match extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    accept: PropTypes.func,
+    decline: PropTypes.func,
+    delete: PropTypes.func
+  };
+
   state = { deleted: false };
 
   accept = () => this.props.acceptMatch(this.props.matchInfo.match_id);
@@ -17,11 +25,6 @@ class Match extends Component {
   };
 
   render() {
-    // const opponent_i =
-    //   this.props.user.user_id === this.props.matchInfo.user1.user_id
-    //     ? this.props.matchInfo.user2.user_id
-    //     : this.props.user.user_id;
-    // const opponent_id = { opponent_id: opponent_i };
     const opponent_id = 9;
 
     const {

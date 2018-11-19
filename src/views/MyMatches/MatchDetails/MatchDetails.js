@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './MatchDetails.css';
+import PropTypes from 'prop-types';
 import LocationMap from './innerMatchComponent';
 import MatchDetailsFinished from './MatchDetailsFinished';
 import OpponentDetails from '../OpponentDetails/OpponentDetails';
@@ -8,14 +9,20 @@ import { connect } from 'react-redux';
 import { sendMatchDetails, getOpponent } from '../../../redux/actions';
 
 class MatchDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      aMatch: {},
-      activeButton: 'Match Details',
-      locationQuery: ''
-    };
-  }
+  static propTypes = {
+    user: PropTypes.object,
+    matches: PropTypes.array,
+    opponentNow: PropTypes.object,
+    loading: PropTypes.bool,
+    sendMatchDetails: PropTypes.func,
+    getOpponent: PropTypes.func
+  };
+
+  state = {
+    aMatch: {},
+    activeButton: 'Match Details',
+    locationQuery: ''
+  };
 
   getOpponent = () => {
     const { league_id, user_id } = this.props.match.params;

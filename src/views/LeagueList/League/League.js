@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './League.css';
 import LeagueCard from '../LeagueCard/LeagueCard';
 import { connect } from 'react-redux';
 import { getOneLeague } from '../../../redux/actions';
 
 class League extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    stats: PropTypes.array,
+    leagueNow: PropTypes.object,
+    getOneLeague: PropTypes.func
+  };
+
   state = {
     score: ''
   };

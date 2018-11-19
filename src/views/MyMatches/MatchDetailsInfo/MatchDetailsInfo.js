@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './MatchDetailsInfo.css';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { locationChosen, sendMatchDetails } from '../../../redux/actions';
 
 class MatchDetailsInfo extends Component {
+  static propTypes = {
+    locationChosen: PropTypes.func,
+    sendMatchDetails: PropTypes.func
+  };
   state = {
     date: '',
     time: '',
@@ -72,13 +76,12 @@ class MatchDetailsInfo extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => ({
   locationChosen: info => dispatch(locationChosen(info)),
   sendMatchDetails: apiInfo => dispatch(sendMatchDetails(apiInfo))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(MatchDetailsInfo);

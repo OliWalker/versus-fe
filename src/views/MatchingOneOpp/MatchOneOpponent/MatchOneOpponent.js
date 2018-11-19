@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './MatchOneOpponent.css';
 
 export default class MatchOneOpponent extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    user: PropTypes.object,
+    opponent: PropTypes.object,
+    stats: PropTypes.array,
+    league: PropTypes.string
+  };
+
+  state = {
+    hover: '',
+    stats: [],
+    sport: []
+  };
+
+  componentDidMount() {
     let stats, sport;
     if (this.props.opponent)
       stats = this.props.opponent.match_history.map((stat, i) => {
@@ -15,17 +28,12 @@ export default class MatchOneOpponent extends Component {
       );
       stats = sport.map(el => el.elo_history);
     }
-    this.state = {
+    this.setState({
       hover: '',
       stats,
       sport
-    };
+    });
   }
-
-  handleFlip = () => {
-    const hover = this.state.hover === '' ? 'hover' : '';
-    this.setState({ hover });
-  };
 
   render() {
     let score, realScore;

@@ -1,16 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SportCard.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { joinLeague } from '../../../redux/actions';
 
 export class SportCard extends React.Component {
+  static propTypes = {
+    user: PropTypes.object,
+    joinLeague: PropTypes.func
+  };
+
   state = {
     isOpen: false,
     isJoinOpen: false,
     skill: 0,
     finished: false
   };
+
+  componentDidUpdate() {
+    if (this.state.finished) {
+      setTimeout(() => {
+        this.props.path.push(`/league/${this.props.sport.league_id}`);
+      }, 300);
+    }
+  }
 
   toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
 
@@ -39,14 +53,6 @@ export class SportCard extends React.Component {
       finished: true
     });
   };
-
-  componentDidUpdate() {
-    if (this.state.finished) {
-      setTimeout(() => {
-        this.props.path.push(`/league/${this.props.sport.league_id}`);
-      }, 300);
-    }
-  }
 
   render() {
     const height = this.state.isOpen ? { height: 100 } : { height: 0 };
@@ -98,7 +104,9 @@ export class SportCard extends React.Component {
               <Link to={`/league/${this.props.sport.league_id}`}>
                 <button className="SportCard__button"> See League </button>
               </Link>
-              <button className="SportCard__button"> Find Match </button>
+              <Link to={`/match/${this.props.sport.league_id}/2`}>
+                <button className="SportCard__button"> Find Match </button>
+              </Link>
             </div>
           ) : (
             <button className="SportCard__button" onClick={this.toggleJoin}>

@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { finishMatch } from '../../../redux/actions';
 
 export class MatchDetailsFinished extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    opponentNow: PropTypes.object,
+    finishMatch: PropTypes.func
+  };
+
   state = {
     myScore: '',
     opScore: '',
     message: 'Enter Your Scores'
   };
 
-  handleFormChange = event => {
+  handleFormChange = event =>
     this.setState({
       [event.target.name]: event.target.value
     });
-  };
 
   postFinishedResults = () => {
     const users = {
