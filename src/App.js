@@ -5,7 +5,7 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-import { getUserInfo } from './redux/actions';
+import { getUserInfo, sendError } from './redux/actions';
 
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import SignUp from './views/Login/SignUp/SignUp';
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   componentDidCatch(error, info) {
-    alert(error);
+    this.props.sendError();
   }
 
   sizeChecker = () => {
@@ -81,6 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  error: () => dispatch(sendError()),
   getUserInfo: user_id =>
     // dispatch(getUserInfo({ endpoint: `/users/${user_id}` }))
     dispatch(getUserInfo({ endpoint: `/users/1` }))

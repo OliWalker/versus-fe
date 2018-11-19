@@ -22,6 +22,10 @@ export const signUp = apiInfo => ({
   }
 });
 
+export const sendError = () => ({
+  type: 'ERROR'
+});
+
 export const getUserInfo = apiInfo => ({
   type: 'GET_USER_INFO',
   api: {
