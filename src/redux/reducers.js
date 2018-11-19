@@ -41,6 +41,12 @@ const reducer = (state = initalState, action) => {
     case 'LOG_OUT':
       return initalState;
 
+    case 'Error':
+      return {
+        ...state,
+        error: true
+      };
+
     case 'GET_USER_INFO_REQUEST':
       return {
         ...state,
