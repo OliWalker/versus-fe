@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { requestLocation } from '../../../redux/actions';
 
 export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      markerPosition: {}
-    };
-  }
-
-  queryPlaces = () => {
-    const params = {
-      input: this.props.location
-    };
-
-    this.props.requestLocation({
-      endpoint: '/requestLocation',
-      method: 'POST',
-      body: params
-    });
+  static propTypes = {
+    location: PropTypes.string,
+    googlePlaces: PropTypes.object,
+    requestLocation: PropTypes.func
   };
+
+  state = {
+    markerPosition: {}
+  };
+
+  componentDidMount() {
+    this.queryPlaces();
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -34,10 +30,19 @@ export class MapContainer extends Component {
       });
     }
   }
-
-  renderMarker = () => {
-    return <Marker position={this.state.markerPosition} />;
+  queryPlaces = () => {
+    const params = {
+      input: this.props.location
+    };
+    this.props.requestLocation({
+      endpoint: '/requestLocation',
+      method: 'POST',
+      body: params
+    });
   };
+
+  renderMarker = () => <Marker position={this.state.markerPosition} />;
+
   render() {
     const style = {
       width: '100%',

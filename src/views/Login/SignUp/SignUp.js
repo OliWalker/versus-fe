@@ -7,18 +7,15 @@ import { Redirect } from 'react-router';
 import { createUser } from '../../../redux/actions';
 
 class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      first_name: '',
-      last_name: '',
-      password: '',
-      email: '',
-      user_image_path: '',
-      signedUp: false
-    };
-  }
+  state = {
+    username: '',
+    first_name: '',
+    last_name: '',
+    password: '',
+    email: '',
+    user_image_path: '',
+    signedUp: false
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
@@ -94,8 +91,7 @@ class SignUp extends Component {
         </div>
         <div className="SignUp">
           <Link to="/">
-            {' '}
-            Returning? <strong>Login.</strong>{' '}
+            Returning? <strong>Login.</strong>
           </Link>
         </div>
 

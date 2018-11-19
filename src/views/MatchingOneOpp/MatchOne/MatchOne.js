@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './MatchOne.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,18 +13,29 @@ import MatchOneOpponent from '../MatchOneOpponent/MatchOneOpponent';
 import Loading from '../../Misc/LoadingPage/LoadingPage';
 
 class MatchOne extends Component {
-  componentDidMount() {
-    const { league, opponent } = this.props.match.params;
-
-    if (this.props.opponentNow.user_id === Number(opponent)) return;
-    this.props.getOpponent(league, opponent);
-  }
+  static propTypes = {
+    user: PropTypes.object,
+    stats: PropTypes.array,
+    leagueNow: PropTypes.object,
+    opponentNow: PropTypes.object,
+    loading: PropTypes.bool,
+    getOpponent: PropTypes.func,
+    getUserInfo: PropTypes.func,
+    createMatch: PropTypes.func,
+    removeOpponent: PropTypes.func
+  };
 
   state = {
     challengeStyle: { height: 650 },
     challengeSentStyle: { height: 0 },
     matchCreated: false
   };
+  componentDidMount() {
+    const { league, opponent } = this.props.match.params;
+
+    if (this.props.opponentNow.user_id === Number(opponent)) return;
+    this.props.getOpponent(league, opponent);
+  }
 
   challenge = () => {
     if (this.state.matchCreated) return;
@@ -55,8 +67,8 @@ class MatchOne extends Component {
   };
 
   render() {
-    if (!this.props.opponentNow.user_id) return <Loading />;
-    if (!this.props.user.user_id) return <Loading />;
+    if (!this.props.opponentNow.user_id || !this.props.user.user_id)
+      return <Loading />;
     return (
       <div className="MatchOne">
         <div className="MatchOne__Header">

@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './PastMatchCard.css';
 
-class PastMatchCard extends Component {
-  render() {
-    return (
-      <div className="cardPastMatch">
-        <span>{this.props.pastMatch.result}</span>
-        <span>{this.props.pastMatch.score}</span>
-        <span>{this.props.pastMatch.elo}</span>
-      </div>
-    );
-  }
-}
+const PastMatchCard = ({ pastMatch }) => (
+  <div className="cardPastMatch">
+    <span>{pastMatch.result}</span>
+    <span>{pastMatch.score}</span>
+    <span>{pastMatch.elo}</span>
+  </div>
+);
+
+PastMatchCard.propTypes = {
+  pastMatch: PropTypes.object
+};
 
 export default PastMatchCard;
