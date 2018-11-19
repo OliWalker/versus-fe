@@ -23,6 +23,7 @@ import Resize from './views/Misc/Resizer/Resize';
 class App extends Component {
   static propTypes = {
     error: PropTypes.bool,
+    sendError: PropTypes.func,
     loading: PropTypes.bool,
     user: PropTypes.object,
     cookies: instanceOf(Cookies).isRequired
@@ -42,6 +43,7 @@ class App extends Component {
   }
 
   componentDidCatch(error, info) {
+    alert(error, info);
     this.props.sendError();
   }
 
@@ -81,7 +83,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  error: () => dispatch(sendError()),
+  sendError: () => dispatch(sendError()),
   getUserInfo: user_id =>
     // dispatch(getUserInfo({ endpoint: `/users/${user_id}` }))
     dispatch(getUserInfo({ endpoint: `/users/1` }))
